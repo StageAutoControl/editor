@@ -1,9 +1,9 @@
 <mat-drawer-container class="content-wrapper" autosize LayoutAlign="start">
   <mat-drawer #drawer class="sidenav" mode="side" fxFlexOrder="1" [opened]="drawerOpen">
     <mat-nav-list>
-      <a mat-list-item href="/device-types">Device Types</a>
-      <a mat-list-item href="/device-groups">Device Groups</a>
-      <a mat-list-item href="/devices">Devices</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/device-types">Device Types</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/device-groups">Device Groups</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/devices">Devices</a>
     </mat-nav-list>
   </mat-drawer>
 

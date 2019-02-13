@@ -1,20 +1,16 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {FormsModule} from "@angular/forms";
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {MatDesignModule} from "./mat-design/mat-design.module";
-import {FormsModule} from "@angular/forms";
-import {LayoutComponent} from './layout/layout.component';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MenuComponent} from './menu/menu.component';
+import {CoreModule} from "./core/core.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
-    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +18,7 @@ import {MenuComponent} from './menu/menu.component';
     AppRoutingModule,
     FlexLayoutModule,
     FormsModule,
-    MatDesignModule,
+    CoreModule,
   ],
   providers: [],
   bootstrap: [

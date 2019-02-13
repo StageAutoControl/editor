@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import {MatDesignModule} from "./mat-design/mat-design.module";
 import {LayoutComponent} from './layout/layout.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import {LayoutComponent} from './layout/layout.component';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatDesignModule,
   ],
   exports: [

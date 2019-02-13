@@ -1,14 +1,21 @@
-import { NgModule } from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ApiService} from "./api.service";
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
   ],
-  exports: [
-    ApiService,
-  ]
+  exports: []
 })
-export class ApiModule { }
+export class ApiModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: ApiModule,
+      providers: [
+        ApiService,
+      ],
+    };
+  }
+}

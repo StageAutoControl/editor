@@ -10,7 +10,7 @@ import {MatTableDataSource} from "@angular/material";
   styleUrls: ['./dmx-device-list.component.less']
 })
 export class DmxDeviceListComponent implements OnInit {
-  public dmxDevices$: Observable<DmxDevice>;
+  public dmxDevices$: Observable<DmxDevice[]>;
   displayedColumns: string[] = ['id', 'name', 'typeID'];
   dataSource = new MatTableDataSource();
 

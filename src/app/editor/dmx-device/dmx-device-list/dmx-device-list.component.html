@@ -20,3 +20,6 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 <mat-paginator></mat-paginator>
+<button mat-fab (click)="create()">
+  <mat-icon aria-label="Add a new DMXDevice">add</mat-icon>
+</button>

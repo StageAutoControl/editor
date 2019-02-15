@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ApiService} from "../../api/api.service";
-import {Observable, of} from "rxjs";
 import {DmxDevice} from "./dmx-device";
+import {DataStoreService} from "../../api/data-store.service";
 
 const devices: DmxDevice[] = [
   {id: "asdf", name: "LED Bar 64", typeID: "1234"},
@@ -10,13 +10,10 @@ const devices: DmxDevice[] = [
 ];
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class DmxDeviceService {
-
-  constructor(private api: ApiService) { }
-
-  getDevices(): Observable<DmxDevice[]> {
-    return of(devices)
+export class DmxDeviceService extends DataStoreService<DmxDevice> {
+  constructor(protected api: ApiService) {
+    super("DMXDevice", api);
   }
 }

@@ -3,7 +3,8 @@ import {Observable} from 'rxjs';
 import {HttpClient} from "@angular/common/http";
 import {ConfigService} from "../config/config.service";
 import {Request, Response} from "./rpc";
-import {catchError, map} from "rxjs/internal/operators";
+import {map, tap} from "rxjs/internal/operators";
+import {MatSnackBar} from "@angular/material";
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,8 @@ export class ApiService {
 
   constructor(
     private config: ConfigService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private snackBar: MatSnackBar,
   ) {
     this.endpoint = config.getApiEndpoint();
   }
@@ -30,13 +32,9 @@ export class ApiService {
       .post(this.endpoint, req, {
         headers: this.headers,
       })
-      .pipe(map((res: Response) => {
-        return this.fromResponse(req, res);
-      }))
-      .pipe(catchError(            err => {
-        console.error(err);
-        return err;
-      }));
+      .pipe(map((res: Response) => this.fromResponse(res)))
+      .pipe(tap(null, err => this.logError(req, err)))
+      .pipe(tap(null, err => this.alert(err)));
   }
 
   private toRequest(method: string, param: any): Request {
@@ -53,11 +51,21 @@ export class ApiService {
     return ++this.requestID;
   }
 
-  private fromResponse(req: Request, res: Response): any {
+  private fromResponse(res: Response): any {
     if (res.error != null && res.error != "") {
-      throw new Error(`Error calling method ${req.method} at request id ${res.id}: ${res.error}`);
+      throw new Error(res.error);
     }
 
     return res.result;
+  }
+
+  private logError(req: Request, err: Error) {
+    console.error(`Error calling method ${req.method}: ${err}`);
+  }
+
+  private alert(err: Error) {
+    this.snackBar.open(err.message, 'close', {
+      duration: 5000,
+    })
   }
 }

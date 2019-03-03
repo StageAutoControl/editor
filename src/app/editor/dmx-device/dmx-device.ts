@@ -1,5 +1,5 @@
 export interface DmxDevice {
-  id: string;
+  id?: string;
   name: string;
   typeID: string;
 }

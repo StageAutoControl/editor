@@ -3,7 +3,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {map} from "rxjs/internal/operators";
 
 interface Identifiable {
-  id: string;
+  id?: string;
 }
 
 export class DataStoreService<T extends Identifiable> {

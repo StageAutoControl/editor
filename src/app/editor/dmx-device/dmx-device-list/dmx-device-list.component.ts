@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Observable} from "rxjs";
 import {DmxDevice} from "../dmx-device";
-import {MatTableDataSource} from "@angular/material";
+import {MatPaginator, MatTableDataSource} from "@angular/material";
 import {DmxDeviceService} from "../dmx-device.service";
 
 @Component({
@@ -11,27 +11,43 @@ import {DmxDeviceService} from "../dmx-device.service";
 })
 export class DmxDeviceListComponent implements OnInit {
   public dmxDevices$: Observable<DmxDevice[]>;
-  displayedColumns: string[] = ['id', 'name', 'typeID'];
-  dataSource = new MatTableDataSource();
+  displayedColumns: string[] = ['id', 'name', 'typeID', 'actions'];
+  dataSource = new MatTableDataSource<DmxDevice>();
+
+  @ViewChild(MatPaginator)
+  paginator: MatPaginator;
 
   constructor(private dmxDeviceService: DmxDeviceService) {
   }
 
   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
     this.dmxDevices$ = this.dmxDeviceService.entities$;
-    this.dmxDeviceService.getAll();
 
     this.dmxDevices$.subscribe((devices: DmxDevice[]) => {
       this.dataSource.data = devices as DmxDevice[];
       console.log(`Loaded ${devices.length} devices`);
-    })
+    });
+
+    this.load();
   }
 
-  create() {
-    this.dmxDeviceService.create({
-      id: "asdf-" + Math.floor(Math.random() * 10000000) + 1,
-      name: "test-device",
-      typeID: "asdf",
-    }).subscribe();
+  load() {
+    this.dmxDeviceService.getAll();
+  }
+
+  createEntity() {
+    this.dmxDeviceService
+      .create({
+        name: "test-device",
+        typeID: "asdf",
+      })
+      .subscribe();
+  }
+
+  deleteEntity(id: string) {
+    this.dmxDeviceService
+      .remove(id)
+      .subscribe();
   }
 }

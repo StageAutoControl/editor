@@ -1,27 +1,21 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {FormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {CoreModule} from "./core/core.module";
+import {CoreModule} from "./lib/core/core.module";
+import {ApiModule} from "./lib/api/api.module";
+import {LayoutModule} from "./lib/layout/layout.module";
 import {EditorModule} from "./editor/editor.module";
-import {ApiModule} from "./api/api.module";
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FlexLayoutModule,
-    FormsModule,
     CoreModule,
     ApiModule.forRoot(),
+    LayoutModule,
     EditorModule,
     AppRoutingModule,
   ],

@@ -32,9 +32,9 @@ export class DataStoreService<T extends Identifiable> {
       });
   }
 
-  get(id: string):Observable<T> {
+  get(id: string): Observable<T> {
     return this.api
-      .call(`${this.entityName}.Get`, null)
+      .call(`${this.entityName}.Get`, {id})
       .pipe(map((data: T) => {
         let notFound = true;
         this.dataStore.entities.forEach((item: T, index: number) => {
@@ -54,7 +54,11 @@ export class DataStoreService<T extends Identifiable> {
       }));
   }
 
-  create(entity: T):Observable<T> {
+  save(entity: T): Observable<T> {
+    return entity.id ? this.update(entity) : this.create(entity);
+  }
+
+  create(entity: T): Observable<T> {
     return this.api
       .call(`${this.entityName}.Create`, entity)
       .pipe(map((data: T) => {
@@ -65,7 +69,7 @@ export class DataStoreService<T extends Identifiable> {
       }));
   }
 
-  update(entity: T):Observable<T> {
+  update(entity: T): Observable<T> {
     return this.api
       .call(`${this.entityName}.Update`, entity)
       .pipe(map((data: T) => {
@@ -81,7 +85,7 @@ export class DataStoreService<T extends Identifiable> {
       }));
   }
 
-  remove(id: string):Observable<void> {
+  remove(id: string): Observable<void> {
     return this.api
       .call(`${this.entityName}.Delete`, {id})
       .pipe(map(_ => {

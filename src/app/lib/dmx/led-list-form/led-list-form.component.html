@@ -1,0 +1,18 @@
+<mat-list [formGroup]="form">
+  <mat-list-item *ngFor="let led of form.controls; let i = index">
+    <div class="full-width" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap.gt-xs="10px">
+      <div fxFlex class="led-index">#{{ i + 1 }}</div>
+
+      <dmx-led-form fxFlex="grow" [group]="form.controls[i]"></dmx-led-form>
+
+      <button fxFlex mat-button (click)="removeLED(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-list-item>
+  <mat-list-item fxLayout="row">
+    <button mat-button (click)="addLED()">
+      <mat-icon>add</mat-icon> add LED
+    </button>
+  </mat-list-item>
+</mat-list>

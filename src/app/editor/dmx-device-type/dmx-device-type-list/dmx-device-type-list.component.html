@@ -1,0 +1,111 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+  <!--
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  -->
+
+  <ng-container matColumnDef="name" sticky>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="channelCount">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Channels </th>
+    <td mat-cell *matCellDef="let element"> {{element.channelCount}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="channelsPerLED">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Channels per LED </th>
+    <td mat-cell *matCellDef="let element"> {{element.channelsPerLED}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="strobe">
+    <th mat-header-cell *matHeaderCellDef> Strobe(chan) </th>
+    <td mat-cell *matCellDef="let element">
+
+      <span class="text-with-icon" *ngIf="element.strobeEnabled">
+        <mat-icon>check_box</mat-icon>
+        ({{ element.strobeChannel }})
+      </span>
+
+      <span *ngIf="!element.strobeEnabled">
+        <mat-icon>check_box_outline_blank</mat-icon>
+      </span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dimmer">
+    <th mat-header-cell *matHeaderCellDef> Dimmer(chan) </th>
+    <td mat-cell *matCellDef="let element">
+
+      <span class="text-with-icon" *ngIf="element.dimmerEnabled">
+        <mat-icon>check_box</mat-icon>
+        ({{ element.dimmerChannel}})
+      </span>
+
+      <span *ngIf="!element.dimmerEnabled">
+        <mat-icon>check_box_outline_blank</mat-icon>
+      </span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="mode">
+    <th mat-header-cell *matHeaderCellDef> Strobe(chan) </th>
+    <td mat-cell *matCellDef="let element">
+
+      <span class="text-with-icon" *ngIf="element.modeEnabled">
+        <mat-icon>check_box</mat-icon>
+        ({{ element.modeChannel}})
+      </span>
+
+      <span *ngIf="!element.modeEnabled">
+        <mat-icon>check_box_outline_blank</mat-icon>
+      </span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="moving">
+    <th mat-header-cell *matHeaderCellDef> Moving(chan) </th>
+    <td mat-cell *matCellDef="let element">
+
+      <span class="text-with-icon" *ngIf="element.moving">
+        <mat-icon>check_box</mat-icon>
+        (Pan: {{ element.panChannel}}, Tilt: {{ element.tiltChannel }})
+      </span>
+
+      <span *ngIf="!element.moving">
+        <mat-icon>check_box_outline_blank</mat-icon>
+      </span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="leds">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> LEDs </th>
+    <td mat-cell *matCellDef="let element">{{ element.leds.length }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button routerLink="/dmx-device-types/{{ element.id }}">
+        <mat-icon aria-label="Edit/View Details">edit</mat-icon>
+      </button>
+      <button mat-button (click)="deleteEntity(element)">
+        <mat-icon aria-label="Delete">delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[10,50,100,200]" [pageSize]="100" ></mat-paginator>
+<button mat-fab routerLink="/dmx-device-types/new" class="floating">
+  <mat-icon aria-label="Add a new DmxDeviceType">add</mat-icon>
+</button>

@@ -1,0 +1,40 @@
+<div [formGroup]="form" fxLayout="row" fxLayoutGap.gt-xs="10px">
+  <mat-form-field fxFlex="25">
+    <input
+      matInput
+      type="number"
+      placeholder="red"
+      formControlName="red"
+      id="red">
+    <mat-error *ngIf="!form.controls.red.valid">red channel is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field fxFlex="25">
+    <input
+      matInput
+      type="number"
+      placeholder="green"
+      formControlName="green"
+      id="green">
+    <mat-error *ngIf="!form.controls.green.valid">green channel is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field fxFlex="25">
+    <input
+      matInput
+      type="number"
+      placeholder="blue"
+      formControlName="blue"
+      id="blue">
+    <mat-error *ngIf="!form.controls.blue.valid">blue channel is required</mat-error>
+  </mat-form-field>
+  <mat-form-field fxFlex="25">
+    <input
+      matInput
+      type="number"
+      placeholder="white"
+      formControlName="white"
+      id="white">
+    <mat-error *ngIf="!form.controls.white.valid">white channel is required</mat-error>
+  </mat-form-field>
+</div>

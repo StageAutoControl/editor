@@ -10,12 +10,14 @@
 
   <div class="content" fxFlexOrder="2" fxFlexAlign="top">
     <mat-toolbar class="navbar">
-      <button type="button" color="{{ drawerOpen ? 'accent' : '' }}" mat-button (click)="toggleDrawer()">
+      <button type="button" mat-button (click)="toggleDrawer()">
         <mat-icon>menu</mat-icon>
       </button>
     </mat-toolbar>
 
-    <ng-content></ng-content>
+    <div class="content-spacer">
+      <ng-content></ng-content>
+    </div>
   </div>
 
 </mat-drawer-container>

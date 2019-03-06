@@ -11,11 +11,10 @@ import {DmxDeviceService} from "../dmx-device.service";
 })
 export class DmxDeviceListComponent implements OnInit {
   public dmxDevices$: Observable<DmxDevice[]>;
-  displayedColumns: string[] = ['id', 'name', 'typeID', 'actions'];
+  displayedColumns: string[] = ['name', 'typeID', 'actions'];
   dataSource = new MatTableDataSource<DmxDevice>();
 
-  @ViewChild(MatPaginator)
-  paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private dmxDeviceService: DmxDeviceService) {
   }
@@ -26,10 +25,13 @@ export class DmxDeviceListComponent implements OnInit {
 
     this.dmxDevices$.subscribe((devices: DmxDevice[]) => {
       this.dataSource.data = devices as DmxDevice[];
-      console.log(`Loaded ${devices.length} devices`);
     });
 
     this.load();
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   load() {
@@ -37,12 +39,12 @@ export class DmxDeviceListComponent implements OnInit {
   }
 
   createEntity() {
-    this.dmxDeviceService
-      .create({
-        name: "test-device",
-        typeID: "asdf",
-      })
-      .subscribe();
+    // this.dmxDeviceService
+    //   .create({
+    //     name: "test-device",
+    //     typeID: "asdf",
+    //   })
+    //   .subscribe();
   }
 
   deleteEntity(id: string) {

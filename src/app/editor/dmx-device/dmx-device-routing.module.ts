@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {DmxDeviceListComponent} from "./dmx-device-list/dmx-device-list.component";
-import {DmxDeviceDetailComponent} from "./dmx-device-detail/dmx-device-detail.component";
+import {DmxDeviceDetailsComponent} from "./dmx-device-details/dmx-device-details.component";
 
 const routes: Routes = [
   { path: 'dmx-devices',  component: DmxDeviceListComponent },
-  { path: 'dmx-devices/:id', component: DmxDeviceDetailComponent }
+  { path: 'dmx-devices/:id', component: DmxDeviceDetailsComponent }
 ];
 
 @NgModule({

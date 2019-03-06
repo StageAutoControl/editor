@@ -5,7 +5,7 @@ import {ConfigService} from "./config.service";
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
 export class ConfigModule {

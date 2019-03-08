@@ -5,7 +5,8 @@ import {DmxDeviceDetailsComponent} from "./dmx-device-details/dmx-device-details
 
 const routes: Routes = [
   { path: 'dmx-devices',  component: DmxDeviceListComponent },
-  { path: 'dmx-devices/:id', component: DmxDeviceDetailsComponent }
+  { path: 'dmx-devices/new', component: DmxDeviceDetailsComponent },
+  { path: 'dmx-devices/:id', component: DmxDeviceDetailsComponent },
 ];
 
 @NgModule({

@@ -5,28 +5,28 @@
 <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
   <!--
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef  mat-sort-header> ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let element">{{element.id}}</td>
     </ng-container>
   -->
 
   <ng-container matColumnDef="name" sticky>
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+    <td mat-cell *matCellDef="let element">{{element.name}}</td>
   </ng-container>
 
   <ng-container matColumnDef="channelCount">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Channels </th>
-    <td mat-cell *matCellDef="let element"> {{element.channelCount}} </td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Channels</th>
+    <td mat-cell *matCellDef="let element">{{element.channelCount}}</td>
   </ng-container>
 
   <ng-container matColumnDef="channelsPerLED">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Channels per LED </th>
-    <td mat-cell *matCellDef="let element"> {{element.channelsPerLED}} </td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Channels per LED</th>
+    <td mat-cell *matCellDef="let element">{{element.channelsPerLED}}</td>
   </ng-container>
 
   <ng-container matColumnDef="strobe">
-    <th mat-header-cell *matHeaderCellDef> Strobe(chan) </th>
+    <th mat-header-cell *matHeaderCellDef>Strobe(chan)</th>
     <td mat-cell *matCellDef="let element">
 
       <span class="text-with-icon" *ngIf="element.strobeEnabled">
@@ -41,7 +41,7 @@
   </ng-container>
 
   <ng-container matColumnDef="dimmer">
-    <th mat-header-cell *matHeaderCellDef> Dimmer(chan) </th>
+    <th mat-header-cell *matHeaderCellDef>Dimmer(chan)</th>
     <td mat-cell *matCellDef="let element">
 
       <span class="text-with-icon" *ngIf="element.dimmerEnabled">
@@ -56,7 +56,7 @@
   </ng-container>
 
   <ng-container matColumnDef="mode">
-    <th mat-header-cell *matHeaderCellDef> Strobe(chan) </th>
+    <th mat-header-cell *matHeaderCellDef>Strobe(chan)</th>
     <td mat-cell *matCellDef="let element">
 
       <span class="text-with-icon" *ngIf="element.modeEnabled">
@@ -71,7 +71,7 @@
   </ng-container>
 
   <ng-container matColumnDef="moving">
-    <th mat-header-cell *matHeaderCellDef> Moving(chan) </th>
+    <th mat-header-cell *matHeaderCellDef>Moving(chan)</th>
     <td mat-cell *matCellDef="let element">
 
       <span class="text-with-icon" *ngIf="element.moving">
@@ -86,12 +86,12 @@
   </ng-container>
 
   <ng-container matColumnDef="leds">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> LEDs </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>LEDs</th>
     <td mat-cell *matCellDef="let element">{{ element.leds.length }}</td>
   </ng-container>
 
   <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let element">
       <button mat-button routerLink="/dmx-device-types/{{ element.id }}">
         <mat-icon aria-label="Edit/View Details">edit</mat-icon>

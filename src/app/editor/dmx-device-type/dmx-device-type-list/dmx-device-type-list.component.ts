@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
-import {DmxDeviceType} from "../dmx-device-type";
 import {Observable} from "rxjs";
-import {DmxDeviceTypeService} from "../dmx-device-type.service";
 import {ConfirmationDialogComponent} from "../../../lib/common-components/confirmation-dialog/confirmation-dialog.component";
 import {filter, switchMap} from "rxjs/operators";
+import {DmxDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type";
+import {DmxDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
 
 @Component({
   selector: 'app-dmx-device-type-list',

@@ -1,17 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Location} from "@angular/common";
-import {DmxDeviceTypeService} from "../dmx-device-type.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {DmxDeviceType} from "../dmx-device-type";
 import {LedListFormComponent} from "../../../lib/dmx/led-list-form/led-list-form.component";
-
-// const enabledChannelDependencyValidator = (enabledFieldName: string, channelFieldName): ValidatorFn => (control: FormGroup): ValidationErrors | null => {
-//   const enabled = control.get(enabledFieldName);
-//   const channel = parseInt(control.get(channelFieldName).value, 10);
-//
-//   return enabled && channel < 0 ? {'channelNeedsToBeSetWhenEnabled': true} : null;
-// };
+import {DmxDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
+import {DmxDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type";
 
 @Component({
   selector: 'app-dmx-device-type-details',
@@ -48,6 +41,7 @@ export class DmxDeviceTypeDetailsComponent implements OnInit {
 
   private setupForm() {
     this.form = this.formBuilder.group({
+      id: this.formBuilder.control(""),
       name: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]),
       channelCount: this.formBuilder.control(0, [Validators.required, Validators.min(1)]),
       channelsPerLED: this.formBuilder.control(0, [Validators.required]),
@@ -60,15 +54,8 @@ export class DmxDeviceTypeDetailsComponent implements OnInit {
       moving: this.formBuilder.control(false),
       tiltChannel: this.formBuilder.control(0, [Validators.required]),
       panChannel: this.formBuilder.control(0, [Validators.required]),
-      id: this.formBuilder.control(""),
       leds: this.formBuilder.array([]),
-    }, [
-      // enabledChannelDependencyValidator('strobeEnabled', 'strobeChannel'),
-      // enabledChannelDependencyValidator('dimmerEnabled', 'dimmerChannel'),
-      // enabledChannelDependencyValidator('modeEnabled', 'modeChannel'),
-      // enabledChannelDependencyValidator('moving', 'tiltChannel'),
-      // enabledChannelDependencyValidator('moving', 'panChannel'),
-    ]);
+    });
 
     this.form.controls['strobeEnabled'].valueChanges.subscribe(this.handleFeatureToggleChange(this.form.controls['strobeChannel']));
     this.form.controls['dimmerEnabled'].valueChanges.subscribe(this.handleFeatureToggleChange(this.form.controls['dimmerChannel']));

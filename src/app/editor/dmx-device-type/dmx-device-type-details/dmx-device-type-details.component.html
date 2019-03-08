@@ -100,8 +100,6 @@
         <dmx-led-list-form #ledList fxFlex="grow" [array]="form.controls.leds"></dmx-led-list-form>
       </form>
 
-      {{ form.errors | json }}
-
     </mat-card-content>
     <mat-card-actions>
       <button mat-button (click)="save()" [disabled]="!form.valid">

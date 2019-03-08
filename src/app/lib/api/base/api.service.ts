@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from "@angular/common/http";
-import {ConfigService} from "../config/config.service";
 import {Request, Response} from "./rpc";
 import {map, tap} from "rxjs/internal/operators";
 import {MatSnackBar} from "@angular/material";
+import {ConfigService} from "../../config/config.service";
 
 @Injectable({
   providedIn: 'root',

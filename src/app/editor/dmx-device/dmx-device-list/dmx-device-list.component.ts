@@ -1,8 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Observable} from "rxjs";
-import {DmxDevice} from "../dmx-device";
-import {MatPaginator, MatTableDataSource} from "@angular/material";
-import {DmxDeviceService} from "../dmx-device.service";
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import {DmxDevice} from "../../../lib/api/dmx/dmx-device/dmx-device";
+import {DmxDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type";
+import {DmxDeviceService} from "../../../lib/api/dmx/dmx-device/dmx-device.service";
+import {DmxDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
+import {ConfirmationDialogComponent} from "../../../lib/common-components/confirmation-dialog/confirmation-dialog.component";
+import {filter, switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-dmx-device-list',
@@ -10,24 +14,44 @@ import {DmxDeviceService} from "../dmx-device.service";
   styleUrls: ['./dmx-device-list.component.less']
 })
 export class DmxDeviceListComponent implements OnInit {
-  public dmxDevices$: Observable<DmxDevice[]>;
-  displayedColumns: string[] = ['name', 'typeID', 'actions'];
+  dmxDevices$: Observable<DmxDevice[]>;
+  dmxDeviceTypes: { [id: string]: DmxDeviceType } = {};
+  displayedColumns: string[] = ['name', 'typeId', 'universe', 'startChannel', 'tags', 'actions'];
   dataSource = new MatTableDataSource<DmxDevice>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private dmxDeviceService: DmxDeviceService) {
+  constructor(
+    private dmxDeviceService: DmxDeviceService,
+    private dmxDeviceTypeService: DmxDeviceTypeService,
+    private dialog:MatDialog,
+  ) {
   }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     this.dmxDevices$ = this.dmxDeviceService.entities$;
 
+    this.dmxDeviceTypeService.entities$
+      .subscribe((types: DmxDeviceType[]) => {
+        types.forEach((t: DmxDeviceType) => this.dmxDeviceTypes[t.id] = t);
+      });
+
     this.dmxDevices$.subscribe((devices: DmxDevice[]) => {
-      this.dataSource.data = devices as DmxDevice[];
+      this.dataSource.data = devices;
     });
 
     this.load();
+  }
+
+  getDmxDeviceTypeName(id: string): string {
+    if (!(id in this.dmxDeviceTypes)) {
+      return "NOT FOUND";
+    }
+
+    return this.dmxDeviceTypes[id].name;
   }
 
   applyFilter(filterValue: string) {
@@ -36,20 +60,19 @@ export class DmxDeviceListComponent implements OnInit {
 
   load() {
     this.dmxDeviceService.getAll();
+    this.dmxDeviceTypeService.getAll();
   }
 
-  createEntity() {
-    // this.dmxDeviceService
-    //   .create({
-    //     name: "test-device",
-    //     typeID: "asdf",
-    //   })
-    //   .subscribe();
-  }
-
-  deleteEntity(id: string) {
-    this.dmxDeviceService
-      .remove(id)
-      .subscribe();
+  deleteEntity(entity: DmxDevice) {
+    this.dialog
+      .open(ConfirmationDialogComponent, {
+        data: {
+          action: `delete DMXDevice ${entity.name}`,
+        },
+      })
+      .afterClosed()
+      .pipe(filter((result: boolean) => result))
+      .pipe(switchMap(() => this.dmxDeviceService.remove(entity.id)))
+      .subscribe()
   }
 }

@@ -1,9 +1,10 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ApiService} from "./api.service";
+import {ApiService} from "./base/api.service";
 import {HttpClientModule} from "@angular/common/http";
-import {DataStoreService} from "./data-store.service";
 import {MatSnackBarModule} from "@angular/material";
+import {DmxDeviceTypeService} from "./dmx/dmx-device-type/dmx-device-type.service";
+import {DmxDeviceService} from "./dmx/dmx-device/dmx-device.service";
 
 @NgModule({
   declarations: [],
@@ -20,6 +21,8 @@ export class ApiModule {
       ngModule: ApiModule,
       providers: [
         ApiService,
+        DmxDeviceService,
+        DmxDeviceTypeService,
       ],
     };
   }

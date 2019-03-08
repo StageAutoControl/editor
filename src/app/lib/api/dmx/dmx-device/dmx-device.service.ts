@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {DmxDevice} from "./dmx-device";
-import {DataStoreService} from "../../lib/api/data-store.service";
-import {ApiService} from "../../lib/api/api.service";
+import {DataStoreService} from "../../base/data-store.service";
+import {ApiService} from "../../base/api.service";
 
 @Injectable({
   providedIn: 'root',

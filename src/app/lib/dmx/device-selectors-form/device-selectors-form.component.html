@@ -1,0 +1,18 @@
+<mat-list [formGroup]="form">
+  <mat-list-item *ngFor="let sel of form.controls; let i = index">
+    <div class="full-width" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap.gt-xs="10px">
+      <div fxFlex>#{{ i + 1 }}</div>
+
+      <dmx-device-selector-form fxFlex="grow" [group]="form.controls[i]" [choices]="choices$"></dmx-device-selector-form>
+
+      <button fxFlex mat-button (click)="removeDeviceSelector(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-list-item>
+  <mat-list-item fxLayout="row">
+    <button mat-button (click)="addDeviceSelector()">
+      <mat-icon>add</mat-icon> add DeviceSelector
+    </button>
+  </mat-list-item>
+</mat-list>

@@ -22,10 +22,10 @@ export class LedListFormComponent implements OnInit {
 
   private setupLED() {
     return this.formBuilder.group({
-      red: [0, Validators.required],
-      green: [0, Validators.required],
-      blue: [0, Validators.required],
-      white: [0, Validators.required],
+      red: [0, [Validators.required, Validators.min(0)]],
+      green: [0, [Validators.required, Validators.min(0)]],
+      blue: [0, [Validators.required, Validators.min(0)]],
+      white: [0, [Validators.required, Validators.min(0)]],
     });
   }
 

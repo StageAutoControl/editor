@@ -1,0 +1,13 @@
+<div [formGroup]="form" fxLayout="row" fxLayoutGap.gt-xs="10px">
+  <mat-form-field fxFlex="30">
+    <input
+      matInput
+      type="text"
+      placeholder="id"
+      formControlName="id"
+      id="id">
+  </mat-form-field>
+  <app-tag-list-input fxFlex="70" [choices]="choices$" [control]="form.controls.tags" [disabled]="form.controls.tags.disabled"></app-tag-list-input>
+
+  <!--{{ form.errors | json }}-->
+</div>

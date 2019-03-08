@@ -1,22 +1,24 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Location} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {DmxDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
-import {DmxDeviceService} from "../../../lib/api/dmx/dmx-device/dmx-device.service";
-import {DmxDevice} from "../../../lib/api/dmx/dmx-device/dmx-device";
+import {DmxDeviceGroupService} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group.service";
+import {DmxDeviceGroup} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group";
 import {Observable} from "rxjs";
-import {DmxDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type";
+import {DmxDeviceService} from "../../../lib/api/dmx/dmx-device/dmx-device.service";
+import {DeviceSelectorsFormComponent} from "../../../lib/dmx/device-selectors-form/device-selectors-form.component";
 
 @Component({
-  selector: 'app-dmx-device-details',
-  templateUrl: './dmx-device-details.component.html',
-  styleUrls: ['./dmx-device-details.component.less']
+  selector: 'app-dmx-device-group-details',
+  templateUrl: './dmx-device-group-details.component.html',
+  styleUrls: ['./dmx-device-group-details.component.less']
 })
-export class DmxDeviceDetailsComponent implements OnInit {
+export class DmxDeviceGroupDetailsComponent implements OnInit {
   form: FormGroup;
-  dmxDeviceTypes$: Observable<DmxDeviceType[]>;
   tags$: Observable<string[]>;
+
+  @ViewChild('devices')
+  devicesForm: DeviceSelectorsFormComponent;
 
   hasError = (controlName: string, errorName: string): boolean => {
     return this.form.controls[controlName].hasError(errorName);
@@ -27,7 +29,7 @@ export class DmxDeviceDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private dmxDeviceService: DmxDeviceService,
-    private dmxDeviceTypeService: DmxDeviceTypeService,
+    private dmxDeviceGroupService: DmxDeviceGroupService,
     private router: Router
   ) {
   }
@@ -39,27 +41,25 @@ export class DmxDeviceDetailsComponent implements OnInit {
     }
 
     this.setupForm();
-    this.dmxDeviceTypes$ = this.dmxDeviceTypeService.entities$;
     this.tags$ = this.dmxDeviceService.tags$;
     this.dmxDeviceService.getAll();
-    this.dmxDeviceTypeService.getAll();
   }
 
   private setupForm() {
     this.form = this.formBuilder.group({
       id: this.formBuilder.control(""),
       name: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]),
-      typeId: this.formBuilder.control('', [Validators.required]),
-      universe: this.formBuilder.control(0, [Validators.required]),
-      startChannel: this.formBuilder.control(0, [Validators.required]),
-      tags: this.formBuilder.control([]),
+      devices: this.formBuilder.array([]),
     });
   }
 
   private load(id: string): void {
-    this.dmxDeviceService
+    this.dmxDeviceGroupService
       .get(id)
-      .subscribe((entity: DmxDevice) => {
+      .subscribe((entity: DmxDeviceGroup) => {
+        Array.from(entity.devices)
+          .forEach(() => this.devicesForm.addDeviceSelector());
+
         this.form.patchValue(entity);
       });
   }
@@ -68,9 +68,9 @@ export class DmxDeviceDetailsComponent implements OnInit {
     let entity = this.form.value;
     console.log(entity);
 
-    this.dmxDeviceService
+    this.dmxDeviceGroupService
       .save(entity)
-      .subscribe(() => this.router.navigateByUrl("/dmx-devices"));
+      .subscribe(() => this.router.navigateByUrl("/dmx-device-groups"));
   }
 
   cancel() {

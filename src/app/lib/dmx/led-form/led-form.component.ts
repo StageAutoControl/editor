@@ -10,6 +10,10 @@ export class LedFormComponent implements OnInit {
   @Input('group')
   public form: FormGroup;
 
+  hasError = (controlName: string, errorName: string): boolean => {
+    return this.form.controls[controlName].hasError(errorName);
+  };
+
   constructor() {
   }
 

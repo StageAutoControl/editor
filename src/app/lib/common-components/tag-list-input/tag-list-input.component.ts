@@ -17,6 +17,7 @@ export class TagListInputComponent implements OnInit {
 
   @Input('choices') choices$: Observable<string[]>;
   @Input() control: FormArray;
+  @Input() disabled: boolean;
 
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') autocomplete: MatAutocomplete;

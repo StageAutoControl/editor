@@ -6,7 +6,8 @@
       placeholder="red"
       formControlName="red"
       id="red">
-    <mat-error *ngIf="!form.controls.red.valid">red channel is required</mat-error>
+    <mat-error *ngIf="hasError('red', 'required')">red channel is required</mat-error>
+    <mat-error *ngIf="hasError('red', 'min')">red channel cannot be negative</mat-error>
   </mat-form-field>
 
   <mat-form-field fxFlex="25">
@@ -16,7 +17,8 @@
       placeholder="green"
       formControlName="green"
       id="green">
-    <mat-error *ngIf="!form.controls.green.valid">green channel is required</mat-error>
+    <mat-error *ngIf="hasError('green', 'required')">green channel is required</mat-error>
+    <mat-error *ngIf="hasError('green', 'min')">green channel cannot be negative</mat-error>
   </mat-form-field>
 
   <mat-form-field fxFlex="25">
@@ -26,7 +28,8 @@
       placeholder="blue"
       formControlName="blue"
       id="blue">
-    <mat-error *ngIf="!form.controls.blue.valid">blue channel is required</mat-error>
+    <mat-error *ngIf="hasError('blue', 'required')">blue channel is required</mat-error>
+    <mat-error *ngIf="hasError('blue', 'min')">blue channel cannot be negative</mat-error>
   </mat-form-field>
   <mat-form-field fxFlex="25">
     <input
@@ -35,6 +38,7 @@
       placeholder="white"
       formControlName="white"
       id="white">
-    <mat-error *ngIf="!form.controls.white.valid">white channel is required</mat-error>
+    <mat-error *ngIf="hasError('white', 'required')">white channel is required</mat-error>
+    <mat-error *ngIf="hasError('white', 'min')">white channel cannot be negative</mat-error>
   </mat-form-field>
 </div>

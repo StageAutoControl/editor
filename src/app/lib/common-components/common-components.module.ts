@@ -2,13 +2,15 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ConfirmationDialogComponent} from './confirmation-dialog/confirmation-dialog.component';
 import {MatDesignModule} from "../mat-design/mat-design.module";
-import { TagListInputComponent } from './tag-list-input/tag-list-input.component';
+import {TagListInputComponent} from './tag-list-input/tag-list-input.component';
 import {CoreModule} from "../core/core.module";
+import {DisableControlDirective} from "./disable-control.directive";
 
 @NgModule({
   declarations: [
     ConfirmationDialogComponent,
     TagListInputComponent,
+    DisableControlDirective,
   ],
   imports: [
     CommonModule,
@@ -18,6 +20,7 @@ import {CoreModule} from "../core/core.module";
   exports: [
     ConfirmationDialogComponent,
     TagListInputComponent,
+    DisableControlDirective,
   ],
 })
 export class CommonComponentsModule {

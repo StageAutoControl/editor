@@ -6,6 +6,5 @@ export interface DmxDeviceGroup {
 
 export interface DmxDeviceSelector {
   id?: string;
-  name?: string;
   tags?: string[];
 }

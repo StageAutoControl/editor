@@ -21,6 +21,7 @@ export class DataStoreService<T extends Identifiable> {
     this.dataStore = {entities: []};
     this._entities$ = <BehaviorSubject<T[]>>new BehaviorSubject([]);
     this.entities$ = this._entities$.asObservable();
+    this.getAll();
   }
 
   getAll() {

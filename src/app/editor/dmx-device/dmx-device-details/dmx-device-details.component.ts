@@ -41,8 +41,6 @@ export class DmxDeviceDetailsComponent implements OnInit {
     this.setupForm();
     this.dmxDeviceTypes$ = this.dmxDeviceTypeService.entities$;
     this.tags$ = this.dmxDeviceService.tags$;
-    this.dmxDeviceService.getAll();
-    this.dmxDeviceTypeService.getAll();
   }
 
   private setupForm() {

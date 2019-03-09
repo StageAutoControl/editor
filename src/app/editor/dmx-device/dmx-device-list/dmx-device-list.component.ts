@@ -25,7 +25,7 @@ export class DmxDeviceListComponent implements OnInit {
   constructor(
     private dmxDeviceService: DmxDeviceService,
     private dmxDeviceTypeService: DmxDeviceTypeService,
-    private dialog:MatDialog,
+    private dialog: MatDialog,
   ) {
   }
 
@@ -42,25 +42,18 @@ export class DmxDeviceListComponent implements OnInit {
     this.dmxDevices$.subscribe((devices: DmxDevice[]) => {
       this.dataSource.data = devices;
     });
-
-    this.load();
   }
 
-  getDmxDeviceTypeName(id: string): string {
+  getDmxDeviceType(id: string): DmxDeviceType | null {
     if (!(id in this.dmxDeviceTypes)) {
-      return "NOT FOUND";
+      return null;
     }
 
-    return this.dmxDeviceTypes[id].name;
+    return this.dmxDeviceTypes[id];
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  load() {
-    this.dmxDeviceService.getAll();
-    this.dmxDeviceTypeService.getAll();
   }
 
   deleteEntity(entity: DmxDevice) {

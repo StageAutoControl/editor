@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
-import {Observable} from "rxjs";
+import {FormArray, FormBuilder} from "@angular/forms";
+import {DmxDeviceService} from "../../api/dmx/dmx-device/dmx-device.service";
 
 @Component({
   selector: 'dmx-device-selectors-form',
@@ -8,11 +8,11 @@ import {Observable} from "rxjs";
   styleUrls: ['./device-selectors-form.component.less']
 })
 export class DeviceSelectorsFormComponent implements OnInit {
-  @Input('array') public form: FormArray;
-  @Input('choices') choices$: Observable<string[]>;
+  @Input('form') public form: FormArray;
 
   constructor(
     private formBuilder: FormBuilder,
+    private dmxDeviceService: DmxDeviceService,
   ) {
   }
 

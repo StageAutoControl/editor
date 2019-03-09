@@ -12,7 +12,9 @@
       placeholder="Tags"
       #tagInput
       [formControl]="inputControl"
+      [disableControl]="control.disabled"
       [matAutocomplete]="auto"
+      [matAutocompleteDisabled]="control.disabled"
       [matChipInputFor]="chipList"
       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
       [matChipInputAddOnBlur]="true"

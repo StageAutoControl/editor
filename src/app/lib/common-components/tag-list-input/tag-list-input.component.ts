@@ -17,7 +17,6 @@ export class TagListInputComponent implements OnInit {
 
   @Input('choices') choices$: Observable<string[]>;
   @Input() control: FormArray;
-  @Input() disabled: boolean;
 
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') autocomplete: MatAutocomplete;
@@ -35,6 +34,9 @@ export class TagListInputComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.control.statusChanges.subscribe(() => {
+
+    })
   }
 
   private initControl() {
@@ -46,6 +48,7 @@ export class TagListInputComponent implements OnInit {
   }
 
   add(event: MatChipInputEvent): void {
+
     // Add tag only when MatAutocomplete is not open
     // To make sure this does not conflict with OptionSelected Event
     if (!this.autocomplete.isOpen) {

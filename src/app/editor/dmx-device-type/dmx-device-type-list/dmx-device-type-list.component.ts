@@ -33,16 +33,10 @@ export class DmxDeviceTypeListComponent implements OnInit {
     this.dmxDevices$.subscribe((devices: DmxDeviceType[]) => {
       this.dataSource.data = devices as DmxDeviceType[];
     });
-
-    this.load();
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  load() {
-    this.dmxDeviceTypeService.getAll();
   }
 
   deleteEntity(entity: DmxDeviceType) {

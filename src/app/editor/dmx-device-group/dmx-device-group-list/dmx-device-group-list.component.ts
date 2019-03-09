@@ -3,8 +3,9 @@ import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from "@angular/mat
 import {Observable} from "rxjs";
 import {ConfirmationDialogComponent} from "../../../lib/common-components/confirmation-dialog/confirmation-dialog.component";
 import {filter, switchMap} from "rxjs/operators";
-import {DmxDeviceGroup, DmxDeviceSelector} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group";
+import {DmxDeviceGroup} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group";
 import {DmxDeviceGroupService} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group.service";
+import {DmxDeviceService} from "../../../lib/api/dmx/dmx-device/dmx-device.service";
 
 @Component({
   selector: 'app-dmx-device-group-list',
@@ -12,15 +13,17 @@ import {DmxDeviceGroupService} from "../../../lib/api/dmx/dmx-device-group/dmx-d
   styleUrls: ['./dmx-device-group-list.component.less']
 })
 export class DmxDeviceGroupListComponent implements OnInit {
-  public dmxDevices$: Observable<DmxDeviceGroup[]>;
   displayedColumns: string[] = ['name', 'selectors', 'actions'];
   dataSource = new MatTableDataSource<DmxDeviceGroup>();
+
+  dmxDeviceGroups$: Observable<DmxDeviceGroup[]>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private dmxDeviceGroupService: DmxDeviceGroupService,
+    private dmxDeviceService: DmxDeviceService,
     private dialog: MatDialog,
   ) {
   }
@@ -28,18 +31,12 @@ export class DmxDeviceGroupListComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.dmxDevices$ = this.dmxDeviceGroupService.entities$;
-
-    this.dmxDevices$.subscribe((group: DmxDeviceGroup[]) => this.dataSource.data = group);
-    this.load();
+    this.dmxDeviceGroups$ = this.dmxDeviceGroupService.entities$;
+    this.dmxDeviceGroups$.subscribe((group: DmxDeviceGroup[]) => this.dataSource.data = group);
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  load() {
-    this.dmxDeviceGroupService.getAll();
   }
 
   deleteEntity(entity: DmxDeviceGroup) {
@@ -50,16 +47,8 @@ export class DmxDeviceGroupListComponent implements OnInit {
         },
       })
       .afterClosed()
-      .pipe(filter((result:boolean) => result))
+      .pipe(filter((result: boolean) => result))
       .pipe(switchMap(() => this.dmxDeviceGroupService.remove(entity.id)))
       .subscribe()
-  }
-
-  selector(sel:DmxDeviceSelector): string {
-    if (sel.id) {
-       return `ID: ${sel.id}`;
-    }
-
-    return `Tags: ${Array.from(sel.tags).join(", ")}`;
   }
 }

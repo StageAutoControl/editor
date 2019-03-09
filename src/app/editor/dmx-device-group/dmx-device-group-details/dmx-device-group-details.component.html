@@ -10,7 +10,11 @@
           <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
         </mat-form-field>
 
-        <dmx-device-selectors-form #devices fxFlex="grow" [array]="form.controls.devices" [choices]="tags$"></dmx-device-selectors-form>
+        <dmx-device-selectors-form
+          #devices
+          fxFlex="grow"
+          [form]="form.controls.devices"
+        ></dmx-device-selectors-form>
       </form>
 
     </mat-card-content>

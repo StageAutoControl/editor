@@ -7,6 +7,7 @@ import {MatDesignModule} from "../mat-design/mat-design.module";
 import {DeviceSelectorFormComponent} from "./device-selector-form/device-selector-form.component";
 import {DeviceSelectorsFormComponent} from "./device-selectors-form/device-selectors-form.component";
 import {CommonComponentsModule} from "../common-components/common-components.module";
+import {DeviceSelectorListComponent} from "./device-selector-list/device-selector-list.component";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {CommonComponentsModule} from "../common-components/common-components.mod
     LedListFormComponent,
     DeviceSelectorFormComponent,
     DeviceSelectorsFormComponent,
+    DeviceSelectorListComponent,
   ],
   imports: [
     CommonModule,
@@ -26,6 +28,7 @@ import {CommonComponentsModule} from "../common-components/common-components.mod
     LedListFormComponent,
     DeviceSelectorFormComponent,
     DeviceSelectorsFormComponent,
+    DeviceSelectorListComponent,
   ],
 })
 export class DmxModule {

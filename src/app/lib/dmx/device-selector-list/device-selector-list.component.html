@@ -1,0 +1,7 @@
+<mat-chip-list>
+  <mat-chip
+    *ngFor="let t of selectors"
+    [selected]="t.id != ''"
+    [routerLink]="t.id ? '/dmx-devices/' + t.id : null"
+  >{{ t.id ? deviceName(t) : 'Tags: ' + t.tags.join(", ")  }}</mat-chip>
+</mat-chip-list>

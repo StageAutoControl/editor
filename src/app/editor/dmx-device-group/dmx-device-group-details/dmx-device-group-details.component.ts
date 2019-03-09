@@ -4,7 +4,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DmxDeviceGroupService} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group.service";
 import {DmxDeviceGroup} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group";
-import {Observable} from "rxjs";
 import {DmxDeviceService} from "../../../lib/api/dmx/dmx-device/dmx-device.service";
 import {DeviceSelectorsFormComponent} from "../../../lib/dmx/device-selectors-form/device-selectors-form.component";
 
@@ -15,7 +14,6 @@ import {DeviceSelectorsFormComponent} from "../../../lib/dmx/device-selectors-fo
 })
 export class DmxDeviceGroupDetailsComponent implements OnInit {
   form: FormGroup;
-  tags$: Observable<string[]>;
 
   @ViewChild('devices')
   devicesForm: DeviceSelectorsFormComponent;
@@ -41,8 +39,6 @@ export class DmxDeviceGroupDetailsComponent implements OnInit {
     }
 
     this.setupForm();
-    this.tags$ = this.dmxDeviceService.tags$;
-    this.dmxDeviceService.getAll();
   }
 
   private setupForm() {
@@ -66,7 +62,6 @@ export class DmxDeviceGroupDetailsComponent implements OnInit {
 
   save() {
     let entity = this.form.value;
-    console.log(entity);
 
     this.dmxDeviceGroupService
       .save(entity)

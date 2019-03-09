@@ -1,13 +1,12 @@
 <div [formGroup]="form" fxLayout="row" fxLayoutGap.gt-xs="10px">
   <mat-form-field fxFlex="30">
-    <input
-      matInput
-      type="text"
-      placeholder="id"
-      formControlName="id"
-      id="id">
+    <mat-select formControlName="id" id="id">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let device of devices$ | async" [value]="device.id">{{ device.name }}</mat-option>
+    </mat-select>
   </mat-form-field>
-  <app-tag-list-input fxFlex="70" [choices]="choices$" [control]="form.controls.tags" [disabled]="form.controls.tags.disabled"></app-tag-list-input>
+
+  <app-tag-list-input fxFlex="70" [choices]="tags$" [control]="form.controls.tags"></app-tag-list-input>
 
   <!--{{ form.errors | json }}-->
 </div>

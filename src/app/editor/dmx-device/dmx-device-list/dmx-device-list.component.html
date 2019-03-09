@@ -17,7 +17,13 @@
 
   <ng-container matColumnDef="typeId">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
-    <td mat-cell *matCellDef="let element">{{getDmxDeviceTypeName(element.typeId)}}</td>
+    <td mat-cell *matCellDef="let element">
+      <a
+        *ngIf="getDmxDeviceType(element.typeId); let t"
+        routerLink="/dmx-device-types/{{ t.id }}"
+        mat-button
+      >{{t.name}}</a>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="universe">
@@ -55,7 +61,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<mat-paginator [pageSizeOptions]="[10,50,100,200]" [pageSize]="100" ></mat-paginator>
+<mat-paginator [pageSizeOptions]="[10,50,100,200]" [pageSize]="100"></mat-paginator>
 <button mat-fab routerLink="/dmx-devices/new" class="floating">
   <mat-icon aria-label="Add a new DmxDevice">add</mat-icon>
 </button>

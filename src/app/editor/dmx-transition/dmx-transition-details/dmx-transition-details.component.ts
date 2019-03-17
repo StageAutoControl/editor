@@ -2,20 +2,21 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Location} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {DMXAnimationService} from "../../../lib/api/dmx/dmx-animation/dmx-animation.service";
-import {DMXAnimation} from "../../../lib/api/dmx/dmx-animation/dmx-animation";
-import {AnimationFramesForm} from "../../../lib/dmx/animation-frames-form/animation-frames-form.component";
+import {DMXTransitionService} from "../../../lib/api/dmx/dmx-transition/dmx-transition.service";
+import {DMXTransition, EaseFunctionLinear, EaseFunctions} from "../../../lib/api/dmx/dmx-transition/dmx-transition";
+import {TransitionParamsForm} from "../../../lib/dmx/transition-params-form/transition-params-form.component";
 
 @Component({
-  selector: 'app-dmx-animation-details',
-  templateUrl: './dmx-animation-details.component.html',
-  styleUrls: ['./dmx-animation-details.component.less']
+  selector: 'app-dmx-transition-details',
+  templateUrl: './dmx-transition-details.component.html',
+  styleUrls: ['./dmx-transition-details.component.less']
 })
-export class DMXAnimationDetailsComponent implements OnInit {
+export class DMXTransitionDetailsComponent implements OnInit {
+  readonly easeFunctions = EaseFunctions;
   form: FormGroup;
   loading = false;
 
-  @ViewChild('framesForm') framesForm: AnimationFramesForm;
+  @ViewChild('paramsForm') paramsForm: TransitionParamsForm;
 
   hasError = (controlName: string, errorName: string): boolean => {
     return this.form.controls[controlName].hasError(errorName);
@@ -25,7 +26,7 @@ export class DMXAnimationDetailsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private location: Location,
-    private dmxAnimationService: DMXAnimationService,
+    private dmxTransitionService: DMXTransitionService,
     private router: Router
   ) {
     this.setupForm();
@@ -43,16 +44,18 @@ export class DMXAnimationDetailsComponent implements OnInit {
     this.form = this.formBuilder.group({
       id: this.formBuilder.control(""),
       name: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]),
-      frames: this.formBuilder.array([]),
+      ease: this.formBuilder.control(EaseFunctionLinear),
+      length: this.formBuilder.control(0),
+      params: this.formBuilder.array([]),
     });
   }
 
   private load(id: string): void {
-    this.dmxAnimationService
+    this.dmxTransitionService
       .get(id)
-      .subscribe((entity: DMXAnimation) => {
-        Array.from(entity.frames)
-          .forEach(() => this.framesForm.addFrame());
+      .subscribe((entity: DMXTransition) => {
+        Array.from(entity.params)
+          .forEach(() => this.paramsForm.addParams());
 
         this.form.patchValue(entity);
         this.loading = false;
@@ -60,9 +63,9 @@ export class DMXAnimationDetailsComponent implements OnInit {
   }
 
   save() {
-    this.dmxAnimationService
+    this.dmxTransitionService
       .save(this.form.value)
-      .subscribe(() => this.router.navigateByUrl("/dmx-animations"));
+      .subscribe(() => this.router.navigateByUrl("/dmx-transitions"));
   }
 
   cancel() {

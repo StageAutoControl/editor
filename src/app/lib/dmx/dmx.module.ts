@@ -11,6 +11,7 @@ import {DeviceSelectorListComponent} from "./device-selector-list/device-selecto
 import {DeviceChannelInputsComponent} from './device-channel-inputs/device-channel-inputs.component';
 import {ParamsFormComponent} from "./params-form/params-form.component";
 import {AnimationFramesForm} from "./animation-frames-form/animation-frames-form.component";
+import {TransitionParamsForm} from "./transition-params-form/transition-params-form.component";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {AnimationFramesForm} from "./animation-frames-form/animation-frames-form
     DeviceChannelInputsComponent,
     ParamsFormComponent,
     AnimationFramesForm,
+    TransitionParamsForm,
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import {AnimationFramesForm} from "./animation-frames-form/animation-frames-form
     DeviceChannelInputsComponent,
     ParamsFormComponent,
     AnimationFramesForm,
+    TransitionParamsForm,
   ],
 })
 export class DMXModule {

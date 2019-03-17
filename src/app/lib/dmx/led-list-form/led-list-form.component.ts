@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, Validators} from "@angular/forms";
+import {FormArray, FormBuilder} from "@angular/forms";
+import {ledGroup} from "../forms";
 
 @Component({
   selector: 'dmx-led-list-form',
@@ -21,12 +22,7 @@ export class LedListFormComponent implements OnInit {
   }
 
   private setupLED() {
-    return this.formBuilder.group({
-      red: [0, [Validators.required, Validators.min(0)]],
-      green: [0, [Validators.required, Validators.min(0)]],
-      blue: [0, [Validators.required, Validators.min(0)]],
-      white: [0, [Validators.required, Validators.min(0)]],
-    });
+    return this.formBuilder.group(ledGroup);
   }
 
   addLED() {

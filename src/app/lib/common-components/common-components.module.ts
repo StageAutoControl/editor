@@ -7,6 +7,7 @@ import {CoreModule} from "../core/core.module";
 import {DisableControlDirective} from "./disable-control.directive";
 import {ReactiveDMXInputComponent} from './reactive-dmx-input/reactive-dmx-input.component';
 import {ColorComponent} from './color/color.component';
+import {HiddenDirective} from "./hidden.directive";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {ColorComponent} from './color/color.component';
     DisableControlDirective,
     ReactiveDMXInputComponent,
     ColorComponent,
+    HiddenDirective,
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,7 @@ import {ColorComponent} from './color/color.component';
     DisableControlDirective,
     ReactiveDMXInputComponent,
     ColorComponent,
+    HiddenDirective,
   ],
 })
 export class CommonComponentsModule {

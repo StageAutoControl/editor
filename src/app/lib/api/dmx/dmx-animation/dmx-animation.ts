@@ -3,7 +3,6 @@ import {DMXParams} from "../dmx-device-params";
 export interface DMXAnimation {
   id?: string;
   name: string;
-  length: number;
   frames: DMXAnimationFrame[];
 }
 

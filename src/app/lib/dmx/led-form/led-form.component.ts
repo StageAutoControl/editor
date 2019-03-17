@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 
 @Component({
@@ -6,18 +6,12 @@ import {FormGroup} from "@angular/forms";
   templateUrl: './led-form.component.html',
   styleUrls: ['./led-form.component.less']
 })
-export class LedFormComponent implements OnInit {
+export class LedFormComponent {
   @Input('group')
   public form: FormGroup;
 
   hasError = (controlName: string, errorName: string): boolean => {
     return this.form.controls[controlName].hasError(errorName);
   };
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
 
 }

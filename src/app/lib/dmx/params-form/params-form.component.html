@@ -1,0 +1,120 @@
+<div [formGroup]="form">
+  <div fxLayout="row" fxLayoutGap.gt-xs="10px">
+    <mat-form-field fxFlex class="dmx-mat-input">
+      <input
+        matInput
+        min="0"
+        max="255"
+        type="number"
+        placeholder="led"
+        formControlName="led"
+        id="led">
+    </mat-form-field>
+
+    <mat-form-field fxFlex fxGrow="2">
+      <mat-select formControlName="$color" placeholder="Color Variable">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let color of colorVars$ | async" [value]="color.name">{{ color.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex class="dmx-mat-input">
+      <input
+        matInput
+        min="0"
+        max="255"
+        type="number"
+        placeholder="red"
+        formControlName="red"
+        id="red">
+    </mat-form-field>
+
+    <mat-form-field fxFlex class="dmx-mat-input">
+      <input
+        matInput
+        min="0"
+        max="255"
+        type="number"
+        placeholder="green"
+        formControlName="green"
+        id="green">
+    </mat-form-field>
+
+    <mat-form-field fxFlex class="dmx-mat-input">
+      <input
+        matInput
+        min="0"
+        max="255"
+        type="number"
+        placeholder="blue"
+        formControlName="blue"
+        id="blue">
+    </mat-form-field>
+    <mat-form-field fxFlex class="dmx-mat-input">
+      <input
+        matInput
+        min="0"
+        max="255"
+        type="number"
+        placeholder="white"
+        formControlName="white"
+        id="white">
+    </mat-form-field>
+
+    <mat-form-field fxFlex class="dmx-mat-input">
+      <input
+        matInput
+        min="0"
+        max="255"
+        type="number"
+        placeholder="mode"
+        formControlName="mode"
+        id="mode">
+    </mat-form-field>
+
+    <mat-form-field fxFlex class="dmx-mat-input">
+      <input
+        matInput
+        min="0"
+        max="255"
+        type="number"
+        placeholder="strobe"
+        formControlName="strobe"
+        id="strobe">
+    </mat-form-field>
+
+    <mat-form-field fxFlex class="dmx-mat-input">
+      <input
+        matInput
+        min="0"
+        max="255"
+        type="number"
+        placeholder="dimmer"
+        formControlName="dimmer"
+        id="dimmer">
+    </mat-form-field>
+
+    <mat-form-field fxFlex class="dmx-mat-input">
+      <input
+        matInput
+        min="0"
+        max="255"
+        type="number"
+        placeholder="pan"
+        formControlName="pan"
+        id="pan">
+    </mat-form-field>
+
+    <mat-form-field fxFlex class="dmx-mat-input">
+      <input
+        matInput
+        min="0"
+        max="255"
+        type="number"
+        placeholder="tilt"
+        formControlName="tilt"
+        id="tilt">
+    </mat-form-field>
+
+  </div>
+</div>

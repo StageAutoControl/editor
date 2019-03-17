@@ -3,27 +3,27 @@ import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from "@angular/mat
 import {Observable} from "rxjs";
 import {ConfirmationDialogComponent} from "../../../lib/common-components/confirmation-dialog/confirmation-dialog.component";
 import {filter, switchMap} from "rxjs/operators";
-import {DmxDeviceGroup} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group";
-import {DmxDeviceGroupService} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group.service";
-import {DmxDeviceService} from "../../../lib/api/dmx/dmx-device/dmx-device.service";
+import {DMXDeviceGroup} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group";
+import {DMXDeviceGroupService} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group.service";
+import {DMXDeviceService} from "../../../lib/api/dmx/dmx-device/dmx-device.service";
 
 @Component({
   selector: 'app-dmx-device-group-list',
   templateUrl: './dmx-device-group-list.component.html',
   styleUrls: ['./dmx-device-group-list.component.less']
 })
-export class DmxDeviceGroupListComponent implements OnInit {
+export class DMXDeviceGroupListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'selectors', 'actions'];
-  dataSource = new MatTableDataSource<DmxDeviceGroup>();
+  dataSource = new MatTableDataSource<DMXDeviceGroup>();
 
-  dmxDeviceGroups$: Observable<DmxDeviceGroup[]>;
+  dmxDeviceGroups$: Observable<DMXDeviceGroup[]>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private dmxDeviceGroupService: DmxDeviceGroupService,
-    private dmxDeviceService: DmxDeviceService,
+    private dmxDeviceGroupService: DMXDeviceGroupService,
+    private dmxDeviceService: DMXDeviceService,
     private dialog: MatDialog,
   ) {
   }
@@ -32,14 +32,14 @@ export class DmxDeviceGroupListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.dmxDeviceGroups$ = this.dmxDeviceGroupService.entities$;
-    this.dmxDeviceGroups$.subscribe((group: DmxDeviceGroup[]) => this.dataSource.data = group);
+    this.dmxDeviceGroups$.subscribe((group: DMXDeviceGroup[]) => this.dataSource.data = group);
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  deleteEntity(entity: DmxDeviceGroup) {
+  deleteEntity(entity: DMXDeviceGroup) {
     this.dialog
       .open(ConfirmationDialogComponent, {
         data: {

@@ -1,10 +1,10 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, ViewChildren} from '@angular/core';
-import {DmxDevice} from "../../api/dmx/dmx-device/dmx-device";
+import {DMXDevice} from "../../api/dmx/dmx-device/dmx-device";
 import {FormGroup} from "@angular/forms";
-import {DmxDeviceTypeService} from "../../api/dmx/dmx-device-type/dmx-device-type.service";
-import {DmxDeviceType} from "../../api/dmx/dmx-device-type/dmx-device-type";
+import {DMXDeviceTypeService} from "../../api/dmx/dmx-device-type/dmx-device-type.service";
+import {DMXDeviceType} from "../../api/dmx/dmx-device-type/dmx-device-type";
 import {MatInput} from "@angular/material";
-import {DmxChannelValue} from "../../api/dmx/dmx-channel-value";
+import {DMXChannelValue} from "../../api/dmx/dmx-playground/dmx-channel-value";
 
 @Component({
   selector: 'app-device-channel-inputs',
@@ -12,16 +12,16 @@ import {DmxChannelValue} from "../../api/dmx/dmx-channel-value";
   styleUrls: ['./device-channel-inputs.component.less']
 })
 export class DeviceChannelInputsComponent implements OnInit, OnChanges {
-  @Input() device: DmxDevice;
-  @Output() updateChannelValue = new EventEmitter<DmxChannelValue>();
+  @Input() device: DMXDevice;
+  @Output() updateChannelValue = new EventEmitter<DMXChannelValue>();
 
   @ViewChildren(MatInput) inputs: QueryList<MatInput>;
 
-  deviceType: DmxDeviceType;
+  deviceType: DMXDeviceType;
   form: FormGroup;
 
   constructor(
-    private deviceTypeService: DmxDeviceTypeService,
+    private deviceTypeService: DMXDeviceTypeService,
   ) {
   }
 
@@ -36,7 +36,7 @@ export class DeviceChannelInputsComponent implements OnInit, OnChanges {
       .subscribe(t => this.setupType(t));
   }
 
-  private setupType(t: DmxDeviceType) {
+  private setupType(t: DMXDeviceType) {
     this.deviceType = t;
   }
 

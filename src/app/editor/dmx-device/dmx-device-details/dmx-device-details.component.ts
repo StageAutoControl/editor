@@ -2,20 +2,20 @@ import {Component, OnInit} from '@angular/core';
 import {Location} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {DmxDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
-import {DmxDeviceService} from "../../../lib/api/dmx/dmx-device/dmx-device.service";
-import {DmxDevice} from "../../../lib/api/dmx/dmx-device/dmx-device";
+import {DMXDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
+import {DMXDeviceService} from "../../../lib/api/dmx/dmx-device/dmx-device.service";
+import {DMXDevice} from "../../../lib/api/dmx/dmx-device/dmx-device";
 import {Observable} from "rxjs";
-import {DmxDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type";
+import {DMXDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type";
 
 @Component({
   selector: 'app-dmx-device-details',
   templateUrl: './dmx-device-details.component.html',
   styleUrls: ['./dmx-device-details.component.less']
 })
-export class DmxDeviceDetailsComponent implements OnInit {
+export class DMXDeviceDetailsComponent implements OnInit {
   form: FormGroup;
-  dmxDeviceTypes$: Observable<DmxDeviceType[]>;
+  dmxDeviceTypes$: Observable<DMXDeviceType[]>;
   tags$: Observable<string[]>;
 
   hasError = (controlName: string, errorName: string): boolean => {
@@ -26,8 +26,8 @@ export class DmxDeviceDetailsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private location: Location,
-    private dmxDeviceService: DmxDeviceService,
-    private dmxDeviceTypeService: DmxDeviceTypeService,
+    private dmxDeviceService: DMXDeviceService,
+    private dmxDeviceTypeService: DMXDeviceTypeService,
     private router: Router
   ) {
   }
@@ -57,7 +57,7 @@ export class DmxDeviceDetailsComponent implements OnInit {
   private load(id: string): void {
     this.dmxDeviceService
       .get(id)
-      .subscribe((entity: DmxDevice) => {
+      .subscribe((entity: DMXDevice) => {
         this.form.patchValue(entity);
       });
   }

@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   // {
   //   path: 'dmx-devices',
-  //   loadChildren: './dmx-device/dmx-device.module#DmxDeviceModule'
+  //   loadChildren: './dmx-device/dmx-device.module#DMXDeviceModule'
   // },
 ];
 

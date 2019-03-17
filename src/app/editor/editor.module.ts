@@ -1,22 +1,22 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DmxDeviceModule} from './dmx-device/dmx-device.module';
+import {DMXDeviceModule} from './dmx-device/dmx-device.module';
 import {EditorRoutingModule} from "./editor-routing.module";
-import {DmxDeviceTypeModule} from "./dmx-device-type/dmx-device-type.module";
-import {DmxDeviceGroupModule} from "./dmx-device-group/dmx-device-group.module";
+import {DMXDeviceTypeModule} from "./dmx-device-type/dmx-device-type.module";
+import {DMXDeviceGroupModule} from "./dmx-device-group/dmx-device-group.module";
 import {PlaygroundModule} from "./playground/playground.module";
-import {DmxColorVariableModule} from "./dmx-color-variable/dmx-color-variable.module";
+import {DMXColorVariableModule} from "./dmx-color-variable/dmx-color-variable.module";
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    DmxDeviceModule,
-    DmxDeviceTypeModule,
-    DmxDeviceGroupModule,
+    DMXDeviceModule,
+    DMXDeviceTypeModule,
+    DMXDeviceGroupModule,
     EditorRoutingModule,
     PlaygroundModule,
-    DmxColorVariableModule,
+    DMXColorVariableModule,
   ],
   exports: []
 })

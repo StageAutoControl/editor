@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
-import {DmxDevice} from "../../lib/api/dmx/dmx-device/dmx-device";
-import {DmxDeviceService} from "../../lib/api/dmx/dmx-device/dmx-device.service";
-import {DmxChannelValue} from "../../lib/api/dmx/dmx-channel-value";
-import {DmxPlaygroundService} from "../../lib/api/dmx/dmx-playground.service";
+import {DMXDevice} from "../../lib/api/dmx/dmx-device/dmx-device";
+import {DMXDeviceService} from "../../lib/api/dmx/dmx-device/dmx-device.service";
+import {DMXChannelValue} from "../../lib/api/dmx/dmx-playground/dmx-channel-value";
+import {DMXPlaygroundService} from "../../lib/api/dmx/dmx-playground/dmx-playground.service";
 
 @Component({
   selector: 'app-playground',
@@ -11,20 +11,20 @@ import {DmxPlaygroundService} from "../../lib/api/dmx/dmx-playground.service";
   styleUrls: ['./playground.component.less']
 })
 export class PlaygroundComponent implements OnInit {
-  device: DmxDevice;
-  devices$: Observable<DmxDevice[]>;
+  device: DMXDevice;
+  devices$: Observable<DMXDevice[]>;
   controllerError?: Error = null;
 
   constructor(
-    private dmxDeviceService: DmxDeviceService,
-    private dmxPlaygroundService: DmxPlaygroundService,
+    private dmxDeviceService: DMXDeviceService,
+    private dmxPlaygroundService: DMXPlaygroundService,
   ) {
     this.devices$ = dmxDeviceService.entities$;
   }
 
   ngOnInit() {
     this.dmxPlaygroundService
-      .setDmxChannelValue({universe: 0, channel: 0, value: 0})
+      .setDMXChannelValue({universe: 0, channel: 0, value: 0})
       .subscribe(null, (err: Error) => {
         if (err.message.includes('the ArtNet controller is not set')) {
           this.controllerError = err;
@@ -32,8 +32,8 @@ export class PlaygroundComponent implements OnInit {
       })
   }
 
-  update(value: DmxChannelValue) {
+  update(value: DMXChannelValue) {
     console.log(value);
-    this.dmxPlaygroundService.setDmxChannelValue(value).subscribe();
+    this.dmxPlaygroundService.setDMXChannelValue(value).subscribe();
   }
 }

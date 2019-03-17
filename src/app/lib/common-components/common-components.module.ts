@@ -5,7 +5,7 @@ import {MatDesignModule} from "../mat-design/mat-design.module";
 import {TagListInputComponent} from './tag-list-input/tag-list-input.component';
 import {CoreModule} from "../core/core.module";
 import {DisableControlDirective} from "./disable-control.directive";
-import {ReactiveDmxInputComponent} from './reactive-dmx-input/reactive-dmx-input.component';
+import {ReactiveDMXInputComponent} from './reactive-dmx-input/reactive-dmx-input.component';
 import {ColorComponent} from './color/color.component';
 
 @NgModule({
@@ -13,7 +13,7 @@ import {ColorComponent} from './color/color.component';
     ConfirmationDialogComponent,
     TagListInputComponent,
     DisableControlDirective,
-    ReactiveDmxInputComponent,
+    ReactiveDMXInputComponent,
     ColorComponent,
   ],
   imports: [
@@ -25,7 +25,7 @@ import {ColorComponent} from './color/color.component';
     ConfirmationDialogComponent,
     TagListInputComponent,
     DisableControlDirective,
-    ReactiveDmxInputComponent,
+    ReactiveDMXInputComponent,
     ColorComponent,
   ],
 })

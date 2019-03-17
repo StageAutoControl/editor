@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DmxPlaygroundService } from './dmx-playground.service';
+import { DMXPlaygroundService } from './dmx-playground.service';
 
-describe('DmxPlaygroundService', () => {
+describe('DMXPlaygroundService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DmxPlaygroundService = TestBed.get(DmxPlaygroundService);
+    const service: DMXPlaygroundService = TestBed.get(DMXPlaygroundService);
     expect(service).toBeTruthy();
   });
 });

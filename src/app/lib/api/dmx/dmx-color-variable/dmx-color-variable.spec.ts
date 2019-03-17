@@ -1,7 +1,7 @@
-import { DmxColorVariable } from './dmx-color-variable';
+import { DMXColorVariable } from './dmx-color-variable';
 
-describe('DmxColorVariable', () => {
+describe('DMXColorVariable', () => {
   it('should create an instance', () => {
-    expect(new DmxColorVariable()).toBeTruthy();
+    expect(new DMXColorVariable()).toBeTruthy();
   });
 });

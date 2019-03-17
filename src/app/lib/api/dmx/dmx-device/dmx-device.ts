@@ -1,4 +1,4 @@
-export interface DmxDevice {
+export interface DMXDevice {
   id?: string;
   name: string;
   typeId: string;

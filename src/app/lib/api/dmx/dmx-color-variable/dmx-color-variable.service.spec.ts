@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DmxColorVariableService } from './dmx-color-variable.service';
+import { DMXColorVariableService } from './dmx-color-variable.service';
 
-describe('DmxColorVariableService', () => {
+describe('DMXColorVariableService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DmxColorVariableService = TestBed.get(DmxColorVariableService);
+    const service: DMXColorVariableService = TestBed.get(DMXColorVariableService);
     expect(service).toBeTruthy();
   });
 });

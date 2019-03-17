@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DmxDeviceTypeService } from './dmx-device-type.service';
+import { DMXDeviceTypeService } from './dmx-device-type.service';
 
-describe('DmxDeviceTypeService', () => {
+describe('DMXDeviceTypeService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DmxDeviceTypeService = TestBed.get(DmxDeviceTypeService);
+    const service: DMXDeviceTypeService = TestBed.get(DMXDeviceTypeService);
     expect(service).toBeTruthy();
   });
 });

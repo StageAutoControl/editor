@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
-import {DmxDevice} from "../../api/dmx/dmx-device/dmx-device";
+import {DMXDevice} from "../../api/dmx/dmx-device/dmx-device";
 
 @Component({
   selector: 'dmx-device-selector-form',
@@ -11,7 +11,7 @@ import {DmxDevice} from "../../api/dmx/dmx-device/dmx-device";
 export class DeviceSelectorFormComponent implements OnInit {
   @Input('form') public form: FormGroup;
   @Input('tags') tags$: Observable<string[]>;
-  @Input('devices') devices$: Observable<DmxDevice[]>;
+  @Input('devices') devices$: Observable<DMXDevice[]>;
 
   ngOnInit(): void {
     const idCtrl = this.form.controls['id'];

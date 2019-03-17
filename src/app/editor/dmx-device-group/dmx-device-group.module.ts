@@ -1,19 +1,19 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DmxDeviceGroupListComponent} from './dmx-device-group-list/dmx-device-group-list.component';
-import {DmxDeviceGroupDetailsComponent} from "./dmx-device-group-details/dmx-device-group-details.component";
-import {DmxDeviceGroupRoutingModule} from "./dmx-device-group-routing.module";
+import {DMXDeviceGroupListComponent} from './dmx-device-group-list/dmx-device-group-list.component';
+import {DMXDeviceGroupDetailsComponent} from "./dmx-device-group-details/dmx-device-group-details.component";
+import {DMXDeviceGroupRoutingModule} from "./dmx-device-group-routing.module";
 import {ApiModule} from "../../lib/api/api.module";
 import {CoreModule} from "../../lib/core/core.module";
 import {MatDesignModule} from "../../lib/mat-design/mat-design.module";
-import {DmxModule} from "../../lib/dmx/dmx.module";
+import {DMXModule} from "../../lib/dmx/dmx.module";
 import {CommonComponentsModule} from "../../lib/common-components/common-components.module";
 import {ConfirmationDialogComponent} from "../../lib/common-components/confirmation-dialog/confirmation-dialog.component";
 
 @NgModule({
   declarations: [
-    DmxDeviceGroupListComponent,
-    DmxDeviceGroupDetailsComponent,
+    DMXDeviceGroupListComponent,
+    DMXDeviceGroupDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -21,12 +21,12 @@ import {ConfirmationDialogComponent} from "../../lib/common-components/confirmat
     CoreModule,
     MatDesignModule,
     CommonComponentsModule,
-    DmxDeviceGroupRoutingModule,
-    DmxModule,
+    DMXDeviceGroupRoutingModule,
+    DMXModule,
   ],
   entryComponents: [
     ConfirmationDialogComponent,
   ]
 })
-export class DmxDeviceGroupModule {
+export class DMXDeviceGroupModule {
 }

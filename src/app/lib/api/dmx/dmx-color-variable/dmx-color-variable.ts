@@ -1,4 +1,4 @@
-export interface DmxColorVariable {
+export interface DMXColorVariable {
   id?: string;
   name: string;
   red: number;

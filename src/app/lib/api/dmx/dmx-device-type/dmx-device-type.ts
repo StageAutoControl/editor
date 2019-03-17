@@ -1,4 +1,4 @@
-export interface DmxDeviceType {
+export interface DMXDeviceType {
   id?: string;
   name: string;
   channelCount: number;

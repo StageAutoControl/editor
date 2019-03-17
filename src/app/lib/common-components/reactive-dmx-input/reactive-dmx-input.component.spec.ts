@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReactiveDmxInputComponent } from './reactive-dmx-input.component';
+import { ReactiveDMXInputComponent } from './reactive-dmx-input.component';
 
-describe('ReactiveDmxInputComponent', () => {
-  let component: ReactiveDmxInputComponent;
-  let fixture: ComponentFixture<ReactiveDmxInputComponent>;
+describe('ReactiveDMXInputComponent', () => {
+  let component: ReactiveDMXInputComponent;
+  let fixture: ComponentFixture<ReactiveDMXInputComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReactiveDmxInputComponent ]
+      declarations: [ ReactiveDMXInputComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReactiveDmxInputComponent);
+    fixture = TestBed.createComponent(ReactiveDMXInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

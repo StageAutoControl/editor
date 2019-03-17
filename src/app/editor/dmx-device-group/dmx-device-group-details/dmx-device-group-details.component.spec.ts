@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DmxDeviceGroupDetailsComponent } from './dmx-device-group-details.component';
+import { DMXDeviceGroupDetailsComponent } from './dmx-device-group-details.component';
 
-describe('DmxDeviceGroupDetailsComponent', () => {
-  let component: DmxDeviceGroupDetailsComponent;
-  let fixture: ComponentFixture<DmxDeviceGroupDetailsComponent>;
+describe('DMXDeviceGroupDetailsComponent', () => {
+  let component: DMXDeviceGroupDetailsComponent;
+  let fixture: ComponentFixture<DMXDeviceGroupDetailsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DmxDeviceGroupDetailsComponent ]
+      declarations: [ DMXDeviceGroupDetailsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DmxDeviceGroupDetailsComponent);
+    fixture = TestBed.createComponent(DMXDeviceGroupDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

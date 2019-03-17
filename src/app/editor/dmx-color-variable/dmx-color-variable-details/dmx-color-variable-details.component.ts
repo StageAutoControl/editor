@@ -2,15 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {Location} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {DmxColorVariableService} from "../../../lib/api/dmx/dmx-color-variable/dmx-color-variable.service";
-import {DmxColorVariable} from "../../../lib/api/dmx/dmx-color-variable/dmx-color-variable";
+import {DMXColorVariableService} from "../../../lib/api/dmx/dmx-color-variable/dmx-color-variable.service";
+import {DMXColorVariable} from "../../../lib/api/dmx/dmx-color-variable/dmx-color-variable";
 
 @Component({
   selector: 'app-dmx-color-variable-details',
   templateUrl: './dmx-color-variable-details.component.html',
   styleUrls: ['./dmx-color-variable-details.component.less']
 })
-export class DmxColorVariableDetailsComponent implements OnInit {
+export class DMXColorVariableDetailsComponent implements OnInit {
   form: FormGroup;
 
   hasError = (controlName: string, errorName: string): boolean => {
@@ -21,7 +21,7 @@ export class DmxColorVariableDetailsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private location: Location,
-    private dmxColorVariableService: DmxColorVariableService,
+    private dmxColorVariableService: DMXColorVariableService,
     private router: Router
   ) {
   }
@@ -50,7 +50,7 @@ export class DmxColorVariableDetailsComponent implements OnInit {
   private load(id: string): void {
     this.dmxColorVariableService
       .get(id)
-      .subscribe((entity: DmxColorVariable) => {
+      .subscribe((entity: DMXColorVariable) => {
         this.form.patchValue(entity);
       });
   }

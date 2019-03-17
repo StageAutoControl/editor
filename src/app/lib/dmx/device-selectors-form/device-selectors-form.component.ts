@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder} from "@angular/forms";
-import {DmxDeviceService} from "../../api/dmx/dmx-device/dmx-device.service";
+import {DMXDeviceService} from "../../api/dmx/dmx-device/dmx-device.service";
 
 @Component({
   selector: 'dmx-device-selectors-form',
@@ -12,7 +12,7 @@ export class DeviceSelectorsFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private dmxDeviceService: DmxDeviceService,
+    private dmxDeviceService: DMXDeviceService,
   ) {
   }
 

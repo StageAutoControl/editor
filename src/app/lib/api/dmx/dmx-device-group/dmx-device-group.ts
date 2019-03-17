@@ -1,10 +1,10 @@
-export interface DmxDeviceGroup {
+export interface DMXDeviceGroup {
   id?: string;
   name: string;
-  devices: DmxDeviceSelector[];
+  devices: DMXDeviceSelector[];
 }
 
-export interface DmxDeviceSelector {
+export interface DMXDeviceSelector {
   id?: string;
   tags?: string[];
 }

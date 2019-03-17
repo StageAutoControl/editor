@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {DmxDeviceSelector} from "../../api/dmx/dmx-device-group/dmx-device-group";
-import {DmxDeviceService} from "../../api/dmx/dmx-device/dmx-device.service";
-import {DmxDevice} from "../../api/dmx/dmx-device/dmx-device";
+import {DMXDeviceSelector} from "../../api/dmx/dmx-device-group/dmx-device-group";
+import {DMXDeviceService} from "../../api/dmx/dmx-device/dmx-device.service";
+import {DMXDevice} from "../../api/dmx/dmx-device/dmx-device";
 
 @Component({
   selector: 'app-device-selector-list',
@@ -9,24 +9,24 @@ import {DmxDevice} from "../../api/dmx/dmx-device/dmx-device";
   styleUrls: ['./device-selector-list.component.less']
 })
 export class DeviceSelectorListComponent implements OnInit {
-  @Input() selectors: DmxDeviceSelector[];
+  @Input() selectors: DMXDeviceSelector[];
 
-  private dmxDevices: DmxDevice[];
-  tagSelectors: DmxDeviceSelector[];
-  idSelectors: DmxDeviceSelector[];
+  private dmxDevices: DMXDevice[];
+  tagSelectors: DMXDeviceSelector[];
+  idSelectors: DMXDeviceSelector[];
 
   constructor(
-    private dmxDeviceService: DmxDeviceService,
+    private dmxDeviceService: DMXDeviceService,
   ) {
   }
 
   ngOnInit(): void {
     this.idSelectors = this.selectors.slice().filter(s => !!s.id);
     this.tagSelectors = this.selectors.slice().filter(s => !!s.tags);
-    this.dmxDeviceService.entities$.subscribe((ds: DmxDevice[]) => this.dmxDevices = ds);
+    this.dmxDeviceService.entities$.subscribe((ds: DMXDevice[]) => this.dmxDevices = ds);
   }
 
-  deviceName(sel: DmxDeviceSelector): string {
+  deviceName(sel: DMXDeviceSelector): string {
     const device = this.dmxDevices.reduce(((previous, current) => current.id == sel.id ? current : previous), null);
     return device ? device.name : 'NOT FOUND';
   }

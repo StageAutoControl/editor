@@ -34,5 +34,5 @@ import {DeviceChannelInputsComponent} from './device-channel-inputs/device-chann
     DeviceChannelInputsComponent,
   ],
 })
-export class DmxModule {
+export class DMXModule {
 }

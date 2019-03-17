@@ -1,7 +1,7 @@
-import { DmxDeviceGroup } from './dmx-device-group';
+import { DMXDeviceGroup } from './dmx-device-group';
 
-describe('DmxDeviceGroup', () => {
+describe('DMXDeviceGroup', () => {
   it('should create an instance', () => {
-    expect(new DmxDeviceGroup()).toBeTruthy();
+    expect(new DMXDeviceGroup()).toBeTruthy();
   });
 });

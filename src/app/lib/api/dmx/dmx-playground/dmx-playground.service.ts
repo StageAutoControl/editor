@@ -1,17 +1,17 @@
 import {Injectable} from '@angular/core';
-import {ApiService} from "../base/api.service";
-import {DmxChannelValue} from "./dmx-channel-value";
 import {Observable} from "rxjs";
+import {ApiService} from "../../base/api.service";
+import {DMXChannelValue} from "./dmx-channel-value";
 
 @Injectable({
   providedIn: 'root'
 })
-export class DmxPlaygroundService {
+export class DMXPlaygroundService {
 
   constructor(private api: ApiService) {
   }
 
-  setDmxChannelValue(value: DmxChannelValue): Observable<null> {
+  setDMXChannelValue(value: DMXChannelValue): Observable<null> {
     return this.api.call("DMXPlayground.SetChannelValue", value);
   }
 }

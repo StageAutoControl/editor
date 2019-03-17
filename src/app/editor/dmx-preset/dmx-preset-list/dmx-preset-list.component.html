@@ -1,0 +1,57 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+  <!--
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let element">{{element.id}}</td>
+    </ng-container>
+  -->
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="animation">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Universe</th>
+    <td mat-cell *matCellDef="let element">{{element.universe}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="transition">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Start Channel</th>
+    <td mat-cell *matCellDef="let element">{{element.startChannel}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="tags">
+    <th mat-header-cell *matHeaderCellDef>Tags</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-chip-list>
+        <mat-chip *ngFor="let t of element.tags">{{ t }}</mat-chip>
+      </mat-chip-list>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button routerLink="/dmx-presets/{{ element.id }}">
+        <mat-icon aria-label="Edit/View Details">edit</mat-icon>
+      </button>
+      <button mat-button (click)="deleteEntity(element)">
+        <mat-icon aria-label="Delete">delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[10,50,100,200]" [pageSize]="100"></mat-paginator>
+<button mat-fab routerLink="/dmx-presets/new" class="floating">
+  <mat-icon aria-label="Add a new DMXPreset">add</mat-icon>
+</button>
+

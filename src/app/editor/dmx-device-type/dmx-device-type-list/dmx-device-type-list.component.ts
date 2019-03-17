@@ -3,24 +3,24 @@ import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from "@angular/mat
 import {Observable} from "rxjs";
 import {ConfirmationDialogComponent} from "../../../lib/common-components/confirmation-dialog/confirmation-dialog.component";
 import {filter, switchMap} from "rxjs/operators";
-import {DmxDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type";
-import {DmxDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
+import {DMXDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type";
+import {DMXDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
 
 @Component({
   selector: 'app-dmx-device-type-list',
   templateUrl: './dmx-device-type-list.component.html',
   styleUrls: ['./dmx-device-type-list.component.less']
 })
-export class DmxDeviceTypeListComponent implements OnInit {
-  public dmxDevices$: Observable<DmxDeviceType[]>;
+export class DMXDeviceTypeListComponent implements OnInit {
+  public dmxDevices$: Observable<DMXDeviceType[]>;
   displayedColumns: string[] = ['name', 'channelCount', 'channelsPerLED', 'leds', 'strobe', 'dimmer', 'mode', 'moving', 'actions'];
-  dataSource = new MatTableDataSource<DmxDeviceType>();
+  dataSource = new MatTableDataSource<DMXDeviceType>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private dmxDeviceTypeService: DmxDeviceTypeService,
+    private dmxDeviceTypeService: DMXDeviceTypeService,
     private dialog: MatDialog,
   ) {
   }
@@ -30,8 +30,8 @@ export class DmxDeviceTypeListComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dmxDevices$ = this.dmxDeviceTypeService.entities$;
 
-    this.dmxDevices$.subscribe((devices: DmxDeviceType[]) => {
-      this.dataSource.data = devices as DmxDeviceType[];
+    this.dmxDevices$.subscribe((devices: DMXDeviceType[]) => {
+      this.dataSource.data = devices as DMXDeviceType[];
     });
   }
 
@@ -39,7 +39,7 @@ export class DmxDeviceTypeListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  deleteEntity(entity: DmxDeviceType) {
+  deleteEntity(entity: DMXDeviceType) {
     this.dialog
       .open(ConfirmationDialogComponent, {
         data: {

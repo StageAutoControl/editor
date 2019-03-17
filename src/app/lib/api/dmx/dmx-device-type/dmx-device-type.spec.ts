@@ -1,7 +1,7 @@
-import { DmxDeviceType } from './dmx-device-type';
+import { DMXDeviceType } from './dmx-device-type';
 
-describe('DmxDeviceType', () => {
+describe('DMXDeviceType', () => {
   it('should create an instance', () => {
-    expect(new DmxDeviceType()).toBeTruthy();
+    expect(new DMXDeviceType()).toBeTruthy();
   });
 });

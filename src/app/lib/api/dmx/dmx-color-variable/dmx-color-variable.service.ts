@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {DmxColorVariable} from "./dmx-color-variable";
+import {DMXColorVariable} from "./dmx-color-variable";
 import {DataStoreService} from "../../base/data-store.service";
 import {ApiService} from "../../base/api.service";
 
 @Injectable({
   providedIn: 'root',
 })
-export class DmxColorVariableService extends DataStoreService<DmxColorVariable> {
+export class DMXColorVariableService extends DataStoreService<DMXColorVariable> {
   constructor(protected api: ApiService) {
     super("DMXColorVariable", api);
   }

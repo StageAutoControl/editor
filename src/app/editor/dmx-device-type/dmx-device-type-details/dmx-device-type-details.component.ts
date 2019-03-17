@@ -3,15 +3,15 @@ import {Location} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LedListFormComponent} from "../../../lib/dmx/led-list-form/led-list-form.component";
-import {DmxDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
-import {DmxDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type";
+import {DMXDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
+import {DMXDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type";
 
 @Component({
   selector: 'app-dmx-device-type-details',
   templateUrl: './dmx-device-type-details.component.html',
   styleUrls: ['./dmx-device-type-details.component.less']
 })
-export class DmxDeviceTypeDetailsComponent implements OnInit {
+export class DMXDeviceTypeDetailsComponent implements OnInit {
   form: FormGroup;
 
   @ViewChild('ledList')
@@ -25,7 +25,7 @@ export class DmxDeviceTypeDetailsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private location: Location,
-    private dmxDeviceTypeService: DmxDeviceTypeService,
+    private dmxDeviceTypeService: DMXDeviceTypeService,
     private router: Router
   ) {
   }
@@ -77,7 +77,7 @@ export class DmxDeviceTypeDetailsComponent implements OnInit {
   private load(id: string): void {
     this.dmxDeviceTypeService
       .get(id)
-      .subscribe((entity: DmxDeviceType) => {
+      .subscribe((entity: DMXDeviceType) => {
         Array.from(entity.leds)
           .forEach(() => this.ledListForm.addLED());
 

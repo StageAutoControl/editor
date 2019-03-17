@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DmxColorVariableListComponent } from './dmx-color-variable-list.component';
+import { DMXColorVariableListComponent } from './dmx-color-variable-list.component';
 
-describe('DmxColorVariableListComponent', () => {
-  let component: DmxColorVariableListComponent;
-  let fixture: ComponentFixture<DmxColorVariableListComponent>;
+describe('DMXColorVariableListComponent', () => {
+  let component: DMXColorVariableListComponent;
+  let fixture: ComponentFixture<DMXColorVariableListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DmxColorVariableListComponent ]
+      declarations: [ DMXColorVariableListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DmxColorVariableListComponent);
+    fixture = TestBed.createComponent(DMXColorVariableListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,6 +6,7 @@ import {TagListInputComponent} from './tag-list-input/tag-list-input.component';
 import {CoreModule} from "../core/core.module";
 import {DisableControlDirective} from "./disable-control.directive";
 import {ReactiveDmxInputComponent} from './reactive-dmx-input/reactive-dmx-input.component';
+import {ColorComponent} from './color/color.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {ReactiveDmxInputComponent} from './reactive-dmx-input/reactive-dmx-input
     TagListInputComponent,
     DisableControlDirective,
     ReactiveDmxInputComponent,
+    ColorComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import {ReactiveDmxInputComponent} from './reactive-dmx-input/reactive-dmx-input
     TagListInputComponent,
     DisableControlDirective,
     ReactiveDmxInputComponent,
+    ColorComponent,
   ],
 })
 export class CommonComponentsModule {

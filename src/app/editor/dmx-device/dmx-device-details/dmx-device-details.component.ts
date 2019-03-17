@@ -63,11 +63,8 @@ export class DmxDeviceDetailsComponent implements OnInit {
   }
 
   save() {
-    let entity = this.form.value;
-    console.log(entity);
-
     this.dmxDeviceService
-      .save(entity)
+      .save(this.form.value)
       .subscribe(() => this.router.navigateByUrl("/dmx-devices"));
   }
 

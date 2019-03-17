@@ -1,0 +1,47 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+  <!--
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let element">{{element.id}}</td>
+    </ng-container>
+  -->
+
+  <ng-container matColumnDef="name" sticky>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="value">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Value</th>
+    <td mat-cell *matCellDef="let element">{{value(element)}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="hex">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Hex Value</th>
+    <td mat-cell *matCellDef="let element">
+     <app-color [red]="element.red" [blue]="element.blue" [green]="element.green" [white]="element.white"></app-color>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button routerLink="/dmx-color-variables/{{ element.id }}">
+        <mat-icon aria-label="Edit/View Details">edit</mat-icon>
+      </button>
+      <button mat-button (click)="deleteEntity(element)">
+        <mat-icon aria-label="Delete">delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[10,50,100,200]" [pageSize]="100"></mat-paginator>
+<button mat-fab routerLink="/dmx-color-variables/new" class="floating">
+  <mat-icon aria-label="Add a new DmxColorVariable">add</mat-icon>
+</button>

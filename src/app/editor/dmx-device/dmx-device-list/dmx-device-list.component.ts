@@ -14,7 +14,7 @@ import {filter, switchMap} from "rxjs/operators";
   styleUrls: ['./dmx-device-list.component.less']
 })
 export class DmxDeviceListComponent implements OnInit {
-  dmxDevices$: Observable<DmxDevice[]>;
+  entities$: Observable<DmxDevice[]>;
   dmxDeviceTypes: { [id: string]: DmxDeviceType } = {};
   displayedColumns: string[] = ['name', 'typeId', 'universe', 'startChannel', 'tags', 'actions'];
   dataSource = new MatTableDataSource<DmxDevice>();
@@ -32,14 +32,14 @@ export class DmxDeviceListComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.dmxDevices$ = this.dmxDeviceService.entities$;
+    this.entities$ = this.dmxDeviceService.entities$;
 
     this.dmxDeviceTypeService.entities$
       .subscribe((types: DmxDeviceType[]) => {
         types.forEach((t: DmxDeviceType) => this.dmxDeviceTypes[t.id] = t);
       });
 
-    this.dmxDevices$.subscribe((devices: DmxDevice[]) => {
+    this.entities$.subscribe((devices: DmxDevice[]) => {
       this.dataSource.data = devices;
     });
   }

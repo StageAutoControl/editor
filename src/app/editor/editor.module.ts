@@ -5,6 +5,7 @@ import {EditorRoutingModule} from "./editor-routing.module";
 import {DmxDeviceTypeModule} from "./dmx-device-type/dmx-device-type.module";
 import {DmxDeviceGroupModule} from "./dmx-device-group/dmx-device-group.module";
 import {PlaygroundModule} from "./playground/playground.module";
+import {DmxColorVariableModule} from "./dmx-color-variable/dmx-color-variable.module";
 
 @NgModule({
   declarations: [],
@@ -15,6 +16,7 @@ import {PlaygroundModule} from "./playground/playground.module";
     DmxDeviceGroupModule,
     EditorRoutingModule,
     PlaygroundModule,
+    DmxColorVariableModule,
   ],
   exports: []
 })

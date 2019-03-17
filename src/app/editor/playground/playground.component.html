@@ -1,0 +1,18 @@
+<div fxLayout="column">
+  <div fxFlex>
+    <div fxLayout="row" fxLayoutGap="10px">
+      <mat-form-field fxFlex>
+        <mat-select [(ngModel)]="device" placeholder="DMX Device">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let device of devices$ | async" [value]="device">{{ device.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxFlex *ngIf="!controllerError">
+    <app-device-channel-inputs *ngIf="device" [device]="device" (updateChannelValue)="update($event)"></app-device-channel-inputs>
+  </div>
+  <div fxFlex *ngIf="controllerError">
+    <mat-card class="error">{{ controllerError }}</mat-card>
+  </div>
+</div>

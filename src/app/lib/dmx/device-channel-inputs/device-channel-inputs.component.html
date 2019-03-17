@@ -1,0 +1,87 @@
+<div fxLayout="column" fxLayoutGap="10px" *ngIf="deviceType">
+  <mat-card fxFlex fxGrow>
+    <mat-card-header>
+      <mat-card-title>Global</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxFlex fxLayout="row" fxLayoutGap="10px">
+        <app-reactive-dmx-input
+          fxFlex
+          placeholder="strobe"
+          [disabled]="!deviceType.strobeEnabled"
+          (valueChange)="emitChange(deviceType.strobeChannel, $event)"
+        ></app-reactive-dmx-input>
+
+        <app-reactive-dmx-input
+          fxFlex
+          placeholder="dimmer"
+          [disabled]="!deviceType.dimmerEnabled"
+          (valueChange)="emitChange(deviceType.dimmerChannel, $event)"
+        ></app-reactive-dmx-input>
+
+        <app-reactive-dmx-input
+          fxFlex
+          placeholder="mode"
+          [disabled]="!deviceType.modeEnabled"
+          (valueChange)="emitChange(deviceType.modeChannel, $event)"
+        ></app-reactive-dmx-input>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxFlex fxGrow *ngIf="deviceType.moving">
+    <mat-card-header>
+      <mat-card-title>Moving Head</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxFlex fxLayout="row" fxLayoutGap="10px">
+        <app-reactive-dmx-input
+          fxFlex
+          placeholder="pan"
+          (valueChange)="emitChange(deviceType.panChannel, $event)"
+        ></app-reactive-dmx-input>
+
+        <app-reactive-dmx-input
+          fxFlex
+          placeholder="tilt"
+          (valueChange)="emitChange(deviceType.tiltChannel, $event)"
+        ></app-reactive-dmx-input>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxFlex fxGrow *ngIf="deviceType.leds">
+    <mat-card-header>
+      <mat-card-title>LEDs</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngFor="let led of deviceType.leds; let ledIndex=index;" fxLayout="row" fxLayoutGap.gt-xs="10px">
+
+        <app-reactive-dmx-input
+          fxFlex="25"
+          placeholder="red {{ ledIndex + 1 }}"
+          (valueChange)="emitChange(led.red, $event)"
+        ></app-reactive-dmx-input>
+
+        <app-reactive-dmx-input
+          fxFlex="25"
+          placeholder="green {{ ledIndex + 1 }}"
+          (valueChange)="emitChange(led.green, $event)"
+        ></app-reactive-dmx-input>
+
+        <app-reactive-dmx-input
+          fxFlex="25"
+          placeholder="blue {{ ledIndex + 1 }}"
+          (valueChange)="emitChange(led.blue, $event)"
+        ></app-reactive-dmx-input>
+
+        <app-reactive-dmx-input
+          fxFlex="25"
+          placeholder="white {{ ledIndex + 1 }}"
+          (valueChange)="emitChange(led.white, $event)"
+        ></app-reactive-dmx-input>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>

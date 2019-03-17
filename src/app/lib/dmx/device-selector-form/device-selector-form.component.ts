@@ -17,13 +17,13 @@ export class DeviceSelectorFormComponent implements OnInit {
     const idCtrl = this.form.controls['id'];
     const tagsCtrl = this.form.controls['tags'];
 
-    idCtrl.valueChanges.subscribe(() => this.checkFields('id'));
-    tagsCtrl.valueChanges.subscribe(() => this.checkFields('tags'));
+    idCtrl.valueChanges.subscribe(() => this.checkFields());
+    tagsCtrl.valueChanges.subscribe(() => this.checkFields());
 
-    this.checkFields('init');
+    this.checkFields();
   }
 
-  private checkFields(source: string) {
+  private checkFields() {
     const idCtrl = this.form.controls['id'];
     const tagsCtrl = this.form.controls['tags'];
 
@@ -39,8 +39,6 @@ export class DeviceSelectorFormComponent implements OnInit {
     } else if (tags.length == 0 && idCtrl.disabled) {
       idCtrl.enable();
     }
-
-    console.log(`source=${source} id: enabled=${idCtrl.enabled} value='${idCtrl.value}' ; tags: enabled=${tagsCtrl.enabled} value='${JSON.stringify(tags)}'`);
   }
 
 }

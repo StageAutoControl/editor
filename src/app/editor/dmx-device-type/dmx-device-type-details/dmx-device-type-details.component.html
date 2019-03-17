@@ -12,12 +12,26 @@
 
         <div fxFlex="grow" fxLayout="row" fxLayoutGap="10px">
           <mat-form-field fxFlex>
-            <input matInput type="number" placeholder="channel count" formControlName="channelCount" id="channelCount">
+            <input
+              matInput
+              type="number"
+              min="0"
+              placeholder="channel count"
+              formControlName="channelCount"
+              id="channelCount"
+            >
             <mat-error *ngIf="hasError('channelCount', 'required')">ChannelCount is required</mat-error>
           </mat-form-field>
 
           <mat-form-field fxFlex>
-            <input matInput type="number" placeholder="channels per LED" formControlName="channelsPerLED" id="channelsPerLED">
+            <input
+              matInput
+              type="number"
+              min="0"
+              placeholder="channels per LED"
+              formControlName="channelsPerLED" i
+                ="channelsPerLED"
+            >
             <mat-error *ngIf="hasError('channelsPerLED', 'required')">ChannelsPerLED is required</mat-error>
           </mat-form-field>
         </div>
@@ -28,6 +42,7 @@
             <input
               matInput
               type="number"
+              min="0"
               placeholder="strobe channel"
               formControlName="strobeChannel"
               id="strobeChannel">
@@ -41,6 +56,7 @@
             <input
               matInput
               type="number"
+              min="0"
               placeholder="dimmer channel"
               formControlName="dimmerChannel"
               id="dimmerChannel">
@@ -54,6 +70,7 @@
             <input
               matInput
               type="number"
+              min="0"
               placeholder="mode channel"
               formControlName="modeChannel"
               id="modeChannel">
@@ -75,6 +92,7 @@
               <input
                 matInput
                 type="number"
+                min="0"
                 placeholder="pan channel"
                 formControlName="panChannel"
                 id="panChannel">
@@ -85,6 +103,7 @@
               <input
                 matInput
                 type="number"
+                min="0"
                 placeholder="tilt channel"
                 formControlName="tiltChannel"
                 id="tiltChannel">
@@ -103,10 +122,12 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-button (click)="save()" [disabled]="!form.valid">
-        <mat-icon>save</mat-icon> Save
+        <mat-icon>save</mat-icon>
+        Save
       </button>
       <button mat-button (click)="cancel()">
-        <mat-icon>cancel</mat-icon> Cancel
+        <mat-icon>cancel</mat-icon>
+        Cancel
       </button>
     </mat-card-actions>
   </mat-card>

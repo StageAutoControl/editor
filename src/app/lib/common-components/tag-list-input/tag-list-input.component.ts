@@ -1,5 +1,5 @@
 import {MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent} from "@angular/material";
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {FormArray, FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
@@ -10,7 +10,7 @@ import {map, startWith, switchMap} from "rxjs/operators";
   templateUrl: './tag-list-input.component.html',
   styleUrls: ['./tag-list-input.component.less'],
 })
-export class TagListInputComponent implements OnInit {
+export class TagListInputComponent {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   filteredTags: Observable<string[]>;
   inputControl = new FormControl();
@@ -31,12 +31,6 @@ export class TagListInputComponent implements OnInit {
           )
         })
       );
-  }
-
-  ngOnInit(): void {
-    this.control.statusChanges.subscribe(() => {
-
-    })
   }
 
   private initControl() {

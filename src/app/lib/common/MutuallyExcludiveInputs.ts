@@ -14,7 +14,7 @@ export class MutuallyExcludiveInputs {
         return;
       }
 
-      if (control.value && c.enabled) {
+      if (!!control.value && c.enabled) {
         c.disable();
         return;
       }

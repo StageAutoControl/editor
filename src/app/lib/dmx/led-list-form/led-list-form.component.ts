@@ -22,7 +22,7 @@ export class LedListFormComponent implements OnInit {
   }
 
   private setupLED() {
-    return this.formBuilder.group(ledGroup);
+    return this.formBuilder.group(ledGroup(this.formBuilder));
   }
 
   addLED() {

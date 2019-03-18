@@ -1,22 +1,38 @@
-import {Validators} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 
-export const paramsGroup = {
-  dimmer: [],
-  mode: [],
-  strobe: [],
-  tilt: [],
-  pan: [],
-  led: [],
-  $color: [],
-  red: [],
-  green: [],
-  blue: [],
-  white: [],
-};
+export const paramsGroup = (fb: FormBuilder) => ({
+  dimmer: fb.control(0),
+  mode: fb.control(0),
+  strobe: fb.control(0),
+  tilt: fb.control(0),
+  pan: fb.control(0),
+  led: fb.control(0),
+  $color: fb.control(0),
+  red: fb.control(0),
+  green: fb.control(0),
+  blue: fb.control(0),
+  white: fb.control(0),
+});
 
-export const ledGroup = {
-  red: [0, [Validators.required, Validators.min(0)]],
-  green: [0, [Validators.required, Validators.min(0)]],
-  blue: [0, [Validators.required, Validators.min(0)]],
-  white: [0, [Validators.required, Validators.min(0)]],
-};
+export const ledGroup = (fb: FormBuilder) => ({
+  red: fb.control(0, [Validators.required, Validators.min(0)]),
+  green: fb.control(0, [Validators.required, Validators.min(0)]),
+  blue: fb.control(0, [Validators.required, Validators.min(0)]),
+  white: fb.control(0, [Validators.required, Validators.min(0)]),
+});
+
+export const deviceParamsGroup = (fb: FormBuilder) => ({
+  group: fb.group({
+    id: fb.control(''),
+  }),
+  device: fb.group({
+    id: fb.control(''),
+  }),
+  animation: fb.group({
+    id: fb.control(''),
+  }),
+  transition: fb.group({
+    id: fb.control(''),
+  }),
+  params: fb.array([]),
+});

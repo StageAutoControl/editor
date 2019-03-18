@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DMXTransitionService} from "../../../lib/api/dmx/dmx-transition/dmx-transition.service";
 import {DMXTransition, EaseFunctionLinear, EaseFunctions} from "../../../lib/api/dmx/dmx-transition/dmx-transition";
-import {TransitionParamsForm} from "../../../lib/dmx/transition-params-form/transition-params-form.component";
+import {TransitionParamsFormComponent} from "../../../lib/dmx/transition-params-form/transition-params-form.component";
 
 @Component({
   selector: 'app-dmx-transition-details',
@@ -16,7 +16,7 @@ export class DMXTransitionDetailsComponent implements OnInit {
   form: FormGroup;
   loading = false;
 
-  @ViewChild('paramsForm') paramsForm: TransitionParamsForm;
+  @ViewChild('paramsForm') paramsForm: TransitionParamsFormComponent;
 
   hasError = (controlName: string, errorName: string): boolean => {
     return this.form.controls[controlName].hasError(errorName);

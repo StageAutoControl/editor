@@ -1,0 +1,22 @@
+<div fxLayout="column" [formGroup]="form">
+  <div
+    class="device-params-list"
+    *ngFor="let deviceParams of form.controls; let i = index"
+    fxLayoutAlign="center"
+    fxLayout="row"
+    fxLayoutGap.gt-xs="10px"
+  >
+
+    <dmx-device-params-form fxFlex="grow" [form]="deviceParams"></dmx-device-params-form>
+
+    <button fxFlex mat-button (click)="removeDeviceParams(i)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div fxFlex>
+    <button mat-button (click)="addDeviceParams()">
+      <mat-icon>add</mat-icon>
+      add Device Params
+    </button>
+  </div>
+</div>

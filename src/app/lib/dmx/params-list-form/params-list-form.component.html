@@ -1,0 +1,22 @@
+<div fxLayout="column" [formGroup]="form">
+  <div
+    class="params-list"
+    *ngFor="let params of form.controls; let i = index"
+    fxLayoutAlign="center"
+    fxLayout="row"
+    fxLayoutGap.gt-xs="10px"
+  >
+
+    <dmx-params-form fxFlex="grow" [form]="params"></dmx-params-form>
+
+    <button fxFlex mat-button (click)="removeParams(i)" [disabled]="disabled">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div fxFlex>
+    <button mat-button (click)="addParams()" [disabled]="disabled">
+      <mat-icon>add</mat-icon>
+      add Params
+    </button>
+  </div>
+</div>

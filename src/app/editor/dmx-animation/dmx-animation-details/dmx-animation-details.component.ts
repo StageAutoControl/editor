@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DMXAnimationService} from "../../../lib/api/dmx/dmx-animation/dmx-animation.service";
 import {DMXAnimation} from "../../../lib/api/dmx/dmx-animation/dmx-animation";
-import {AnimationFramesForm} from "../../../lib/dmx/animation-frames-form/animation-frames-form.component";
+import {AnimationFramesFormComponent} from "../../../lib/dmx/animation-frames-form/animation-frames-form.component";
 
 @Component({
   selector: 'app-dmx-animation-details',
@@ -15,7 +15,7 @@ export class DMXAnimationDetailsComponent implements OnInit {
   form: FormGroup;
   loading = false;
 
-  @ViewChild('framesForm') framesForm: AnimationFramesForm;
+  @ViewChild('framesForm') framesForm: AnimationFramesFormComponent;
 
   hasError = (controlName: string, errorName: string): boolean => {
     return this.form.controls[controlName].hasError(errorName);

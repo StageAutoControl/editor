@@ -7,7 +7,7 @@ import {paramsGroup} from "../forms";
   templateUrl: './transition-params-form.component.html',
   styleUrls: ['./transition-params-form.component.less']
 })
-export class TransitionParamsForm implements OnInit {
+export class TransitionParamsFormComponent implements OnInit {
   @Input() public form: FormArray;
 
   constructor(
@@ -22,8 +22,8 @@ export class TransitionParamsForm implements OnInit {
 
   private setupParams() {
     return this.formBuilder.group({
-      from: this.formBuilder.group(paramsGroup),
-      to: this.formBuilder.group(paramsGroup),
+      from: this.formBuilder.group(paramsGroup(this.formBuilder)),
+      to: this.formBuilder.group(paramsGroup(this.formBuilder)),
     });
   }
 

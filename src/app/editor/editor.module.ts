@@ -8,6 +8,7 @@ import {PlaygroundModule} from "./playground/playground.module";
 import {DMXColorVariableModule} from "./dmx-color-variable/dmx-color-variable.module";
 import {DMXAnimationModule} from "./dmx-animation/dmx-animation.module";
 import {DMXTransitionModule} from "./dmx-transition/dmx-transition.module";
+import {DMXPresetModule} from "./dmx-preset/dmx-preset.module";
 
 @NgModule({
   declarations: [],
@@ -21,6 +22,7 @@ import {DMXTransitionModule} from "./dmx-transition/dmx-transition.module";
     DMXColorVariableModule,
     DMXAnimationModule,
     DMXTransitionModule,
+    DMXPresetModule,
   ],
   exports: []
 })

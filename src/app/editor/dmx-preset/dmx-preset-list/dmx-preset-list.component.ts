@@ -13,7 +13,7 @@ import {filter, switchMap} from "rxjs/operators";
 })
 export class DMXPresetListComponent implements OnInit {
   entities$: Observable<DMXPreset[]>;
-  displayedColumns: string[] = ['name', 'typeId', 'universe', 'startChannel', 'tags', 'actions'];
+  displayedColumns: string[] = ['name', 'params', 'actions'];
   dataSource = new MatTableDataSource<DMXPreset>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

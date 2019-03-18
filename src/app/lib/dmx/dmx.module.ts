@@ -10,8 +10,16 @@ import {CommonComponentsModule} from "../common-components/common-components.mod
 import {DeviceSelectorListComponent} from "./device-selector-list/device-selector-list.component";
 import {DeviceChannelInputsComponent} from './device-channel-inputs/device-channel-inputs.component';
 import {ParamsFormComponent} from "./params-form/params-form.component";
-import {AnimationFramesForm} from "./animation-frames-form/animation-frames-form.component";
-import {TransitionParamsForm} from "./transition-params-form/transition-params-form.component";
+import {AnimationFramesFormComponent} from "./animation-frames-form/animation-frames-form.component";
+import {TransitionParamsFormComponent} from "./transition-params-form/transition-params-form.component";
+import {DeviceParamsListComponent} from './device-params-list/device-params-list.component';
+import {DeviceParamsListFormComponent} from "./device-params-list-form/device-params-list-form.component";
+import {ParamsListFormComponent} from "./params-list-form/params-list-form.component";
+import {AnimationSelectComponent} from './animation-select/animation-select.component';
+import {TransitionSelectComponent} from "./transition-select/transition-select.component";
+import {DeviceSelectComponent} from "./device-select/device-select.component";
+import {DeviceGroupSelectComponent} from "./device-group-select/device-group-select.component";
+import { DeviceParamsFormComponent } from './device-params-form/device-params-form.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +30,16 @@ import {TransitionParamsForm} from "./transition-params-form/transition-params-f
     DeviceSelectorListComponent,
     DeviceChannelInputsComponent,
     ParamsFormComponent,
-    AnimationFramesForm,
-    TransitionParamsForm,
+    AnimationFramesFormComponent,
+    TransitionParamsFormComponent,
+    DeviceParamsListComponent,
+    DeviceParamsListFormComponent,
+    ParamsListFormComponent,
+    AnimationSelectComponent,
+    TransitionSelectComponent,
+    DeviceSelectComponent,
+    DeviceGroupSelectComponent,
+    DeviceParamsFormComponent,
   ],
   imports: [
     CommonModule,
@@ -39,8 +55,15 @@ import {TransitionParamsForm} from "./transition-params-form/transition-params-f
     DeviceSelectorListComponent,
     DeviceChannelInputsComponent,
     ParamsFormComponent,
-    AnimationFramesForm,
-    TransitionParamsForm,
+    AnimationFramesFormComponent,
+    TransitionParamsFormComponent,
+    DeviceParamsListComponent,
+    DeviceParamsListFormComponent,
+    ParamsListFormComponent,
+    AnimationSelectComponent,
+    TransitionSelectComponent,
+    DeviceSelectComponent,
+    DeviceGroupSelectComponent,
   ],
 })
 export class DMXModule {

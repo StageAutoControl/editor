@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Location} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DMXPresetService} from "../../../lib/api/dmx/dmx-preset/dmx-preset.service";
 import {DMXPreset} from "../../../lib/api/dmx/dmx-preset/dmx-preset";
+import {DeviceParamsListFormComponent} from "../../../lib/dmx/device-params-list-form/device-params-list-form.component";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-dmx-preset-details',
@@ -12,6 +14,8 @@ import {DMXPreset} from "../../../lib/api/dmx/dmx-preset/dmx-preset";
 })
 export class DMXPresetDetailsComponent implements OnInit {
   form: FormGroup;
+
+  @ViewChild('deviceParamsListForm') deviceParamsListForm: DeviceParamsListFormComponent;
 
   hasError = (controlName: string, errorName: string): boolean => {
     return this.form.controls[controlName].hasError(errorName);
@@ -22,11 +26,12 @@ export class DMXPresetDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private dmxPresetService: DMXPresetService,
-    private router: Router
+    private router: Router,
   ) {
+
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.load(id);
@@ -37,20 +42,32 @@ export class DMXPresetDetailsComponent implements OnInit {
 
   private setupForm() {
     this.form = this.formBuilder.group({
-      id: this.formBuilder.control(""),
+      id: this.formBuilder.control(''),
       name: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]),
-      typeId: this.formBuilder.control('', [Validators.required]),
-      universe: this.formBuilder.control(0, [Validators.required]),
-      startChannel: this.formBuilder.control(0, [Validators.required]),
-      tags: this.formBuilder.control([]),
+      deviceParams: this.formBuilder.array([]),
     });
   }
 
+  // dear reader, please don't try to understand this. Sorry.
   private load(id: string): void {
     this.dmxPresetService
       .get(id)
+      .pipe(map((e:DMXPreset) => {
+        e.deviceParams = Array.from(e.deviceParams).map(dp => {
+          dp.group = dp.group || {id: ""};
+          dp.device = dp.device || {id: ""};
+          dp.animation = dp.animation || {id: ""};
+          dp.transition = dp.transition || {id: ""};
+          return dp;
+        });
+        return e;
+      }))
       .subscribe((entity: DMXPreset) => {
-        this.form.patchValue(entity);
+        Array.from(entity.deviceParams).forEach(p => {
+          this.deviceParamsListForm.addDeviceParams(Array.from(p.params).length);
+        });
+
+        setTimeout(() => this.form.patchValue(entity), 100);
       });
   }
 

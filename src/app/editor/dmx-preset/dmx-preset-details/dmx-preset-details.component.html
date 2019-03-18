@@ -9,36 +9,11 @@
           <input matInput type="text" placeholder="Name" formControlName="name" id="name">
           <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
         </mat-form-field>
-<!--
 
         <div fxFlex="grow">
-          <mat-form-field>
-            <mat-select placeholder="device type" formControlName="typeId" id="typeId">
-              <mat-option *ngFor="let t of dmxPresetTypes$ | async" [value]="t.id">
-                {{t.name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
--->
-
-        <div fxFlex="grow" fxLayout="row" fxLayoutGap="10px">
-          <mat-form-field fxFlex>
-            <input matInput type="number" placeholder="universe" formControlName="universe" id="universe">
-            <mat-error *ngIf="hasError('universe', 'required')">universe is required</mat-error>
-          </mat-form-field>
-
-          <mat-form-field fxFlex>
-            <input matInput type="number" placeholder="start channel" formControlName="startChannel" id="startChannel">
-            <mat-error *ngIf="hasError('startChannel', 'required')">startChannel is required</mat-error>
-          </mat-form-field>
-        </div>
-
-        <div fxFlex="grow">
-          <app-tag-list-input [choices]="tags$" [control]="form.controls['tags']"></app-tag-list-input>
+          <dmx-device-params-list-form #deviceParamsListForm [form]="form.controls.deviceParams"></dmx-device-params-list-form>
         </div>
       </form>
-
     </mat-card-content>
     <mat-card-actions>
       <button mat-button (click)="save()" [disabled]="!form.valid">

@@ -12,7 +12,6 @@ export interface DMXDeviceGroupSelector {
 
 export interface DMXDeviceSelector {
   id?: string;
-  tags?: string[];
 }
 
 export interface DMXAnimationSelector {

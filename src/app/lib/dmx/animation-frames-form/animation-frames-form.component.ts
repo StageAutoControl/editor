@@ -6,7 +6,7 @@ import {FormArray, FormBuilder, Validators} from "@angular/forms";
   templateUrl: './animation-frames-form.component.html',
   styleUrls: ['./animation-frames-form.component.less']
 })
-export class AnimationFramesForm implements OnInit {
+export class AnimationFramesFormComponent implements OnInit {
   @Input() public form: FormArray;
 
   constructor(

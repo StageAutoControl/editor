@@ -22,17 +22,9 @@ export const ledGroup = (fb: FormBuilder) => ({
 });
 
 export const deviceParamsGroup = (fb: FormBuilder) => ({
-  group: fb.group({
-    id: fb.control(''),
-  }),
-  device: fb.group({
-    id: fb.control(''),
-  }),
-  animation: fb.group({
-    id: fb.control(''),
-  }),
-  transition: fb.group({
-    id: fb.control(''),
-  }),
+  group: fb.control(''),
+  device: fb.control(''),
+  animation: fb.control(''),
+  transition: fb.control(''),
   params: fb.array([]),
 });

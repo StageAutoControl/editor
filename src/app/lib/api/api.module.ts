@@ -12,8 +12,8 @@ import {DMXAnimationService} from "./dmx/dmx-animation/dmx-animation.service";
 import {DMXSceneService} from "./dmx/dmx-scene/dmx-scene.service";
 import {DMXTransitionService} from "./dmx/dmx-transition/dmx-transition.service";
 import {DMXColorVariableService} from "./dmx/dmx-color-variable/dmx-color-variable.service";
-import {SetListService} from "./dmx/set-list/set-list.service";
-import {SongService} from "./dmx/song/song.service";
+import {SetListService} from "./set-list/set-list.service";
+import {SongService} from "./song/song.service";
 
 @NgModule({
   declarations: [],

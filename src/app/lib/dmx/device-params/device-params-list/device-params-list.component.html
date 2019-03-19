@@ -1,0 +1,10 @@
+<mat-chip-list>
+  <mat-chip *ngFor="let p of paramsList" [selected]="p.device">
+    <span *ngIf="p.device">Device: {{ getDMXDevice(p.device) | async}}</span>
+    <span *ngIf="p.group">DeviceGroup: {{ getDMXDeviceGroup(p.group) | async}}</span>
+    <span>  @  </span>
+    <span *ngIf="p.animation">Animation: {{ getDMXAnimation(p.animation) | async }}</span>
+    <span *ngIf="p.transition">Transition: {{ getDMXTransition(p.transition) | async }}</span>
+    <span *ngIf="p.params.length">Params: {{ p.params.length }}</span>
+  </mat-chip>
+</mat-chip-list>

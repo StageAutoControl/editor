@@ -1,8 +1,0 @@
-<div class="full-width" [formGroup]="form">
-  <mat-form-field class="full-width">
-    <mat-select [disableControl]="disabled" formControlName="id" placeholder="DeviceGroup">
-      <mat-option *ngIf="allowEmpty"></mat-option>
-      <mat-option *ngFor="let deviceGroup of deviceGroups$ | async" [value]="deviceGroup.id">{{ deviceGroup.name }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>

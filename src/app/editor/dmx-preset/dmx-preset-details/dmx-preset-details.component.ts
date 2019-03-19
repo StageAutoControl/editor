@@ -4,8 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DMXPresetService} from "../../../lib/api/dmx/dmx-preset/dmx-preset.service";
 import {DMXPreset} from "../../../lib/api/dmx/dmx-preset/dmx-preset";
-import {DeviceParamsListFormComponent} from "../../../lib/dmx/device-params-list-form/device-params-list-form.component";
-import {map} from "rxjs/operators";
+import {DeviceParamsListFormComponent} from "../../../lib/dmx/device-params/device-params-list-form/device-params-list-form.component";
 
 @Component({
   selector: 'app-dmx-preset-details',
@@ -52,16 +51,6 @@ export class DMXPresetDetailsComponent implements OnInit {
   private load(id: string): void {
     this.dmxPresetService
       .get(id)
-      .pipe(map((e:DMXPreset) => {
-        e.deviceParams = Array.from(e.deviceParams).map(dp => {
-          dp.group = dp.group || {id: ""};
-          dp.device = dp.device || {id: ""};
-          dp.animation = dp.animation || {id: ""};
-          dp.transition = dp.transition || {id: ""};
-          return dp;
-        });
-        return e;
-      }))
       .subscribe((entity: DMXPreset) => {
         Array.from(entity.deviceParams).forEach(p => {
           this.deviceParamsListForm.addDeviceParams(Array.from(p.params).length);

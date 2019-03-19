@@ -5,7 +5,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DMXDeviceGroupService} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group.service";
 import {DMXDeviceGroup} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group";
 import {DMXDeviceService} from "../../../lib/api/dmx/dmx-device/dmx-device.service";
-import {DeviceSelectorsFormComponent} from "../../../lib/dmx/device-selectors-form/device-selectors-form.component";
+import {DeviceSelectorsFormComponent} from "../../../lib/dmx/device-selector/device-selectors-form/device-selectors-form.component";
 
 @Component({
   selector: 'app-dmx-device-group-details',

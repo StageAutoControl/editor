@@ -1,0 +1,8 @@
+<div class="full-width">
+  <mat-form-field class="full-width">
+    <mat-select [disableControl]="disabled" [formControl]="form" placeholder="Transition">
+      <mat-option *ngIf="allowEmpty"></mat-option>
+      <mat-option *ngFor="let transition of transitions$ | async" [value]="transition.id">{{ transition.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

@@ -1,25 +1,9 @@
-export interface DMXDeviceParams{
-  group?: DMXDeviceGroupSelector;
-  device?: DMXDeviceSelector;
+export interface DMXDeviceParams {
+  group?: string;
+  device?: string;
   params?: DMXParams[];
-  animation?: DMXAnimationSelector;
-  transition?: DMXTransitionSelector;
-}
-
-export interface DMXDeviceGroupSelector {
-  id: string;
-}
-
-export interface DMXDeviceSelector {
-  id?: string;
-}
-
-export interface DMXAnimationSelector {
-  id: string;
-}
-
-export interface DMXTransitionSelector {
-  id: string;
+  animation?: string;
+  transition?: string;
 }
 
 export interface DMXParams {

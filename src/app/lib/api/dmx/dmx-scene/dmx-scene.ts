@@ -11,9 +11,5 @@ export interface DMXScene {
 export interface DMXSubScene {
   at: number;
   deviceParams?: DMXDeviceParams[];
-  preset?: DMXPresetSelector;
-}
-
-export interface DMXPresetSelector {
-  id: string;
+  preset?: string;
 }

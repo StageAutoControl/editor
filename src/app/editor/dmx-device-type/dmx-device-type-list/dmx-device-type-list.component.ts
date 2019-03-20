@@ -28,6 +28,14 @@ export class DMXDeviceTypeListComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
+    this.dataSource.sortingDataAccessor = (data: any, sortHeaderId: string): string => {
+      if (typeof data[sortHeaderId] === 'string') {
+        return data[sortHeaderId].toLocaleLowerCase();
+      }
+
+      return data[sortHeaderId];
+    };
     this.dmxDevices$ = this.dmxDeviceTypeService.entities$;
 
     this.dmxDevices$.subscribe((devices: DMXDeviceType[]) => {
@@ -47,7 +55,7 @@ export class DMXDeviceTypeListComponent implements OnInit {
         },
       })
       .afterClosed()
-      .pipe(filter((result:boolean) => result))
+      .pipe(filter((result: boolean) => result))
       .pipe(switchMap(() => this.dmxDeviceTypeService.remove(entity.id)))
       .subscribe()
   }

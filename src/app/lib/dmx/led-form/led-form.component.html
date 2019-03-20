@@ -1,51 +1,51 @@
 <div [formGroup]="form" fxLayout="row" fxLayoutGap.gt-xs="10px">
   <mat-form-field fxFlex="25">
     <input
-      matInput
-      min="0"
-      max="255"
-      type="number"
-      placeholder="red"
       formControlName="red"
-      id="red">
+      id="red"
+      matInput
+      max="255"
+      min="0"
+      placeholder="red"
+      type="number">
     <mat-error *ngIf="hasError('red', 'required')">red channel is required</mat-error>
     <mat-error *ngIf="hasError('red', 'min')">red channel cannot be negative</mat-error>
   </mat-form-field>
 
   <mat-form-field fxFlex="25">
     <input
-      matInput
-      min="0"
-      max="255"
-      type="number"
-      placeholder="green"
       formControlName="green"
-      id="green">
+      id="green"
+      matInput
+      max="255"
+      min="0"
+      placeholder="green"
+      type="number">
     <mat-error *ngIf="hasError('green', 'required')">green channel is required</mat-error>
     <mat-error *ngIf="hasError('green', 'min')">green channel cannot be negative</mat-error>
   </mat-form-field>
 
   <mat-form-field fxFlex="25">
     <input
-      matInput
-      min="0"
-      max="255"
-      type="number"
-      placeholder="blue"
       formControlName="blue"
-      id="blue">
+      id="blue"
+      matInput
+      max="255"
+      min="0"
+      placeholder="blue"
+      type="number">
     <mat-error *ngIf="hasError('blue', 'required')">blue channel is required</mat-error>
     <mat-error *ngIf="hasError('blue', 'min')">blue channel cannot be negative</mat-error>
   </mat-form-field>
   <mat-form-field fxFlex="25">
     <input
-      matInput
-      min="0"
-      max="255"
-      type="number"
-      placeholder="white"
       formControlName="white"
-      id="white">
+      id="white"
+      matInput
+      max="255"
+      min="0"
+      placeholder="white"
+      type="number">
     <mat-error *ngIf="hasError('white', 'required')">white channel is required</mat-error>
     <mat-error *ngIf="hasError('white', 'min')">white channel cannot be negative</mat-error>
   </mat-form-field>

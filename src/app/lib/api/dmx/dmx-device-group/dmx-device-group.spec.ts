@@ -1,4 +1,4 @@
-import { DMXDeviceGroup } from './dmx-device-group';
+import {DMXDeviceGroup} from './dmx-device-group';
 
 describe('DMXDeviceGroup', () => {
   it('should create an instance', () => {

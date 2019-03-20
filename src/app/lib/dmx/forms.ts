@@ -1,17 +1,17 @@
 import {FormBuilder, Validators} from "@angular/forms";
 
 export const paramsGroup = (fb: FormBuilder) => ({
-  dimmer: fb.control(0),
-  mode: fb.control(0),
-  strobe: fb.control(0),
-  tilt: fb.control(0),
-  pan: fb.control(0),
   led: fb.control(0),
-  $color: fb.control(0),
-  red: fb.control(0),
-  green: fb.control(0),
-  blue: fb.control(0),
-  white: fb.control(0),
+  $color: fb.control(null),
+  red: fb.control(null),
+  green: fb.control(null),
+  blue: fb.control(null),
+  white: fb.control(null),
+  dimmer: fb.control(null),
+  mode: fb.control(null),
+  strobe: fb.control(null),
+  tilt: fb.control(null),
+  pan: fb.control(null),
 });
 
 export const ledGroup = (fb: FormBuilder) => ({
@@ -22,9 +22,9 @@ export const ledGroup = (fb: FormBuilder) => ({
 });
 
 export const deviceParamsGroup = (fb: FormBuilder) => ({
-  group: fb.control(''),
-  device: fb.control(''),
-  animation: fb.control(''),
-  transition: fb.control(''),
+  group: fb.control(null),
+  device: fb.control(null),
+  animation: fb.control(null),
+  transition: fb.control(null),
   params: fb.array([]),
 });

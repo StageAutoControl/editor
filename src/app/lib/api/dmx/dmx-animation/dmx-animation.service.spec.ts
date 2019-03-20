@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { DMXAnimationService } from './dmx-animation.service';
+import {DMXAnimationService} from './dmx-animation.service';
 
 describe('DMXAnimationService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

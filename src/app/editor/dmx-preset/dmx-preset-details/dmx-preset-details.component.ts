@@ -16,10 +16,6 @@ export class DMXPresetDetailsComponent implements OnInit {
 
   @ViewChild('deviceParamsListForm') deviceParamsListForm: DeviceParamsListFormComponent;
 
-  hasError = (controlName: string, errorName: string): boolean => {
-    return this.form.controls[controlName].hasError(errorName);
-  };
-
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -30,6 +26,10 @@ export class DMXPresetDetailsComponent implements OnInit {
 
   }
 
+  hasError = (controlName: string, errorName: string): boolean => {
+    return this.form.controls[controlName].hasError(errorName);
+  };
+
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -37,6 +37,16 @@ export class DMXPresetDetailsComponent implements OnInit {
     }
 
     this.setupForm();
+  }
+
+  save() {
+    this.dmxPresetService
+      .save(this.form.value)
+      .subscribe(() => this.router.navigateByUrl("/dmx-presets"));
+  }
+
+  cancel() {
+    this.location.back();
   }
 
   private setupForm() {
@@ -58,15 +68,5 @@ export class DMXPresetDetailsComponent implements OnInit {
 
         setTimeout(() => this.form.patchValue(entity), 100);
       });
-  }
-
-  save() {
-    this.dmxPresetService
-      .save(this.form.value)
-      .subscribe(() => this.router.navigateByUrl("/dmx-presets"));
-  }
-
-  cancel() {
-    this.location.back();
   }
 }

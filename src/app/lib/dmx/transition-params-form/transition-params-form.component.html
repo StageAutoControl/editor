@@ -1,29 +1,29 @@
-<div fxLayout="column" fxLayoutAlign="space-around stretch" [formGroup]="form">
+<div [formGroup]="form" fxLayout="column" fxLayoutAlign="space-around stretch">
   <div
     *ngFor="let params of form.controls; let i = index"
     class="full-width"
-    fxLayoutAlign="center"
     fxLayout="row"
+    fxLayoutAlign="center"
     fxLayoutGap.gt-xs="10px"
   >
     <div fxFlex="grow" fxLayout="row wrap">
       <div fxFlex fxGrow fxLayout="row" fxLayoutAlign="none center">
         <div fxFlex="10">From:</div>
-        <dmx-params-form fxFlex [form]="params.controls.from"></dmx-params-form>
+        <dmx-params-form [form]="params.controls.from" fxFlex></dmx-params-form>
       </div>
 
       <div fxFlex fxGrow fxLayout="row" fxLayoutAlign="none center">
         <div fxFlex="10">To:</div>
-        <dmx-params-form fxFlex [form]="params.controls.to"></dmx-params-form>
+        <dmx-params-form [form]="params.controls.to" fxFlex></dmx-params-form>
       </div>
     </div>
 
-    <button fxFlex mat-button (click)="removeParams(i)">
+    <button (click)="removeParams(i)" fxFlex mat-button>
       <mat-icon>delete</mat-icon>
     </button>
   </div>
   <div fxFlex fxGrow>
-    <button mat-button (click)="addParams()">
+    <button (click)="addParams()" mat-button>
       <mat-icon>add</mat-icon>
       add Params
     </button>

@@ -17,13 +17,13 @@ export class ParamsFormComponent implements OnChanges {
 
   private watcher: MutuallyExcludiveInputs[] = [];
 
-  hasError = (controlName: string, errorName: string): boolean => {
-    return this.form.controls[controlName].hasError(errorName);
-  };
-
   constructor(private dmxColorVariableService: DMXColorVariableService) {
     this.colorVars$ = dmxColorVariableService.entities$;
   }
+
+  hasError = (controlName: string, errorName: string): boolean => {
+    return this.form.controls[controlName].hasError(errorName);
+  };
 
   ngOnChanges(changes: SimpleChanges): void {
     this.watcher = [

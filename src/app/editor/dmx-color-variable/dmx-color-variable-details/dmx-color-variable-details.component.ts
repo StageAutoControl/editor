@@ -13,10 +13,6 @@ import {DMXColorVariable} from "../../../lib/api/dmx/dmx-color-variable/dmx-colo
 export class DMXColorVariableDetailsComponent implements OnInit {
   form: FormGroup;
 
-  hasError = (controlName: string, errorName: string): boolean => {
-    return this.form.controls[controlName].hasError(errorName);
-  };
-
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -26,6 +22,10 @@ export class DMXColorVariableDetailsComponent implements OnInit {
   ) {
   }
 
+  hasError = (controlName: string, errorName: string): boolean => {
+    return this.form.controls[controlName].hasError(errorName);
+  };
+
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -33,6 +33,16 @@ export class DMXColorVariableDetailsComponent implements OnInit {
     }
 
     this.setupForm();
+  }
+
+  save() {
+    this.dmxColorVariableService
+      .save(this.form.value)
+      .subscribe(() => this.router.navigateByUrl("/dmx-color-variables"));
+  }
+
+  cancel() {
+    this.location.back();
   }
 
   private setupForm() {
@@ -53,15 +63,5 @@ export class DMXColorVariableDetailsComponent implements OnInit {
       .subscribe((entity: DMXColorVariable) => {
         this.form.patchValue(entity);
       });
-  }
-
-  save() {
-    this.dmxColorVariableService
-      .save(this.form.value)
-      .subscribe(() => this.router.navigateByUrl("/dmx-color-variables"));
-  }
-
-  cancel() {
-    this.location.back();
   }
 }

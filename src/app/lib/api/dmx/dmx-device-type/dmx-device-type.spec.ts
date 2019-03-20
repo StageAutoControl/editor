@@ -1,4 +1,4 @@
-import { DMXDeviceType } from './dmx-device-type';
+import {DMXDeviceType} from './dmx-device-type';
 
 describe('DMXDeviceType', () => {
   it('should create an instance', () => {

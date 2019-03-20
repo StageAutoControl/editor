@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DMXTransitionDetailsComponent } from './dmx-transition-details.component';
+import {DMXTransitionDetailsComponent} from './dmx-transition-details.component';
 
 describe('DMXTransitionDetailsComponent', () => {
   let component: DMXTransitionDetailsComponent;
@@ -8,9 +8,9 @@ describe('DMXTransitionDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DMXTransitionDetailsComponent ]
+      declarations: [DMXTransitionDetailsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

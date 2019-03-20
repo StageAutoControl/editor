@@ -1,5 +1,5 @@
 <mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filter">
 </mat-form-field>
 
 <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
@@ -23,7 +23,7 @@
   <ng-container matColumnDef="hex">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Hex Value</th>
     <td mat-cell *matCellDef="let element">
-     <app-color [red]="element.red" [blue]="element.blue" [green]="element.green" [white]="element.white"></app-color>
+      <app-color [red]="element.red" [blue]="element.blue" [green]="element.green" [white]="element.white"></app-color>
   </ng-container>
 
   <ng-container matColumnDef="actions">

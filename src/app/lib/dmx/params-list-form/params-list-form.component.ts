@@ -16,16 +16,16 @@ export class ParamsListFormComponent {
   ) {
   }
 
-  private setupParams() {
-    return this.formBuilder.group(paramsGroup(this.formBuilder));
-  }
-
   addParams() {
     this.form.push(this.setupParams());
   }
 
   removeParams(i: number) {
     this.form.removeAt(i);
+  }
+
+  private setupParams() {
+    return this.formBuilder.group(paramsGroup(this.formBuilder));
   }
 
 

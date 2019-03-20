@@ -18,10 +18,6 @@ export class DMXDeviceDetailsComponent implements OnInit {
   dmxDeviceTypes$: Observable<DMXDeviceType[]>;
   tags$: Observable<string[]>;
 
-  hasError = (controlName: string, errorName: string): boolean => {
-    return this.form.controls[controlName].hasError(errorName);
-  };
-
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -32,6 +28,10 @@ export class DMXDeviceDetailsComponent implements OnInit {
   ) {
   }
 
+  hasError = (controlName: string, errorName: string): boolean => {
+    return this.form.controls[controlName].hasError(errorName);
+  };
+
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -41,6 +41,16 @@ export class DMXDeviceDetailsComponent implements OnInit {
     this.setupForm();
     this.dmxDeviceTypes$ = this.dmxDeviceTypeService.entities$;
     this.tags$ = this.dmxDeviceService.tags$;
+  }
+
+  save() {
+    this.dmxDeviceService
+      .save(this.form.value)
+      .subscribe(() => this.router.navigateByUrl("/dmx-devices"));
+  }
+
+  cancel() {
+    this.location.back();
   }
 
   private setupForm() {
@@ -60,15 +70,5 @@ export class DMXDeviceDetailsComponent implements OnInit {
       .subscribe((entity: DMXDevice) => {
         this.form.patchValue(entity);
       });
-  }
-
-  save() {
-    this.dmxDeviceService
-      .save(this.form.value)
-      .subscribe(() => this.router.navigateByUrl("/dmx-devices"));
-  }
-
-  cancel() {
-    this.location.back();
   }
 }

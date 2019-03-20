@@ -33,14 +33,6 @@ export class TagListInputComponent {
       );
   }
 
-  private initControl() {
-    this.inputControl.setValue(null);
-  }
-
-  private _add(tag: string) {
-    this.control.setValue(Array.from(this.control.value).concat(tag));
-  }
-
   add(event: MatChipInputEvent): void {
 
     // Add tag only when MatAutocomplete is not open
@@ -69,6 +61,14 @@ export class TagListInputComponent {
     this._add(event.option.viewValue);
     this.tagInput.nativeElement.value = '';
     this.initControl();
+  }
+
+  private initControl() {
+    this.inputControl.setValue(null);
+  }
+
+  private _add(tag: string) {
+    this.control.setValue(Array.from(this.control.value).concat(tag));
   }
 
   private _filter(tags: string[], value: string): string[] {

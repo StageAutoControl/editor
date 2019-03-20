@@ -18,10 +18,6 @@ export class DMXTransitionDetailsComponent implements OnInit {
 
   @ViewChild('paramsForm') paramsForm: TransitionParamsFormComponent;
 
-  hasError = (controlName: string, errorName: string): boolean => {
-    return this.form.controls[controlName].hasError(errorName);
-  };
-
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -32,12 +28,26 @@ export class DMXTransitionDetailsComponent implements OnInit {
     this.setupForm();
   }
 
+  hasError = (controlName: string, errorName: string): boolean => {
+    return this.form.controls[controlName].hasError(errorName);
+  };
+
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.loading = true;
       this.load(id);
     }
+  }
+
+  save() {
+    this.dmxTransitionService
+      .save(this.form.value)
+      .subscribe(() => this.router.navigateByUrl("/dmx-transitions"));
+  }
+
+  cancel() {
+    this.location.back();
   }
 
   private setupForm() {
@@ -60,15 +70,5 @@ export class DMXTransitionDetailsComponent implements OnInit {
         this.form.patchValue(entity);
         this.loading = false;
       });
-  }
-
-  save() {
-    this.dmxTransitionService
-      .save(this.form.value)
-      .subscribe(() => this.router.navigateByUrl("/dmx-transitions"));
-  }
-
-  cancel() {
-    this.location.back();
   }
 }

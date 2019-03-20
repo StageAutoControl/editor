@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { DMXDeviceGroupService } from './dmx-device-group.service';
+import {DMXDeviceGroupService} from './dmx-device-group.service';
 
 describe('DMXDeviceGroupService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

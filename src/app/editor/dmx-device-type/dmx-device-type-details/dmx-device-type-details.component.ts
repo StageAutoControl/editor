@@ -17,10 +17,6 @@ export class DMXDeviceTypeDetailsComponent implements OnInit {
   @ViewChild('ledList')
   ledListForm: LedListFormComponent;
 
-  hasError = (controlName: string, errorName: string): boolean => {
-    return this.form.controls[controlName].hasError(errorName);
-  };
-
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -30,6 +26,10 @@ export class DMXDeviceTypeDetailsComponent implements OnInit {
   ) {
   }
 
+  hasError = (controlName: string, errorName: string): boolean => {
+    return this.form.controls[controlName].hasError(errorName);
+  };
+
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -37,6 +37,16 @@ export class DMXDeviceTypeDetailsComponent implements OnInit {
     }
 
     this.setupForm();
+  }
+
+  save() {
+    this.dmxDeviceTypeService
+      .save(this.form.value)
+      .subscribe(() => this.router.navigateByUrl("/dmx-device-types"));
+  }
+
+  cancel() {
+    this.location.back();
   }
 
   private setupForm() {
@@ -83,15 +93,5 @@ export class DMXDeviceTypeDetailsComponent implements OnInit {
 
         this.form.patchValue(entity);
       });
-  }
-
-  save() {
-    this.dmxDeviceTypeService
-      .save(this.form.value)
-      .subscribe(() => this.router.navigateByUrl("/dmx-device-types"));
-  }
-
-  cancel() {
-    this.location.back();
   }
 }

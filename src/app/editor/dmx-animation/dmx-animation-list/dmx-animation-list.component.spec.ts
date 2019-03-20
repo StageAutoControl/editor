@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DMXAnimationListComponent } from './dmx-animation-list.component';
+import {DMXAnimationListComponent} from './dmx-animation-list.component';
 
 describe('DMXAnimationListComponent', () => {
   let component: DMXAnimationListComponent;
@@ -8,9 +8,9 @@ describe('DMXAnimationListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DMXAnimationListComponent ]
+      declarations: [DMXAnimationListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

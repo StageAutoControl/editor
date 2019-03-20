@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DMXPresetListComponent } from './dmx-preset-list.component';
+import {DMXPresetListComponent} from './dmx-preset-list.component';
 
 describe('DMXPresetListComponent', () => {
   let component: DMXPresetListComponent;
@@ -8,9 +8,9 @@ describe('DMXPresetListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DMXPresetListComponent ]
+      declarations: [DMXPresetListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

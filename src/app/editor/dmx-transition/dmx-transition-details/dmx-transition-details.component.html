@@ -5,9 +5,9 @@
     </mat-card-header>
 
     <mat-card-content>
-      <form [formGroup]="form" autocomplete="off" novalidate fxLayout="column" fxLayoutGap.gt-sm="10px">
+      <form [formGroup]="form" autocomplete="off" fxLayout="column" fxLayoutGap.gt-sm="10px" novalidate>
         <mat-form-field fxFlex>
-          <input matInput type="text" placeholder="Name" formControlName="name" id="name">
+          <input formControlName="name" id="name" matInput placeholder="Name" type="text">
           <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
         </mat-form-field>
 
@@ -20,21 +20,21 @@
           </mat-form-field>
 
           <mat-form-field fxFlex>
-            <input matInput type="number" min="0" max="255" placeholder="Length" formControlName="length" id="length">
+            <input formControlName="length" id="length" matInput max="255" min="0" placeholder="Length" type="number">
             <mat-error *ngIf="hasError('length', 'required')">Length is required</mat-error>
           </mat-form-field>
         </div>
 
-        <dmx-transition-params-form fxFlex [form]="form.controls.params" #paramsForm></dmx-transition-params-form>
+        <dmx-transition-params-form #paramsForm [form]="form.controls.params" fxFlex></dmx-transition-params-form>
       </form>
 
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button (click)="save()" [disabled]="!form.valid">
+      <button (click)="save()" [disabled]="!form.valid" mat-button>
         <mat-icon>save</mat-icon>
         Save
       </button>
-      <button mat-button (click)="cancel()">
+      <button (click)="cancel()" mat-button>
         <mat-icon>cancel</mat-icon>
         Cancel
       </button>

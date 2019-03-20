@@ -1,4 +1,4 @@
-import { DMXPreset } from './dmx-preset';
+import {DMXPreset} from './dmx-preset';
 
 describe('DMXPreset', () => {
   it('should create an instance', () => {

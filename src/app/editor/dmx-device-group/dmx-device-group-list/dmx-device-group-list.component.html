@@ -1,5 +1,5 @@
 <mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filter">
 </mat-form-field>
 
 <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
@@ -31,7 +31,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<mat-paginator [pageSizeOptions]="[10,50,100,200]" [pageSize]="100" ></mat-paginator>
+<mat-paginator [pageSizeOptions]="[10,50,100,200]" [pageSize]="100"></mat-paginator>
 <button mat-fab routerLink="/dmx-device-groups/new" class="floating">
   <mat-icon aria-label="Add a new DMXDeviceGroup">add</mat-icon>
 </button>

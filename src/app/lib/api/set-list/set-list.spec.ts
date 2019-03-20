@@ -1,4 +1,4 @@
-import { SetList } from './set-list';
+import {SetList} from './set-list';
 
 describe('SetList', () => {
   it('should create an instance', () => {

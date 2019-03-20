@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LedFormComponent } from './led-form.component';
+import {LedFormComponent} from './led-form.component';
 
 describe('LedFormComponent', () => {
   let component: LedFormComponent;
@@ -8,9 +8,9 @@ describe('LedFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LedFormComponent ]
+      declarations: [LedFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

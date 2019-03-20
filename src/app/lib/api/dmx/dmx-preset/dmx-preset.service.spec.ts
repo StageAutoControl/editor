@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { DMXPresetService } from './dmx-preset.service';
+import {DMXPresetService} from './dmx-preset.service';
 
 describe('DMXPresetService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

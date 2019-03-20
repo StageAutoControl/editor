@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DMXTransitionListComponent } from './dmx-transition-list.component';
+import {DMXTransitionListComponent} from './dmx-transition-list.component';
 
 describe('DMXTransitionListComponent', () => {
   let component: DMXTransitionListComponent;
@@ -8,9 +8,9 @@ describe('DMXTransitionListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DMXTransitionListComponent ]
+      declarations: [DMXTransitionListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

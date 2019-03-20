@@ -31,6 +31,14 @@ export class DMXDeviceGroupListComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
+    this.dataSource.sortingDataAccessor = (data: any, sortHeaderId: string): string => {
+      if (typeof data[sortHeaderId] === 'string') {
+        return data[sortHeaderId].toLocaleLowerCase();
+      }
+
+      return data[sortHeaderId];
+    };
     this.dmxDeviceGroups$ = this.dmxDeviceGroupService.entities$;
     this.dmxDeviceGroups$.subscribe((group: DMXDeviceGroup[]) => this.dataSource.data = group);
   }

@@ -1,29 +1,29 @@
-<div fxLayout="column" [formGroup]="form">
+<div [formGroup]="form" fxLayout="column">
   <div
     *ngFor="let frame of form.controls; let i = index"
-    fxLayoutAlign="center"
     fxLayout="row"
+    fxLayoutAlign="center"
     fxLayoutGap.gt-xs="10px"
   >
-    <mat-form-field fxFlex class="dmx-mat-input">
+    <mat-form-field class="short-input" fxFlex>
       <input
-        min="0"
-        max="255"
-        matInput
-        type="number"
-        placeholder="at"
         [formControl]="frame.controls.at"
-        id="at">
+        id="at"
+        matInput
+        max="255"
+        min="0"
+        placeholder="at"
+        type="number">
     </mat-form-field>
 
-    <dmx-params-form fxFlex="grow" [form]="frame.controls.params"></dmx-params-form>
+    <dmx-params-form [form]="frame.controls.params" fxFlex="grow"></dmx-params-form>
 
-    <button fxFlex mat-button (click)="removeFrame(i)">
+    <button (click)="removeFrame(i)" fxFlex mat-button>
       <mat-icon>delete</mat-icon>
     </button>
   </div>
   <div fxFlex>
-    <button mat-button (click)="addFrame()">
+    <button (click)="addFrame()" mat-button>
       <mat-icon>add</mat-icon>
       add Frame
     </button>

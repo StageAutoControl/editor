@@ -4,76 +4,76 @@
       <mat-card-title>Edit DMXDeviceType</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form [formGroup]="form" autocomplete="off" novalidate fxLayout="row wrap" fxLayoutGap.gt-sm="10px">
+      <form [formGroup]="form" autocomplete="off" fxLayout="row wrap" fxLayoutGap.gt-sm="10px" novalidate>
         <mat-form-field fxFlex>
-          <input matInput type="text" placeholder="Name" formControlName="name" id="name">
+          <input formControlName="name" id="name" matInput placeholder="Name" type="text">
           <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
         </mat-form-field>
 
         <div fxFlex="grow" fxLayout="row" fxLayoutGap="10px">
           <mat-form-field fxFlex>
             <input
-              matInput
-              type="number"
-              min="0"
-              placeholder="channel count"
               formControlName="channelCount"
               id="channelCount"
+              matInput
+              min="0"
+              placeholder="channel count"
+              type="number"
             >
             <mat-error *ngIf="hasError('channelCount', 'required')">ChannelCount is required</mat-error>
           </mat-form-field>
 
           <mat-form-field fxFlex>
             <input
-              matInput
-              type="number"
-              min="0"
-              placeholder="channels per LED"
-              formControlName="channelsPerLED" i
+              formControlName="channelsPerLED"
+              i
                 ="channelsPerLED"
+              matInput
+              min="0"
+              placeholder="channels per LED" type="number"
             >
             <mat-error *ngIf="hasError('channelsPerLED', 'required')">ChannelsPerLED is required</mat-error>
           </mat-form-field>
         </div>
 
         <div fxFlex fxLayout="row" fxLayoutGap="10px">
-          <mat-checkbox fxFlex formControlName="strobeEnabled">strobe enabled</mat-checkbox>
+          <mat-checkbox formControlName="strobeEnabled" fxFlex>strobe enabled</mat-checkbox>
           <mat-form-field fxFlex>
             <input
+              formControlName="strobeChannel"
+              id="strobeChannel"
               matInput
-              type="number"
               min="0"
               placeholder="strobe channel"
-              formControlName="strobeChannel"
-              id="strobeChannel">
+              type="number">
             <mat-error *ngIf="hasError('strobeChannel', 'required')">strobe channel is required</mat-error>
           </mat-form-field>
         </div>
 
         <div fxFlex fxLayout="row" fxLayoutGap="10px">
-          <mat-checkbox fxFlex formControlName="dimmerEnabled">dimmer enabled</mat-checkbox>
+          <mat-checkbox formControlName="dimmerEnabled" fxFlex>dimmer enabled</mat-checkbox>
           <mat-form-field fxFlex>
             <input
+              formControlName="dimmerChannel"
+              id="dimmerChannel"
               matInput
-              type="number"
               min="0"
               placeholder="dimmer channel"
-              formControlName="dimmerChannel"
-              id="dimmerChannel">
+              type="number">
             <mat-error *ngIf="hasError('dimmerChannel', 'required')">dimmer channel is required</mat-error>
           </mat-form-field>
         </div>
 
         <div fxFlex fxLayout="row" fxLayoutGap="10px">
-          <mat-checkbox fxFlex formControlName="modeEnabled">mode enabled</mat-checkbox>
+          <mat-checkbox formControlName="modeEnabled" fxFlex>mode enabled</mat-checkbox>
           <mat-form-field fxFlex>
             <input
+              formControlName="modeChannel"
+              id="modeChannel"
               matInput
-              type="number"
               min="0"
               placeholder="mode channel"
-              formControlName="modeChannel"
-              id="modeChannel">
+              type="number">
             <mat-error *ngIf="hasError('modeChannel', 'required')">mode channel is required</mat-error>
           </mat-form-field>
         </div>
@@ -81,7 +81,7 @@
         <div fxFlex="grow">
           <h3>Moving Head</h3>
           <div>
-            <mat-checkbox fxFlex="grow" formControlName="moving">is a moving head device</mat-checkbox>
+            <mat-checkbox formControlName="moving" fxFlex="grow">is a moving head device</mat-checkbox>
           </div>
         </div>
 
@@ -90,23 +90,23 @@
 
             <mat-form-field fxFlex>
               <input
+                formControlName="panChannel"
+                id="panChannel"
                 matInput
-                type="number"
                 min="0"
                 placeholder="pan channel"
-                formControlName="panChannel"
-                id="panChannel">
+                type="number">
               <mat-error *ngIf="hasError('panChannel', 'required')">pan channel is required</mat-error>
             </mat-form-field>
 
             <mat-form-field fxFlex>
               <input
+                formControlName="tiltChannel"
+                id="tiltChannel"
                 matInput
-                type="number"
                 min="0"
                 placeholder="tilt channel"
-                formControlName="tiltChannel"
-                id="tiltChannel">
+                type="number">
               <mat-error *ngIf="hasError('tiltChannel', 'required')">tilt channel is required</mat-error>
             </mat-form-field>
           </div>
@@ -116,16 +116,16 @@
           <h3>LEDs</h3>
         </div>
 
-        <dmx-led-list-form #ledList fxFlex="grow" [array]="form.controls.leds"></dmx-led-list-form>
+        <dmx-led-list-form #ledList [array]="form.controls.leds" fxFlex="grow"></dmx-led-list-form>
       </form>
 
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button (click)="save()" [disabled]="!form.valid">
+      <button (click)="save()" [disabled]="!form.valid" mat-button>
         <mat-icon>save</mat-icon>
         Save
       </button>
-      <button mat-button (click)="cancel()">
+      <button (click)="cancel()" mat-button>
         <mat-icon>cancel</mat-icon>
         Cancel
       </button>

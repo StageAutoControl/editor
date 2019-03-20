@@ -17,10 +17,6 @@ export class DMXAnimationDetailsComponent implements OnInit {
 
   @ViewChild('framesForm') framesForm: AnimationFramesFormComponent;
 
-  hasError = (controlName: string, errorName: string): boolean => {
-    return this.form.controls[controlName].hasError(errorName);
-  };
-
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -31,12 +27,26 @@ export class DMXAnimationDetailsComponent implements OnInit {
     this.setupForm();
   }
 
+  hasError = (controlName: string, errorName: string): boolean => {
+    return this.form.controls[controlName].hasError(errorName);
+  };
+
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.loading = true;
       this.load(id);
     }
+  }
+
+  save() {
+    this.dmxAnimationService
+      .save(this.form.value)
+      .subscribe(() => this.router.navigateByUrl("/dmx-animations"));
+  }
+
+  cancel() {
+    this.location.back();
   }
 
   private setupForm() {
@@ -57,15 +67,5 @@ export class DMXAnimationDetailsComponent implements OnInit {
         this.form.patchValue(entity);
         this.loading = false;
       });
-  }
-
-  save() {
-    this.dmxAnimationService
-      .save(this.form.value)
-      .subscribe(() => this.router.navigateByUrl("/dmx-animations"));
-  }
-
-  cancel() {
-    this.location.back();
   }
 }

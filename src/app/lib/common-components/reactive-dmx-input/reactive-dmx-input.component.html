@@ -1,14 +1,14 @@
 <mat-form-field fxFlex>
   <input
-    [disabled]="disabled"
-    min="0"
-    max="255"
-    matInput
     #input
-    type="number"
-    [placeholder]="placeholder"
-    [value]="value"
     (change)="emitChange(input.value)"
     (keyup)="emitChange(input.value)"
+    [disabled]="disabled"
+    [placeholder]="placeholder"
+    [value]="value"
+    matInput
+    max="255"
+    min="0"
+    type="number"
   >
 </mat-form-field>

@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { DMXSceneService } from './dmx-scene.service';
+import {DMXSceneService} from './dmx-scene.service';
 
 describe('DMXSceneService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

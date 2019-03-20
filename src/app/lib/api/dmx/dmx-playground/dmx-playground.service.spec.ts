@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { DMXPlaygroundService } from './dmx-playground.service';
+import {DMXPlaygroundService} from './dmx-playground.service';
 
 describe('DMXPlaygroundService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

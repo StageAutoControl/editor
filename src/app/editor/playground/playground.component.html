@@ -9,10 +9,10 @@
       </mat-form-field>
     </div>
   </div>
-  <div fxFlex *ngIf="!controllerError">
-    <app-device-channel-inputs *ngIf="device" [device]="device" (updateChannelValue)="update($event)"></app-device-channel-inputs>
+  <div *ngIf="!controllerError" fxFlex>
+    <app-device-channel-inputs (updateChannelValue)="update($event)" *ngIf="device" [device]="device"></app-device-channel-inputs>
   </div>
-  <div fxFlex *ngIf="controllerError">
+  <div *ngIf="controllerError" fxFlex>
     <mat-card class="error">{{ controllerError }}</mat-card>
   </div>
 </div>

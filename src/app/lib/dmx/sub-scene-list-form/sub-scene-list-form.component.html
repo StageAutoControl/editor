@@ -1,0 +1,27 @@
+<div [formGroup]="form" fxLayout="column">
+  <div
+    *ngFor="let subScene of form.controls; let i = index"
+    class="dotted-list-box"
+    fxLayout="row"
+    fxLayoutAlign="center"
+    fxLayoutGap.gt-xs="10px"
+  >
+    <div fxFlex="grow" fxLayout="row wrap">
+      <div fxFlex="grow" fxLayout="row wrap" fxLayoutGap.gt-xs="10px">
+        <app-numeric-list-input [form]="subScene.controls.at" fxFlex placeholder="at"></app-numeric-list-input>
+        <dmx-preset-select [disabled]="subScene.value.deviceParams.length > 0" [form]="subScene.controls.preset" fxFlex></dmx-preset-select>
+      </div>
+
+      <dmx-device-params-list-form [disabled]="subScene.value.preset" [form]="subScene.controls.deviceParams" fxFlex="grow"></dmx-device-params-list-form>
+    </div>
+    <button (click)="removeSubScene(i)" fxFlex mat-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div fxFlex>
+    <button (click)="addSubScene()" mat-button>
+      <mat-icon>add</mat-icon>
+      add SubScene
+    </button>
+  </div>
+</div>

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DeviceChannelInputsComponent } from './device-channel-inputs.component';
+import {DeviceChannelInputsComponent} from './device-channel-inputs.component';
 
 describe('DeviceChannelInputsComponent', () => {
   let component: DeviceChannelInputsComponent;
@@ -8,9 +8,9 @@ describe('DeviceChannelInputsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeviceChannelInputsComponent ]
+      declarations: [DeviceChannelInputsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

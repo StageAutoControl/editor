@@ -1,4 +1,4 @@
-import { DMXScene } from './dmx-scene';
+import {DMXScene} from './dmx-scene';
 
 describe('DMXScene', () => {
   it('should create an instance', () => {

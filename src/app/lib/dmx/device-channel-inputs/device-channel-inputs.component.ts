@@ -36,15 +36,15 @@ export class DeviceChannelInputsComponent implements OnInit, OnChanges {
       .subscribe(t => this.setupType(t));
   }
 
-  private setupType(t: DMXDeviceType) {
-    this.deviceType = t;
-  }
-
   emitChange(channel: number, value: number) {
     this.updateChannelValue.emit({
       universe: this.device.universe,
       channel: this.device.startChannel + channel,
       value: value,
     })
+  }
+
+  private setupType(t: DMXDeviceType) {
+    this.deviceType = t;
   }
 }

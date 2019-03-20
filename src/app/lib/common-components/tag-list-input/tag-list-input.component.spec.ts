@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TagListInputComponent } from './tag-list-input.component';
+import {TagListInputComponent} from './tag-list-input.component';
 
 describe('TagListInputComponent', () => {
   let component: TagListInputComponent;
@@ -8,9 +8,9 @@ describe('TagListInputComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TagListInputComponent ]
+      declarations: [TagListInputComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

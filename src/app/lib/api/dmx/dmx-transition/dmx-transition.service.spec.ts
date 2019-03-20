@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { DMXTransitionService } from './dmx-transition.service';
+import {DMXTransitionService} from './dmx-transition.service';
 
 describe('DMXTransitionService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

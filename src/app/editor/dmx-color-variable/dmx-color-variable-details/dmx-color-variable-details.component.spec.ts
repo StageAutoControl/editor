@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DMXColorVariableDetailsComponent } from './dmx-color-variable-details.component';
+import {DMXColorVariableDetailsComponent} from './dmx-color-variable-details.component';
 
 describe('DMXColorVariableDetailsComponent', () => {
   let component: DMXColorVariableDetailsComponent;
@@ -8,9 +8,9 @@ describe('DMXColorVariableDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DMXColorVariableDetailsComponent ]
+      declarations: [DMXColorVariableDetailsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

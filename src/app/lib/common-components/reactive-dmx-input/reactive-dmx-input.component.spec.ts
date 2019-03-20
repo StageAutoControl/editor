@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ReactiveDMXInputComponent } from './reactive-dmx-input.component';
+import {ReactiveDMXInputComponent} from './reactive-dmx-input.component';
 
 describe('ReactiveDMXInputComponent', () => {
   let component: ReactiveDMXInputComponent;
@@ -8,9 +8,9 @@ describe('ReactiveDMXInputComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReactiveDMXInputComponent ]
+      declarations: [ReactiveDMXInputComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

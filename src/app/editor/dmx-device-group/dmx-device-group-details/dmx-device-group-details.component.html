@@ -4,26 +4,28 @@
       <mat-card-title>Edit DMXDeviceGroup</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form [formGroup]="form" autocomplete="off" novalidate fxLayout="row wrap" fxLayoutGap.gt-sm="10px">
+      <form [formGroup]="form" autocomplete="off" fxLayout="row wrap" fxLayoutGap.gt-sm="10px" novalidate>
         <mat-form-field fxFlex>
-          <input matInput type="text" placeholder="Name" formControlName="name" id="name">
+          <input formControlName="name" id="name" matInput placeholder="Name" type="text">
           <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
         </mat-form-field>
 
         <dmx-device-selectors-form
           #devices
-          fxFlex="grow"
           [form]="form.controls.devices"
+          fxFlex="grow"
         ></dmx-device-selectors-form>
       </form>
 
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button (click)="save()" [disabled]="!form.valid">
-        <mat-icon>save</mat-icon> Save
+      <button (click)="save()" [disabled]="!form.valid" mat-button>
+        <mat-icon>save</mat-icon>
+        Save
       </button>
-      <button mat-button (click)="cancel()">
-        <mat-icon>cancel</mat-icon> Cancel
+      <button (click)="cancel()" mat-button>
+        <mat-icon>cancel</mat-icon>
+        Cancel
       </button>
     </mat-card-actions>
   </mat-card>

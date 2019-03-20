@@ -18,10 +18,6 @@ export class DMXDeviceGroupDetailsComponent implements OnInit {
   @ViewChild('devices')
   devicesForm: DeviceSelectorsFormComponent;
 
-  hasError = (controlName: string, errorName: string): boolean => {
-    return this.form.controls[controlName].hasError(errorName);
-  };
-
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -32,6 +28,10 @@ export class DMXDeviceGroupDetailsComponent implements OnInit {
   ) {
   }
 
+  hasError = (controlName: string, errorName: string): boolean => {
+    return this.form.controls[controlName].hasError(errorName);
+  };
+
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -39,6 +39,18 @@ export class DMXDeviceGroupDetailsComponent implements OnInit {
     }
 
     this.setupForm();
+  }
+
+  save() {
+    let entity = this.form.value;
+
+    this.dmxDeviceGroupService
+      .save(entity)
+      .subscribe(() => this.router.navigateByUrl("/dmx-device-groups"));
+  }
+
+  cancel() {
+    this.location.back();
   }
 
   private setupForm() {
@@ -58,17 +70,5 @@ export class DMXDeviceGroupDetailsComponent implements OnInit {
 
         this.form.patchValue(entity);
       });
-  }
-
-  save() {
-    let entity = this.form.value;
-
-    this.dmxDeviceGroupService
-      .save(entity)
-      .subscribe(() => this.router.navigateByUrl("/dmx-device-groups"));
-  }
-
-  cancel() {
-    this.location.back();
   }
 }

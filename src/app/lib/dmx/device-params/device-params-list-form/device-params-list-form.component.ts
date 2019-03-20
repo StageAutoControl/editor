@@ -9,6 +9,7 @@ import {deviceParamsGroup, paramsGroup} from "../../forms";
 })
 export class DeviceParamsListFormComponent {
   @Input() public form: FormArray;
+  @Input() disabled: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,7 +21,10 @@ export class DeviceParamsListFormComponent {
   }
 
   addDeviceParams(paramsLength: number = 0) {
-    console.log('params', paramsLength);
+    if (this.disabled) {
+      return;
+    }
+
     this.form.push(this.setupDeviceParams());
 
     const deviceParamsControl = this.form.at(this.form.length - 1) as FormGroup;

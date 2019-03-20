@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DMXDeviceTypeListComponent } from './dmx-device-type-list.component';
+import {DMXDeviceTypeListComponent} from './dmx-device-type-list.component';
 
 describe('DMXDeviceTypeListComponent', () => {
   let component: DMXDeviceTypeListComponent;
@@ -8,9 +8,9 @@ describe('DMXDeviceTypeListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DMXDeviceTypeListComponent ]
+      declarations: [DMXDeviceTypeListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -20,19 +20,19 @@ export class TransitionParamsFormComponent implements OnInit {
       .forEach(() => this.addParams());
   }
 
-  private setupParams() {
-    return this.formBuilder.group({
-      from: this.formBuilder.group(paramsGroup(this.formBuilder)),
-      to: this.formBuilder.group(paramsGroup(this.formBuilder)),
-    });
-  }
-
   addParams() {
     this.form.push(this.setupParams());
   }
 
   removeParams(i: number) {
     this.form.removeAt(i);
+  }
+
+  private setupParams() {
+    return this.formBuilder.group({
+      from: this.formBuilder.group(paramsGroup(this.formBuilder)),
+      to: this.formBuilder.group(paramsGroup(this.formBuilder)),
+    });
   }
 
 

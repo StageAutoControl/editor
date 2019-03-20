@@ -28,6 +28,14 @@ export class DMXPresetListComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
+    this.dataSource.sortingDataAccessor = (data: any, sortHeaderId: string): string => {
+      if (typeof data[sortHeaderId] === 'string') {
+        return data[sortHeaderId].toLocaleLowerCase();
+      }
+
+      return data[sortHeaderId];
+    };
     this.entities$ = this.dmxPresetService.entities$;
 
     this.entities$.subscribe((devices: DMXPreset[]) => {

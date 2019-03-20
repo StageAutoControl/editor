@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { SetListService } from './set-list.service';
+import {SetListService} from './set-list.service';
 
 describe('SetListService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

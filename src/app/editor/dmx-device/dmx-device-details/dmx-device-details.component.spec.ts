@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DMXDeviceDetailsComponent } from './dmx-device-details.component';
+import {DMXDeviceDetailsComponent} from './dmx-device-details.component';
 
 describe('DMXDeviceDetailsComponent', () => {
   let component: DMXDeviceDetailsComponent;
@@ -8,9 +8,9 @@ describe('DMXDeviceDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DMXDeviceDetailsComponent ]
+      declarations: [DMXDeviceDetailsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

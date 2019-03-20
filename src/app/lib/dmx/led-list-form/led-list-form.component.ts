@@ -21,16 +21,16 @@ export class LedListFormComponent implements OnInit {
       .forEach(() => this.addLED());
   }
 
-  private setupLED() {
-    return this.formBuilder.group(ledGroup(this.formBuilder));
-  }
-
   addLED() {
     this.form.push(this.setupLED());
   }
 
   removeLED(i: number) {
     this.form.removeAt(i);
+  }
+
+  private setupLED() {
+    return this.formBuilder.group(ledGroup(this.formBuilder));
   }
 
 

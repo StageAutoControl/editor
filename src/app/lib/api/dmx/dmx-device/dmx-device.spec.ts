@@ -1,4 +1,4 @@
-import { DMXDevice } from './dmx-device';
+import {DMXDevice} from './dmx-device';
 
 describe('DMXDevice', () => {
   it('should create an instance', () => {

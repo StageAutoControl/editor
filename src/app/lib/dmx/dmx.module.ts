@@ -20,6 +20,8 @@ import {TransitionSelectComponent} from "./select/transition-select/transition-s
 import {DeviceSelectComponent} from "./select/device-select/device-select.component";
 import {DeviceGroupSelectComponent} from "./select/device-group-select/device-group-select.component";
 import {DeviceParamsFormComponent} from './device-params/device-params-form/device-params-form.component';
+import {PresetSelectComponent} from "./select/preset-select/preset-select.component";
+import {SubSceneListFormComponent} from "./sub-scene-list-form/sub-scene-list-form.component";
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import {DeviceParamsFormComponent} from './device-params/device-params-form/devi
     DeviceSelectComponent,
     DeviceGroupSelectComponent,
     DeviceParamsFormComponent,
+    PresetSelectComponent,
+    SubSceneListFormComponent,
   ],
   imports: [
     CommonModule,
@@ -64,6 +68,9 @@ import {DeviceParamsFormComponent} from './device-params/device-params-form/devi
     TransitionSelectComponent,
     DeviceSelectComponent,
     DeviceGroupSelectComponent,
+    DeviceParamsFormComponent,
+    PresetSelectComponent,
+    SubSceneListFormComponent,
   ],
 })
 export class DMXModule {

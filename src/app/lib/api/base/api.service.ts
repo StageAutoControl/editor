@@ -25,7 +25,7 @@ export class ApiService {
     this.endpoint = config.getApiEndpoint();
   }
 
-  call(method: string, param: any): Observable<any> {
+  call(method: string, param?: any): Observable<any> {
     let req = this.toRequest(method, param);
 
     return this.httpClient
@@ -37,12 +37,12 @@ export class ApiService {
       .pipe(tap(null, err => this.alert(err)));
   }
 
-  private toRequest(method: string, param: any): Request {
+  private toRequest(method: string, param?: any): Request {
     return {
       id: this.getRequestID(),
       method,
       params: [
-        param,
+        param || null,
       ]
     }
   }

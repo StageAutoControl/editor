@@ -48,9 +48,9 @@
       <button mat-button (click)="deleteEntity(element)">
         <mat-icon aria-label="Delete">delete</mat-icon>
       </button>
+      <app-playback-button [song]="element"></app-playback-button>
     </td>
   </ng-container>
-
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

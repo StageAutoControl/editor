@@ -12,6 +12,7 @@ import {NumericListInputComponent} from './numeric-list-input/numeric-list-input
 import { SongFrameStateComponent } from './song-frame-state/song-frame-state.component';
 import { FrameInputComponent } from './frame-input/frame-input.component';
 import { TimingInputsComponent } from './timing-inputs/timing-inputs.component';
+import { PlaybackButtonComponent } from './playback-button/playback-button.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TimingInputsComponent } from './timing-inputs/timing-inputs.component';
     SongFrameStateComponent,
     FrameInputComponent,
     TimingInputsComponent,
+    PlaybackButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,7 @@ import { TimingInputsComponent } from './timing-inputs/timing-inputs.component';
     SongFrameStateComponent,
     FrameInputComponent,
     TimingInputsComponent,
+    PlaybackButtonComponent,
   ],
 })
 export class CommonComponentsModule {

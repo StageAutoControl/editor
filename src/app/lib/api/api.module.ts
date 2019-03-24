@@ -14,6 +14,7 @@ import {DMXTransitionService} from "./dmx/dmx-transition/dmx-transition.service"
 import {DMXColorVariableService} from "./dmx/dmx-color-variable/dmx-color-variable.service";
 import {SetListService} from "./set-list/set-list.service";
 import {SongService} from "./song/song.service";
+import {PlaybackService} from "./playback/playback.service";
 
 @NgModule({
   declarations: [],
@@ -41,6 +42,7 @@ export class ApiModule {
         DMXTransitionService,
         SetListService,
         SongService,
+        PlaybackService,
       ],
     };
   }

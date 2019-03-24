@@ -9,7 +9,7 @@ interface Identifiable {
 export class DataStoreService<T extends Identifiable> {
   public entities$: Observable<T[]>;
 
-  private _entities$: BehaviorSubject<T[]>;
+  private behavior: BehaviorSubject<T[]>;
   private dataStore: {
     entities: T[],
   };
@@ -19,8 +19,8 @@ export class DataStoreService<T extends Identifiable> {
     protected api: ApiService,
   ) {
     this.dataStore = {entities: []};
-    this._entities$ = <BehaviorSubject<T[]>>new BehaviorSubject([]);
-    this.entities$ = this._entities$.asObservable();
+    this.behavior = <BehaviorSubject<T[]>>new BehaviorSubject([]);
+    this.entities$ = this.behavior.asObservable();
     this.getAll();
   }
 
@@ -29,7 +29,7 @@ export class DataStoreService<T extends Identifiable> {
       .call(`${this.entityName}.GetAll`, null)
       .subscribe((data: T[]) => {
         this.dataStore.entities = data;
-        this._entities$.next(Object.assign({}, this.dataStore).entities);
+        this.behavior.next(Object.assign({}, this.dataStore).entities);
       });
   }
 
@@ -49,7 +49,7 @@ export class DataStoreService<T extends Identifiable> {
           this.dataStore.entities.push(data);
         }
 
-        this._entities$.next(Object.assign({}, this.dataStore).entities);
+        this.behavior.next(Object.assign({}, this.dataStore).entities);
 
         return data;
       }));
@@ -64,7 +64,7 @@ export class DataStoreService<T extends Identifiable> {
       .call(`${this.entityName}.Create`, entity)
       .pipe(map((data: T) => {
         this.dataStore.entities.push(data);
-        this._entities$.next(Object.assign({}, this.dataStore).entities);
+        this.behavior.next(Object.assign({}, this.dataStore).entities);
 
         return data;
       }));
@@ -80,7 +80,7 @@ export class DataStoreService<T extends Identifiable> {
           }
         });
 
-        this._entities$.next(Object.assign({}, this.dataStore).entities);
+        this.behavior.next(Object.assign({}, this.dataStore).entities);
 
         return entity;
       }));
@@ -96,7 +96,7 @@ export class DataStoreService<T extends Identifiable> {
           }
         });
 
-        this._entities$.next(Object.assign({}, this.dataStore).entities);
+        this.behavior.next(Object.assign({}, this.dataStore).entities);
       }));
   }
 }

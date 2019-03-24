@@ -1,0 +1,26 @@
+<div [formGroup]="form" class="full-width" fxLayout="row" fxLayoutGap.gt-sm="10px">
+  <mat-form-field class="short-input" fxFlex>
+    <input
+      [formControl]="form.controls.at"
+      id="at"
+      matInput
+      max="255"
+      min="0"
+      placeholder="at"
+      type="number">
+  </mat-form-field>
+
+  <mat-form-field class="short-input" fxFlex>
+    <input
+      [formControl]="form.controls.speed"
+      id="speed"
+      matInput
+      max="512"
+      min="0"
+      placeholder="speed"
+      type="number">
+  </mat-form-field>
+
+  <app-timing-inputs fxFlex [form]="form"></app-timing-inputs>
+
+</div>

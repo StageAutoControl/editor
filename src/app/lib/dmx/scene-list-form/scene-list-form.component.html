@@ -1,0 +1,36 @@
+<div [formGroup]="form" fxLayout="column">
+  <div
+    *ngFor="let scene of form.controls; let i = index"
+    class="dotted-list-box"
+    fxLayout="row"
+    fxLayoutAlign="center"
+    fxLayoutGap.gt-xs="10px"
+  >
+    <div fxFlex="grow" fxLayout="row" fxLayoutGap.gt-sm="10px">
+      <app-frame-input [song]="form.parent.value" [form]="scene.controls.at"></app-frame-input>
+
+      <dmx-scene-select fxFlex="grow" [form]="scene.controls.id"></dmx-scene-select>
+
+      <mat-form-field fxFlex>
+        <input
+          [formControl]="scene.controls.repeat"
+          id="repeat"
+          matInput
+          max="255"
+          min="0"
+          placeholder="repeat"
+          type="number">
+      </mat-form-field>
+    </div>
+
+    <button (click)="removeScene(i)" fxFlex mat-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div fxFlex>
+    <button (click)="addScene()" mat-button>
+      <mat-icon>add</mat-icon>
+      add Scene
+    </button>
+  </div>
+</div>

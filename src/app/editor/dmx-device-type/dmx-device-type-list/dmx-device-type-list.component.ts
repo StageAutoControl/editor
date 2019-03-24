@@ -5,6 +5,7 @@ import {ConfirmationDialogComponent} from "../../../lib/common-components/confir
 import {filter, switchMap} from "rxjs/operators";
 import {DMXDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type";
 import {DMXDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
+import {SortingDataAccessor} from "../../sorting-data-accessor";
 
 @Component({
   selector: 'app-dmx-device-type-list',
@@ -29,13 +30,7 @@ export class DMXDeviceTypeListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
-    this.dataSource.sortingDataAccessor = (data: any, sortHeaderId: string): string => {
-      if (typeof data[sortHeaderId] === 'string') {
-        return data[sortHeaderId].toLocaleLowerCase();
-      }
-
-      return data[sortHeaderId];
-    };
+    this.dataSource.sortingDataAccessor = SortingDataAccessor;
     this.dmxDevices$ = this.dmxDeviceTypeService.entities$;
 
     this.dmxDevices$.subscribe((devices: DMXDeviceType[]) => {

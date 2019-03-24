@@ -10,18 +10,8 @@
           <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
         </mat-form-field>
 
-        <div fxFlex="50" fxLayout="row" fxLayoutAlign=" center" fxLayoutGap.gt-xs="10px">
-          <mat-form-field class="short-input" fxFlex="grow">
-            <input formControlName="noteCount" id="noteCount" matInput max="128" min="0" placeholder="Note Count" type="number">
-            <mat-error *ngIf="hasError('noteCount', 'required')">Note Count is required</mat-error>
-          </mat-form-field>
-          <div fxFlex>/</div>
-          <mat-form-field class="short-input" fxFlex="grow">
-            <input formControlName="noteValue" id="noteValue" matInput max="128" min="0" placeholder="Note Value" type="number">
-            <mat-error *ngIf="hasError('noteValue', 'required')">Note Value is required</mat-error>
-          </mat-form-field>
-          <div fxFlex>th</div>
-        </div>
+        <app-timing-inputs fxFlex="50" [form]="form"></app-timing-inputs>
+
         <div fxFlex="grow">
           <dmx-sub-scene-list-form #subScenesListForm [form]="form.controls.subScenes"></dmx-sub-scene-list-form>
         </div>

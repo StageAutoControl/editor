@@ -5,6 +5,7 @@ import {ConfirmationDialogComponent} from "../../../lib/common-components/confir
 import {filter, switchMap} from "rxjs/operators";
 import {DMXTransition} from "../../../lib/api/dmx/dmx-transition/dmx-transition";
 import {DMXTransitionService} from "../../../lib/api/dmx/dmx-transition/dmx-transition.service";
+import {SortingDataAccessor} from "../../sorting-data-accessor";
 
 @Component({
   selector: 'app-dmx-transition-list',
@@ -29,13 +30,7 @@ export class DMXTransitionListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
-    this.dataSource.sortingDataAccessor = (data: any, sortHeaderId: string): string => {
-      if (typeof data[sortHeaderId] === 'string') {
-        return data[sortHeaderId].toLocaleLowerCase();
-      }
-
-      return data[sortHeaderId];
-    };
+    this.dataSource.sortingDataAccessor = SortingDataAccessor;
     this.entities$ = this.dmxAnimationService.entities$;
 
     this.entities$.subscribe((entities: DMXTransition[]) => {

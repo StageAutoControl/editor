@@ -10,6 +10,7 @@ import {DMXAnimationModule} from "./dmx-animation/dmx-animation.module";
 import {DMXTransitionModule} from "./dmx-transition/dmx-transition.module";
 import {DMXPresetModule} from "./dmx-preset/dmx-preset.module";
 import {DMXSceneModule} from "./dmx-scene/dmx-scene.module";
+import {SongModule} from "./song/song.module";
 
 @NgModule({
   declarations: [],
@@ -25,6 +26,7 @@ import {DMXSceneModule} from "./dmx-scene/dmx-scene.module";
     DMXTransitionModule,
     DMXPresetModule,
     DMXSceneModule,
+    SongModule,
   ],
   exports: []
 })

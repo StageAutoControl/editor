@@ -1,0 +1,44 @@
+<div [formGroup]="form" class="full-width" fxLayout="row" fxLayoutGap.gt-sm="10px">
+  <mat-form-field class="short-input" fxFlex>
+    <input
+      [formControl]="form.controls.at"
+      id="at"
+      matInput
+      max="255"
+      min="0"
+      placeholder="at"
+      type="number">
+  </mat-form-field>
+
+  <mat-form-field class="short-input" fxFlex>
+    <input
+      [formControl]="form.controls.status"
+      id="status"
+      matInput
+      max="255"
+      min="0"
+      placeholder="status"
+      type="number">
+  </mat-form-field>
+  <mat-form-field class="short-input" fxFlex>
+    <input
+      [formControl]="form.controls.data1"
+      id="data1"
+      matInput
+      max="255"
+      min="0"
+      placeholder="data1"
+      type="number">
+  </mat-form-field>
+  <mat-form-field class="short-input" fxFlex>
+    <input
+      [formControl]="form.controls.data2"
+      id="data2"
+      matInput
+      max="255"
+      min="0"
+      placeholder="data2"
+      type="number">
+  </mat-form-field>
+
+</div>

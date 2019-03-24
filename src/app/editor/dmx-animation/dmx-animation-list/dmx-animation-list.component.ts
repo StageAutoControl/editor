@@ -5,6 +5,7 @@ import {ConfirmationDialogComponent} from "../../../lib/common-components/confir
 import {filter, switchMap} from "rxjs/operators";
 import {DMXAnimation} from "../../../lib/api/dmx/dmx-animation/dmx-animation";
 import {DMXAnimationService} from "../../../lib/api/dmx/dmx-animation/dmx-animation.service";
+import {SortingDataAccessor} from "../../sorting-data-accessor";
 
 @Component({
   selector: 'app-dmx-animation-list',
@@ -29,13 +30,7 @@ export class DMXAnimationListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
-    this.dataSource.sortingDataAccessor = (data: any, sortHeaderId: string): string => {
-      if (typeof data[sortHeaderId] === 'string') {
-        return data[sortHeaderId].toLocaleLowerCase();
-      }
-
-      return data[sortHeaderId];
-    };
+    this.dataSource.sortingDataAccessor = SortingDataAccessor;
     this.entities$ = this.dmxAnimationService.entities$;
 
     this.entities$.subscribe((entities: DMXAnimation[]) => {

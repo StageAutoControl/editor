@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {MatAutocompleteModule, MatButtonModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDialogModule, MatDividerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule, MatSortModule, MatTableModule, MatToolbarModule} from '@angular/material';
+import {MatAutocompleteModule, MatButtonModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule, MatSortModule, MatTableModule, MatToolbarModule} from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -22,6 +22,7 @@ import {MatAutocompleteModule, MatButtonModule, MatCardModule, MatCheckboxModule
     MatSelectModule,
     MatChipsModule,
     MatAutocompleteModule,
+    MatExpansionModule,
   ],
   exports: [
     MatCardModule,
@@ -42,6 +43,7 @@ import {MatAutocompleteModule, MatButtonModule, MatCardModule, MatCheckboxModule
     MatSelectModule,
     MatChipsModule,
     MatAutocompleteModule,
+    MatExpansionModule,
   ],
 })
 export class MatDesignModule {

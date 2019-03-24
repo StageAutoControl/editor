@@ -1,0 +1,20 @@
+<div fxLayout="column">
+  <div
+    *ngFor="let cmd of form.controls; let i = index"
+    fxLayout="row"
+    fxLayoutAlign="center"
+    fxLayoutGap.gt-xs="10px"
+  >
+    <midi-command-form [form]="cmd" fxFlex="grow"></midi-command-form>
+
+    <button (click)="removeCommand(i)" fxFlex mat-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div fxFlex>
+    <button (click)="addCommand()" mat-button>
+      <mat-icon>add</mat-icon>
+      add Command
+    </button>
+  </div>
+</div>

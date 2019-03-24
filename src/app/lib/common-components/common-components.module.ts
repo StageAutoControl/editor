@@ -9,6 +9,9 @@ import {ReactiveDMXInputComponent} from './reactive-dmx-input/reactive-dmx-input
 import {ColorComponent} from './color/color.component';
 import {HiddenDirective} from "./hidden.directive";
 import {NumericListInputComponent} from './numeric-list-input/numeric-list-input.component';
+import { SongFrameStateComponent } from './song-frame-state/song-frame-state.component';
+import { FrameInputComponent } from './frame-input/frame-input.component';
+import { TimingInputsComponent } from './timing-inputs/timing-inputs.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import {NumericListInputComponent} from './numeric-list-input/numeric-list-input
     ColorComponent,
     HiddenDirective,
     NumericListInputComponent,
+    SongFrameStateComponent,
+    FrameInputComponent,
+    TimingInputsComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +39,9 @@ import {NumericListInputComponent} from './numeric-list-input/numeric-list-input
     ColorComponent,
     HiddenDirective,
     NumericListInputComponent,
+    SongFrameStateComponent,
+    FrameInputComponent,
+    TimingInputsComponent,
   ],
 })
 export class CommonComponentsModule {

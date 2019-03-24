@@ -1,0 +1,20 @@
+<div fxLayout="column">
+  <div
+    *ngFor="let cmd of form.controls; let i = index"
+    fxLayout="row"
+    fxLayoutAlign="center"
+    fxLayoutGap.gt-xs="10px"
+  >
+    <song-bar-change-form [form]="cmd" fxFlex="grow"></song-bar-change-form>
+
+    <button (click)="removeBarChange(i)" fxFlex mat-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div fxFlex>
+    <button (click)="addBarChange()" mat-button>
+      <mat-icon>add</mat-icon>
+      add BarChange
+    </button>
+  </div>
+</div>

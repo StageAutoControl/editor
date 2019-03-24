@@ -53,8 +53,8 @@ export class DMXSceneDetailsComponent implements OnInit {
     this.form = this.formBuilder.group({
       id: this.formBuilder.control(''),
       name: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]),
-      noteCount: this.formBuilder.control(4),
-      noteValue: this.formBuilder.control(4),
+      noteCount: this.formBuilder.control(4, [Validators.required]),
+      noteValue: this.formBuilder.control(4, [Validators.required]),
       subScenes: this.formBuilder.array([]),
     });
   }

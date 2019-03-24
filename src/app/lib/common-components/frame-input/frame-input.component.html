@@ -1,0 +1,16 @@
+<div fxLayout="row">
+  <div fxFlex>
+    <app-song-frame-state [song]="song" [frame]="form.value"></app-song-frame-state>
+  </div>
+
+  <mat-form-field fxFlex>
+    <input
+      [formControl]="form"
+      id="at"
+      matInput
+      max="255"
+      min="0"
+      placeholder="at"
+      type="number">
+  </mat-form-field>
+</div>

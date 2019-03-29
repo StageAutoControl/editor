@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Request, Response} from "./rpc";
 import {map, tap} from "rxjs/internal/operators";
 import {MatSnackBar} from "@angular/material";
@@ -59,11 +59,20 @@ export class ApiService {
     return res.result;
   }
 
-  private logError(req: Request, err: Error) {
+  private logError(req: Request, err: HttpErrorResponse) {
     console.error(`Error calling method ${req.method}: ${err}`);
   }
 
-  private alert(err: Error) {
+  private alert(err: HttpErrorResponse) {
+    if (err.status === 0) {
+      this.snackBar
+        .open('Connection to controller lost. Please reload the page!', 'reload', {})
+        .onAction()
+        .subscribe(() => location.reload());
+
+      return;
+    }
+
     this.snackBar.open(err.message, 'close', {
       duration: 5000,
     })

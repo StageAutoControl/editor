@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {Song} from "../../api/song/song";
 
@@ -7,19 +7,9 @@ import {Song} from "../../api/song/song";
   templateUrl: './frame-input.component.html',
   styleUrls: ['./frame-input.component.less']
 })
-export class FrameInputComponent implements OnInit, OnChanges {
+export class FrameInputComponent {
 
   @Input() form: FormControl;
   @Input() song: Song;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.song);
-  }
 
 }

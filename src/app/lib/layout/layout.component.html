@@ -1,5 +1,5 @@
 <mat-drawer-container LayoutAlign="start" autosize class="content-wrapper">
-  <mat-drawer #drawer [opened]="drawerOpen" class="sidenav" fxFlexOrder="1" mode="side">
+  <mat-drawer [opened]="navOpen" class="sidenav" mode="side" position="start">
     <mat-nav-list>
       <h3 matSubheader>DMX Devices</h3>
       <a mat-list-item routerLink="/dmx-device-types" routerLinkActive="active">Device Types</a>
@@ -21,10 +21,14 @@
     </mat-nav-list>
   </mat-drawer>
 
-  <div class="content" fxFlexAlign="top" fxFlexOrder="2">
-    <mat-toolbar class="navbar">
-      <button (click)="toggleDrawer()" mat-button type="button">
+  <div class="content">
+    <mat-toolbar class="navbar" fxLayout="row">
+      <button (click)="toggleNav()" mat-button type="button" fxFlex="initial">
         <mat-icon>menu</mat-icon>
+      </button>
+      <div fxFlex=""></div>
+      <button (click)="toggleProcessInfos()" mat-button type="button" fxFlex="initial">
+        <mat-icon>storage</mat-icon> Processes
       </button>
     </mat-toolbar>
 
@@ -33,4 +37,7 @@
     </div>
   </div>
 
+  <mat-drawer [opened]="processInfosOpen" class="process-infos" mode="side" position="end">
+    <app-playback-infos></app-playback-infos>
+  </mat-drawer>
 </mat-drawer-container>

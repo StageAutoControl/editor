@@ -22,8 +22,7 @@ export class PlaybackButtonComponent implements OnInit {
 
   ngOnInit() {
     this.status$ = this.playbackService.status$;
-
-    this.status$.subscribe(s => console.log(s));
+    // this.status$.subscribe(s => console.log(s));
   }
 
   start() {

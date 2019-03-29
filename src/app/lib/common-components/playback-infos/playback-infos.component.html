@@ -1,0 +1,26 @@
+<mat-card *ngIf="status$ | async as status">
+  <mat-card-title> Playback
+    <mat-icon *ngIf="status.process.running" matTooltip="Process is running">check</mat-icon>
+    <mat-icon *ngIf="!status.process.running" matTooltip="Process is NOT running" color="accent">close</mat-icon>
+  </mat-card-title>
+  <mat-card-content fxLayout="column">
+    <div>
+      Type: <b>{{ getActiveType(status) }}</b>&nbsp;<span *ngIf="getActiveType(status) !== 'None'">(ID: {{ getActiveID(status) }})</span>
+      <br>
+      Started At: {{ status.process.startedAt }}
+      <br>
+      Stopped At: {{ status.process.stoppedAt }}
+    </div>
+    <div class="dotted-list-box" *ngIf="status.process.error">
+      <mat-icon>error</mat-icon>
+      Error: {{ status.process.error }}
+    </div>
+
+    <div class="dotted-list-box" *ngIf="status.process.logs" fxLayout="column" fxLayoutGap.gt-xs="2px">
+      <div *ngFor="let log of status.process.logs">
+        {{ log.time }} | <b>{{ log.level }}</b>: {{ log.message }}
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>

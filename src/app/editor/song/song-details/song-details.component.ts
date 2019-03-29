@@ -5,7 +5,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {SongService} from "../../../lib/api/song/song.service";
 import {Song} from "../../../lib/api/song/song";
 import {SceneListFormComponent} from "../../../lib/dmx/scene-list-form/scene-list-form.component";
-import {DeviceParamsListFormComponent} from "../../../lib/dmx/device-params/device-params-list-form/device-params-list-form.component";
 import {CommandListFormComponent} from "../../../lib/midi/command-list-form/command-list-form.component";
 import {BarChangeListFormComponent} from "../../../lib/song/bar-change-list-form/bar-change-list-form.component";
 
@@ -19,7 +18,6 @@ export class SongDetailsComponent implements OnInit {
 
   @ViewChild('scenesForm') scenesForm: SceneListFormComponent;
   @ViewChild('barChangesForm') barChangesForm: BarChangeListFormComponent;
-  @ViewChild('dmxDeviceParamsForm') dmxDeviceParamsForm:DeviceParamsListFormComponent;
   @ViewChild('midiCommandsForm') midiCommandsForm: CommandListFormComponent;
 
   constructor(
@@ -71,7 +69,6 @@ export class SongDetailsComponent implements OnInit {
       .subscribe((entity: Song) => {
         Array.from(entity.dmxScenes).forEach(() => this.scenesForm.addScene());
         Array.from(entity.barChanges).forEach(() => this.barChangesForm.addBarChange());
-        Array.from(entity.dmxDeviceParams).forEach(d => this.dmxDeviceParamsForm.addDeviceParams(d.params.length));
         Array.from(entity.midiCommands).forEach(() => this.midiCommandsForm.addCommand());
 
         this.form.patchValue(entity);

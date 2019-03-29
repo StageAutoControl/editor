@@ -15,7 +15,7 @@ import {SortingDataAccessor} from "../../sorting-data-accessor";
 })
 export class SongListComponent implements OnInit {
   entities$: Observable<Song[]>;
-  displayedColumns: string[] = ['name', 'barChanges', 'dmxScenes', 'midiCommands', 'dmxDeviceParams', 'actions'];
+  displayedColumns: string[] = ['name', 'barChanges', 'dmxScenes', 'midiCommands', 'actions'];
   dataSource = new MatTableDataSource<Song>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

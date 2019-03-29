@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Params, PlaybackStatus} from "./playback";
 import {ApiService} from "../base/api.service";
-import {BehaviorSubject, Observable, Subscription, timer} from "rxjs";
-import {switchMap} from "rxjs/operators";
+import {BehaviorSubject, EMPTY, Observable, Subscription, timer} from "rxjs";
+import {catchError, switchMap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root',
@@ -23,13 +23,13 @@ export class PlaybackService {
   start(params: Params) {
     this.api
       .call("Playback.Start", params)
-      .subscribe();
+      .subscribe(data => this.behavior.next(data))
   }
 
   stop() {
     this.api
       .call("Playback.Stop")
-      .subscribe();
+      .subscribe(data => this.behavior.next(data))
   }
 
   private status(): Observable<PlaybackStatus> {
@@ -37,7 +37,7 @@ export class PlaybackService {
   }
 
   private statusLoop() {
-    this.sub = timer(0, 10000)
+    this.sub = timer(0, 5000)
       .pipe(
         switchMap(() => this.status())
       )

@@ -20,11 +20,6 @@
     <td mat-cell *matCellDef="let element">{{element.dmxScenes.length}}</td>
   </ng-container>
 
-  <ng-container matColumnDef="dmxDeviceParams">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>DMX DeviceParams</th>
-    <td mat-cell *matCellDef="let element">{{element.dmxDeviceParams.length}}</td>
-  </ng-container>
-
   <ng-container matColumnDef="barChanges">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Timing / BarChanges</th>
     <td mat-cell *matCellDef="let element">
@@ -56,6 +51,7 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 <mat-paginator [pageSizeOptions]="[10,50,100,200]" [pageSize]="100"></mat-paginator>
+
 <button mat-fab routerLink="/songs/new" class="floating">
   <mat-icon aria-label="Add a new Song">add</mat-icon>
 </button>

@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {LayoutComponent} from './layout.component';
 import {CoreModule} from "../core/core.module";
 import {MatDesignModule} from "../mat-design/mat-design.module";
+import {CommonComponentsModule} from "../common-components/common-components.module";
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import {MatDesignModule} from "../mat-design/mat-design.module";
     CommonModule,
     CoreModule,
     MatDesignModule,
+    CommonComponentsModule,
   ],
   exports: [
     LayoutComponent,

@@ -33,7 +33,6 @@ export class PlaygroundComponent implements OnInit {
   }
 
   update(value: DMXChannelValue) {
-    console.log(value);
     this.dmxPlaygroundService.setDMXChannelValue(value).subscribe();
   }
 }

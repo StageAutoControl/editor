@@ -6,8 +6,8 @@ import {Component} from '@angular/core';
   styleUrls: ['./layout.component.less']
 })
 export class LayoutComponent {
-  navOpen = !!localStorage.getItem('navbarOpen') || true;
-  processInfosOpen = !!localStorage.getItem('processInfosOpen') || false;
+  navOpen = localStorage.getItem('navbarOpen') === 'true' || true;
+  processInfosOpen = localStorage.getItem('processInfosOpen') === 'true' || false;
 
   toggleNav() {
     this.navOpen = !this.navOpen;

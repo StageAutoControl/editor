@@ -1,9 +1,7 @@
-<div fxLayout="row">
-  <div fxFlex>
-    <app-song-frame-state [song]="song" [frame]="form.value"></app-song-frame-state>
-  </div>
+<div fxLayout="row" fxLayoutGap.gt-sm="5px">
+  <app-song-frame-state fxFlex [song]="song" [frame]="form.value" class="short-input"></app-song-frame-state>
 
-  <mat-form-field fxFlex>
+  <mat-form-field fxFlex class="short-input-fixed">
     <input
       [formControl]="form"
       id="at"

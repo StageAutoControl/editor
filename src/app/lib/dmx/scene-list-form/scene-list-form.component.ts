@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {FormArray, FormBuilder} from "@angular/forms";
 
 @Component({
@@ -6,7 +6,7 @@ import {FormArray, FormBuilder} from "@angular/forms";
   templateUrl: './scene-list-form.component.html',
   styleUrls: ['./scene-list-form.component.less']
 })
-export class SceneListFormComponent {
+export class SceneListFormComponent implements OnChanges {
   @Input() public form: FormArray;
 
   constructor(
@@ -14,8 +14,17 @@ export class SceneListFormComponent {
   ) {
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.form.valueChanges.subscribe(() => this.sort());
+  }
+
   addScene() {
     this.form.push(this.setupScene());
+    setTimeout(() => this.sort());
+  }
+
+  private sort() {
+    this.form.controls = this.form.controls.sort((a, b) => (0 + a.value.at) - (0 + b.value.at));
   }
 
   removeScene(i: number) {

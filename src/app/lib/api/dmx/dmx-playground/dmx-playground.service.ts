@@ -14,4 +14,12 @@ export class DMXPlaygroundService {
   setDMXChannelValue(value: DMXChannelValue): Observable<null> {
     return this.api.call("DMXPlayground.SetChannelValue", value);
   }
+
+  playPreset(id: string): Observable<null> {
+    return this.api.call("DMXPlayground.PlayPreset", { id });
+  }
+
+  playScene(id: string) : Observable<null> {
+    return this.api.call("DMXPlayground.PlayScene", { id });
+  }
 }

@@ -14,6 +14,7 @@ import { FrameInputComponent } from './frame-input/frame-input.component';
 import { TimingInputsComponent } from './timing-inputs/timing-inputs.component';
 import { PlaybackButtonComponent } from './playback-button/playback-button.component';
 import { PlaybackInfosComponent } from './playback-infos/playback-infos.component';
+import {PlaySingleButtonComponent} from "./play-single-button/play-single-button.component";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PlaybackInfosComponent } from './playback-infos/playback-infos.componen
     FrameInputComponent,
     TimingInputsComponent,
     PlaybackButtonComponent,
+    PlaySingleButtonComponent,
     PlaybackInfosComponent,
   ],
   imports: [
@@ -47,6 +49,7 @@ import { PlaybackInfosComponent } from './playback-infos/playback-infos.componen
     FrameInputComponent,
     TimingInputsComponent,
     PlaybackButtonComponent,
+    PlaySingleButtonComponent,
     PlaybackInfosComponent,
   ],
 })

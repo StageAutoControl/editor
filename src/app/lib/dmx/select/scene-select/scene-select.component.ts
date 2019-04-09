@@ -20,6 +20,7 @@ export class SceneSelectComponent {
     private dmxSceneService: DMXSceneService
   ) {
     this.scenes$ = dmxSceneService.entities$;
+    // .pipe(map(sortByName))
   }
 
 }

@@ -11,6 +11,7 @@ import {DMXTransitionModule} from "./dmx-transition/dmx-transition.module";
 import {DMXPresetModule} from "./dmx-preset/dmx-preset.module";
 import {DMXSceneModule} from "./dmx-scene/dmx-scene.module";
 import {SongModule} from "./song/song.module";
+import {LiveModule} from "./live/live.module";
 
 @NgModule({
   declarations: [],
@@ -20,13 +21,14 @@ import {SongModule} from "./song/song.module";
     DMXDeviceTypeModule,
     DMXDeviceGroupModule,
     EditorRoutingModule,
-    PlaygroundModule,
     DMXColorVariableModule,
     DMXAnimationModule,
     DMXTransitionModule,
     DMXPresetModule,
     DMXSceneModule,
     SongModule,
+    PlaygroundModule,
+    LiveModule,
   ],
   exports: []
 })

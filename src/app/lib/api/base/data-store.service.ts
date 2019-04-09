@@ -1,9 +1,11 @@
 import {ApiService} from "./api.service";
 import {BehaviorSubject, Observable} from "rxjs";
 import {map} from "rxjs/internal/operators";
+import {sortByName} from "./sort";
 
 interface Identifiable {
   id?: string;
+  name: string;
 }
 
 export class DataStoreService<T extends Identifiable> {
@@ -13,6 +15,8 @@ export class DataStoreService<T extends Identifiable> {
   private dataStore: {
     entities: T[],
   };
+
+  protected sortableByName = true;
 
   constructor(
     private entityName: string,
@@ -27,6 +31,7 @@ export class DataStoreService<T extends Identifiable> {
   getAll() {
     this.api
       .call(`${this.entityName}.GetAll`, null)
+      .pipe(map((data: T[]) => this.sortableByName ? data.sort(sortByName) : data))
       .subscribe((data: T[]) => {
         this.dataStore.entities = data;
         this.behavior.next(Object.assign({}, this.dataStore).entities);

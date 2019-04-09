@@ -1,0 +1,13 @@
+<!--
+<div fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="10px grid">
+  <div fxFlex *ngFor="let scene of scenes$ | async" (click)="playScene(scene)">
+    <div class="scene">{{ scene.name }}</div>
+  </div>
+</div>
+-->
+
+<mat-grid-list cols="8" gutterSize="10px"rowHeight="1:1">
+  <mat-grid-tile class="scene" *ngFor="let scene of scenes$ | async" (click)="playScene(scene)">
+    {{ scene.name }}
+  </mat-grid-tile>
+</mat-grid-list>

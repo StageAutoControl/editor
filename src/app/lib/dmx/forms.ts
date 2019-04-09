@@ -1,7 +1,7 @@
 import {FormBuilder, Validators} from "@angular/forms";
 
 export const paramsGroup = (fb: FormBuilder) => ({
-  led: fb.control(0),
+  led: fb.control(null),
   $color: fb.control(null),
   red: fb.control(null),
   green: fb.control(null),

@@ -3,7 +3,8 @@ import {FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
 import {DMXColorVariable} from "../../api/dmx/dmx-color-variable/dmx-color-variable";
 import {DMXColorVariableService} from "../../api/dmx/dmx-color-variable/dmx-color-variable.service";
-import {MutuallyExcludiveInputs} from "../../common/MutuallyExcludiveInputs";
+import {MutuallyExclusiveInputs} from "../../common/MutuallyExclusiveInputs";
+import {handleFeatureToggleChange} from "../../common/feature-toggle";
 
 @Component({
   selector: 'dmx-params-form',
@@ -15,7 +16,7 @@ export class ParamsFormComponent implements OnChanges {
 
   colorVars$: Observable<DMXColorVariable[]>;
 
-  private watcher: MutuallyExcludiveInputs[] = [];
+  private watcher: MutuallyExclusiveInputs[] = [];
 
   constructor(private dmxColorVariableService: DMXColorVariableService) {
     this.colorVars$ = dmxColorVariableService.entities$;
@@ -27,10 +28,12 @@ export class ParamsFormComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.watcher = [
-      new MutuallyExcludiveInputs(this.form.controls.$color, this.form.controls.red),
-      new MutuallyExcludiveInputs(this.form.controls.$color, this.form.controls.blue),
-      new MutuallyExcludiveInputs(this.form.controls.$color, this.form.controls.green),
-      new MutuallyExcludiveInputs(this.form.controls.$color, this.form.controls.white),
+      new MutuallyExclusiveInputs(this.form.controls.$color, this.form.controls.red),
+      new MutuallyExclusiveInputs(this.form.controls.$color, this.form.controls.blue),
+      new MutuallyExclusiveInputs(this.form.controls.$color, this.form.controls.green),
+      new MutuallyExclusiveInputs(this.form.controls.$color, this.form.controls.white),
     ];
+
+    this.form.controls['ledAll'].valueChanges.subscribe(handleFeatureToggleChange(this.form.controls['led'], true));
   }
 }

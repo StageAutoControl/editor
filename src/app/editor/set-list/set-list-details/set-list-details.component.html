@@ -1,22 +1,21 @@
 <section fxLayout="row" fxLayoutAlign="center center">
   <mat-card *ngIf="form.value else loading">
     <mat-card-header>
-      <mat-card-title>Edit DMXPreset</mat-card-title>
+      <mat-card-title>Edit SetList</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form [formGroup]="form" autocomplete="off" fxLayout="row wrap" fxLayoutGap.gt-sm="10px" novalidate>
-        <mat-form-field fxFlex>
+      <form [formGroup]="form" autocomplete="off" fxLayout="column" novalidate>
+        <mat-form-field>
           <input formControlName="name" id="name" matInput placeholder="Name" type="text">
           <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
         </mat-form-field>
 
-        <div fxFlex="grow">
-          <dmx-device-params-list-form #deviceParamsListForm [form]="form.controls.deviceParams"></dmx-device-params-list-form>
-        </div>
+        <dmx-song-list-form #songsForm [form]="form.controls.songs"></dmx-song-list-form>
       </form>
+
     </mat-card-content>
     <mat-card-actions>
-      <button type="submit" (click)="save()" [disabled]="!form.valid" mat-button>
+      <button (click)="save()" [disabled]="!form.valid" mat-button>
         <mat-icon>save</mat-icon>
         Save
       </button>

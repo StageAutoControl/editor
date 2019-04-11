@@ -1,6 +1,6 @@
 import {AbstractControl} from "@angular/forms";
 
-export class MutuallyExcludiveInputs {
+export class MutuallyExclusiveInputs {
   private controls: AbstractControl[];
 
   constructor(...controls: AbstractControl[]) {

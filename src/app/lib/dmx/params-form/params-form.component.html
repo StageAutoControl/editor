@@ -1,14 +1,17 @@
 <div [formGroup]="form">
   <div fxLayout="row" fxLayoutGap.gt-xs="10px">
-    <mat-form-field class="short-input" fxFlex>
-      <input
-        formControlName="led"
-        matInput
-        max="255"
-        min="0"
-        placeholder="led"
-        type="number">
-    </mat-form-field>
+    <div fxFlex class="led-input-group" fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-checkbox formControlName="ledAll" fxFlex>All</mat-checkbox>
+      <mat-form-field class="short-input" fxFlex>
+        <input
+          formControlName="led"
+          matInput
+          max="255"
+          min="0"
+          placeholder="led"
+          type="number">
+      </mat-form-field>
+    </div>
 
     <mat-form-field fxFlex fxGrow="2">
       <mat-select formControlName="$color" placeholder="Color Variable">

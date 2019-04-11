@@ -15,54 +15,30 @@
     <td mat-cell *matCellDef="let element">{{element.name}}</td>
   </ng-container>
 
-  <ng-container matColumnDef="typeId">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
-    <td mat-cell *matCellDef="let element">
-      <a
-        *ngIf="getDMXDeviceType(element.typeId); let t"
-        routerLink="/dmx-device-types/{{ t.id }}"
-        mat-button
-      >{{t.name}}</a>
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="universe">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Universe</th>
-    <td mat-cell *matCellDef="let element">{{element.universe}}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="startChannel">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Start Channel</th>
-    <td mat-cell *matCellDef="let element">{{element.startChannel}}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="tags">
-    <th mat-header-cell *matHeaderCellDef>Tags</th>
-    <td mat-cell *matCellDef="let element">
-      <mat-chip-list>
-        <mat-chip *ngFor="let t of element.tags.sort()">{{ t }}</mat-chip>
-      </mat-chip-list>
-    </td>
+  <ng-container matColumnDef="songs">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Songs</th>
+    <td mat-cell *matCellDef="let element">{{element.songs.length}}</td>
   </ng-container>
 
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let element">
-      <button mat-button routerLink="/dmx-devices/{{ element.id }}">
+      <button mat-button routerLink="/set-lists/{{ element.id }}">
         <mat-icon aria-label="Edit/View Details">edit</mat-icon>
       </button>
       <button mat-button (click)="deleteEntity(element)">
         <mat-icon aria-label="Delete">delete</mat-icon>
       </button>
+      <app-playback-button [setList]="element"></app-playback-button>
     </td>
   </ng-container>
-
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 <mat-paginator [pageSizeOptions]="[10,50,100,200]" [pageSize]="100"></mat-paginator>
-<button mat-fab routerLink="/dmx-devices/new" class="floating">
-  <mat-icon aria-label="Add a new DMXDevice">add</mat-icon>
+
+<button mat-fab routerLink="/set-lists/new" class="floating">
+  <mat-icon aria-label="Add a new SetList">add</mat-icon>
 </button>
 

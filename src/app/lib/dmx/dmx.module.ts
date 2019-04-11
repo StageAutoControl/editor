@@ -24,6 +24,8 @@ import {PresetSelectComponent} from "./select/preset-select/preset-select.compon
 import {SubSceneListFormComponent} from "./sub-scene-list-form/sub-scene-list-form.component";
 import {SceneSelectComponent} from "./select/scene-select/scene-select.component";
 import {SceneListFormComponent} from "./scene-list-form/scene-list-form.component";
+import {SongListFormComponent} from "./song-list-form/song-list-form.component";
+import {SongSelectComponent} from "./select/song-select/song-select.component";
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import {SceneListFormComponent} from "./scene-list-form/scene-list-form.componen
     SubSceneListFormComponent,
     SceneListFormComponent,
     SceneSelectComponent,
+    SongSelectComponent,
+    SongListFormComponent,
   ],
   imports: [
     CommonModule,
@@ -77,6 +81,8 @@ import {SceneListFormComponent} from "./scene-list-form/scene-list-form.componen
     SubSceneListFormComponent,
     SceneListFormComponent,
     SceneSelectComponent,
+    SongSelectComponent,
+    SongListFormComponent,
   ],
 })
 export class DMXModule {

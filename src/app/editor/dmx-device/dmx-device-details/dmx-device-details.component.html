@@ -10,15 +10,13 @@
           <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
         </mat-form-field>
 
-        <div fxFlex="grow">
-          <mat-form-field>
-            <mat-select formControlName="typeId" id="typeId" placeholder="device type">
-              <mat-option *ngFor="let t of dmxDeviceTypes$ | async" [value]="t.id">
-                {{t.name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
+        <mat-form-field fxFlex="grow">
+          <mat-select formControlName="typeId" id="typeId" placeholder="device type">
+            <mat-option *ngFor="let t of dmxDeviceTypes$ | async" [value]="t.id">
+              {{t.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
         <div fxFlex="grow" fxLayout="row" fxLayoutGap="10px">
           <mat-form-field fxFlex>

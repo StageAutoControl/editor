@@ -1,0 +1,23 @@
+<div [formGroup]="form" fxLayout="column">
+  <div
+    *ngFor="let song of form.controls; let i = index"
+    class="dotted-list-box"
+    fxLayout="row"
+    fxLayoutAlign="center"
+    fxLayoutGap.gt-xs="10px"
+  >
+    <div fxFlex="grow" fxLayout="row" fxLayoutGap.gt-sm="10px">
+      <dmx-song-select fxFlex="grow" [form]="song.controls.id"></dmx-song-select>
+    </div>
+
+    <button (click)="removeSong(i)" fxFlex mat-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div fxFlex>
+    <button (click)="addSong()" mat-button>
+      <mat-icon>add</mat-icon>
+      add Song
+    </button>
+  </div>
+</div>

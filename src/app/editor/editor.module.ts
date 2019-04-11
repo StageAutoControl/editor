@@ -12,6 +12,7 @@ import {DMXPresetModule} from "./dmx-preset/dmx-preset.module";
 import {DMXSceneModule} from "./dmx-scene/dmx-scene.module";
 import {SongModule} from "./song/song.module";
 import {LiveModule} from "./live/live.module";
+import {SetListModule} from "./set-list/set-list.module";
 
 @NgModule({
   declarations: [],
@@ -27,6 +28,7 @@ import {LiveModule} from "./live/live.module";
     DMXPresetModule,
     DMXSceneModule,
     SongModule,
+    SetListModule,
     PlaygroundModule,
     LiveModule,
   ],

@@ -1,17 +1,19 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Song} from "../../api/song/song";
 import {PlaybackService} from "../../api/playback/playback.service";
 import {Observable} from "rxjs";
 import {PlaybackStatus} from "../../api/playback/playback";
+import {SetList} from "../../api/set-list/set-list";
 
 @Component({
   selector: 'app-playback-button',
   templateUrl: './playback-button.component.html',
   styleUrls: ['./playback-button.component.less']
 })
-export class PlaybackButtonComponent implements OnInit {
+export class PlaybackButtonComponent implements OnInit, OnChanges {
 
   @Input() song: Song;
+  @Input() setList: SetList;
 
   status$: Observable<PlaybackStatus>;
 
@@ -22,11 +24,20 @@ export class PlaybackButtonComponent implements OnInit {
 
   ngOnInit() {
     this.status$ = this.playbackService.status$;
-    // this.status$.subscribe(s => console.log(s));
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.song && this.setList) {
+      throw new Error('Can only play a song or a set list, not both');
+    }
   }
 
   start() {
-    this.playbackService.start({song: {id: this.song.id}});
+    if (this.song) {
+      this.playbackService.start({song: {id: this.song.id}});
+    } else if (this.setList) {
+      this.playbackService.start({setList: {id: this.song.id}});
+    }
   }
 
   stop() {
@@ -34,6 +45,10 @@ export class PlaybackButtonComponent implements OnInit {
   }
 
   isOwn(s: PlaybackStatus): boolean {
-    return s.params.song.id === this.song.id;
+    if (this.song) {
+      return s.params.song.id === this.song.id;
+    } else {
+      return s.params.setList.id === this.setList.id;
+    }
   }
 }

@@ -5,6 +5,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/form
 import {LedListFormComponent} from "../../../lib/dmx/led-list-form/led-list-form.component";
 import {DMXDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
 import {DMXDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type";
+import {handleFeatureToggleChange} from "../../../lib/common/feature-toggle";
 
 @Component({
   selector: 'app-dmx-device-type-details',
@@ -67,21 +68,11 @@ export class DMXDeviceTypeDetailsComponent implements OnInit {
       leds: this.formBuilder.array([]),
     });
 
-    this.form.controls['strobeEnabled'].valueChanges.subscribe(this.handleFeatureToggleChange(this.form.controls['strobeChannel']));
-    this.form.controls['dimmerEnabled'].valueChanges.subscribe(this.handleFeatureToggleChange(this.form.controls['dimmerChannel']));
-    this.form.controls['modeEnabled'].valueChanges.subscribe(this.handleFeatureToggleChange(this.form.controls['modeChannel']));
-    this.form.controls['moving'].valueChanges.subscribe(this.handleFeatureToggleChange(this.form.controls['tiltChannel']));
-    this.form.controls['moving'].valueChanges.subscribe(this.handleFeatureToggleChange(this.form.controls['panChannel']));
-  }
-
-  private handleFeatureToggleChange(channelControl: AbstractControl) {
-    return (enabled: boolean) => {
-      if (!enabled && channelControl.enabled) {
-        channelControl.disable();
-      } else if (enabled && !channelControl.enabled) {
-        channelControl.enable();
-      }
-    }
+    this.form.controls['strobeEnabled'].valueChanges.subscribe(handleFeatureToggleChange(this.form.controls['strobeChannel']));
+    this.form.controls['dimmerEnabled'].valueChanges.subscribe(handleFeatureToggleChange(this.form.controls['dimmerChannel']));
+    this.form.controls['modeEnabled'].valueChanges.subscribe(handleFeatureToggleChange(this.form.controls['modeChannel']));
+    this.form.controls['moving'].valueChanges.subscribe(handleFeatureToggleChange(this.form.controls['tiltChannel']));
+    this.form.controls['moving'].valueChanges.subscribe(handleFeatureToggleChange(this.form.controls['panChannel']));
   }
 
   private load(id: string): void {

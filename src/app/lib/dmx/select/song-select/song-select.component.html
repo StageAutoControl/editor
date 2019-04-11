@@ -1,0 +1,8 @@
+<div class="full-width">
+  <mat-form-field class="full-width">
+    <mat-select [disableControl]="disabled" [formControl]="form" placeholder="Song">
+      <mat-option *ngIf="allowEmpty"></mat-option>
+      <mat-option *ngFor="let song of songs$ | async" [value]="song.id">{{ song.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

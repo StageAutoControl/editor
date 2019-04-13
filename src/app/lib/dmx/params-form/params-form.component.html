@@ -101,11 +101,41 @@
 
     <mat-form-field class="short-input" fxFlex>
       <input
+        formControlName="panFine"
+        matInput
+        max="255"
+        min="0"
+        placeholder="pan fine"
+        type="number">
+    </mat-form-field>
+
+    <mat-form-field class="short-input" fxFlex>
+      <input
         formControlName="tilt"
         matInput
         max="255"
         min="0"
         placeholder="tilt"
+        type="number">
+    </mat-form-field>
+
+    <mat-form-field class="short-input" fxFlex>
+      <input
+        formControlName="tiltFine"
+        matInput
+        max="255"
+        min="0"
+        placeholder="tilt fine"
+        type="number">
+    </mat-form-field>
+
+    <mat-form-field class="short-input" fxFlex>
+      <input
+        formControlName="panTiltSpeed"
+        matInput
+        max="255"
+        min="0"
+        placeholder="p/t speed"
         type="number">
     </mat-form-field>
 

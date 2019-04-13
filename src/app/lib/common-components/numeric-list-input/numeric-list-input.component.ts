@@ -23,8 +23,6 @@ export class NumericListInputComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.input.valueChanges
       .subscribe((v: number[]) => {
-        console.log("value", v, typeof v);
-
         if (!Array.isArray(v)) {
           v = (v as any)
             .split(',')

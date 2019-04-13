@@ -11,8 +11,11 @@ export const paramsGroup = (fb: FormBuilder) => ({
   dimmer: fb.control(null),
   mode: fb.control(null),
   strobe: fb.control(null),
-  tilt: fb.control(null),
   pan: fb.control(null),
+  panFine: fb.control(null),
+  tilt: fb.control(null),
+  tiltFine: fb.control(null),
+  panTiltSpeed: fb.control(null),
 });
 
 export const ledGroup = (fb: FormBuilder) => ({

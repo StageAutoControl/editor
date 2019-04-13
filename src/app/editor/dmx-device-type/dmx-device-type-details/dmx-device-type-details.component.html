@@ -101,6 +101,17 @@
 
             <mat-form-field fxFlex>
               <input
+                formControlName="panFineChannel"
+                id="panFineChannel"
+                matInput
+                min="0"
+                placeholder="pan fine channel"
+                type="number">
+              <mat-error *ngIf="hasError('panFineChannel', 'required')">pan fine channel is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input
                 formControlName="tiltChannel"
                 id="tiltChannel"
                 matInput
@@ -108,6 +119,28 @@
                 placeholder="tilt channel"
                 type="number">
               <mat-error *ngIf="hasError('tiltChannel', 'required')">tilt channel is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input
+                formControlName="tiltFineChannel"
+                id="tiltFineChannel"
+                matInput
+                min="0"
+                placeholder="tilt fine channel"
+                type="number">
+              <mat-error *ngIf="hasError('tiltFineChannel', 'required')">tilt fine channel is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input
+                formControlName="panTiltSpeedChannel"
+                id="panTiltSpeedChannel"
+                matInput
+                min="0"
+                placeholder="pan & tilt speed channel"
+                type="number">
+              <mat-error *ngIf="hasError('panTiltSpeedChannel', 'required')">pan & tilt speed channel is required</mat-error>
             </mat-form-field>
           </div>
         </div>

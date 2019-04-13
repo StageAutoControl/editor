@@ -3,5 +3,5 @@ export interface Nameable {
 }
 
 export const sortByName = function(a:Nameable, b:Nameable) {
-  return a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase());
+  return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
 };

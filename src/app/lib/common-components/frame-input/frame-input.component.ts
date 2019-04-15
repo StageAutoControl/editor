@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {Song} from "../../api/song/song";
 
@@ -12,4 +12,13 @@ export class FrameInputComponent {
   @Input() form: FormControl;
   @Input() song: Song;
 
+  @Output() changed: EventEmitter<void> = new EventEmitter<void>();
+
+  add(value: number) {
+    this.form.setValue(this.form.value + value);
+  }
+
+  protected emitChanged() {
+    this.changed.emit();
+  }
 }

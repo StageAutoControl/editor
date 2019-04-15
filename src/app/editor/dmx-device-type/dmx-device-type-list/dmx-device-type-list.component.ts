@@ -6,6 +6,7 @@ import {filter, switchMap} from "rxjs/operators";
 import {DMXDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type";
 import {DMXDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
+import {newName} from "../../names";
 
 @Component({
   selector: 'app-dmx-device-type-list',
@@ -40,6 +41,10 @@ export class DMXDeviceTypeListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  copyEntity(entity: DMXDeviceType) {
+    this.dmxDeviceTypeService.create(Object.assign({}, entity, {id: null, name: newName(entity.name)})).subscribe();
   }
 
   deleteEntity(entity: DMXDeviceType) {

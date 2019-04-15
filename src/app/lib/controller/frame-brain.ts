@@ -2,6 +2,7 @@ import {BarChange, Song} from "../api/song/song";
 
 
 export interface FrameState {
+  subFrame: number;
   frame: number;
   bar: number;
   note: number;
@@ -24,6 +25,7 @@ export class FrameBrain {
     const bc = this.streamLineBarChanges;
     const h = this.highestFrame;
     const fs: FrameState = {
+      subFrame: 0,
       frame: 0,
       bar: 0,
       note: 0,
@@ -33,6 +35,7 @@ export class FrameBrain {
 
     for (let i = 0; i <= h; i++) {
       fs.frame = i;
+      fs.subFrame = fs.frame % 64;
 
       if (i in bc) {
         fs.lastBC = bc[i];

@@ -1,4 +1,16 @@
 <div fxLayout="row" fxLayoutGap.gt-sm="5px">
+
+  <div fxflex fxLayout="column">
+    <button fxFlex class="add-button" (click)="add(-16)">-16</button>
+    <button fxFlex class="add-button" (click)="add(-32)">-32</button>
+    <button fxFlex class="add-button" (click)="add(-64)">-64</button>
+  </div>
+  <div fxflex fxLayout="column">
+    <button fxFlex class="add-button" (click)="add(16)">+16</button>
+    <button fxFlex class="add-button" (click)="add(32)">+32</button>
+    <button fxFlex class="add-button" (click)="add(64)">+64</button>
+  </div>
+
   <app-song-frame-state fxFlex [song]="song" [frame]="form.value" class="short-input"></app-song-frame-state>
 
   <mat-form-field fxFlex class="short-input-fixed">
@@ -6,9 +18,10 @@
       [formControl]="form"
       id="at"
       matInput
-      max="255"
       min="0"
       placeholder="at"
-      type="number">
+      type="number"
+      (blur)="emitChanged()"
+    >
   </mat-form-field>
 </div>

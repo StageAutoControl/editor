@@ -6,6 +6,7 @@ import {DMXPresetService} from "../../../lib/api/dmx/dmx-preset/dmx-preset.servi
 import {ConfirmationDialogComponent} from "../../../lib/common-components/confirmation-dialog/confirmation-dialog.component";
 import {filter, switchMap} from "rxjs/operators";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
+import {newName} from "../../names";
 
 @Component({
   selector: 'app-dmx-preset-list',
@@ -40,6 +41,10 @@ export class DMXPresetListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  copyEntity(entity: DMXPreset) {
+    this.dmxPresetService.create(Object.assign({}, entity, {id: null, name: newName(entity.name)})).subscribe();
   }
 
   deleteEntity(entity: DMXPreset) {

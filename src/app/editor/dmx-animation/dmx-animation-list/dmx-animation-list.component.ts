@@ -6,6 +6,7 @@ import {filter, switchMap} from "rxjs/operators";
 import {DMXAnimation} from "../../../lib/api/dmx/dmx-animation/dmx-animation";
 import {DMXAnimationService} from "../../../lib/api/dmx/dmx-animation/dmx-animation.service";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
+import {newName} from "../../names";
 
 @Component({
   selector: 'app-dmx-animation-list',
@@ -40,6 +41,10 @@ export class DMXAnimationListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  copyEntity(entity: DMXAnimation) {
+    this.dmxAnimationService.create(Object.assign({}, entity, {id: null, name: newName(entity.name)})).subscribe();
   }
 
   deleteEntity(entity: DMXAnimation) {

@@ -23,10 +23,13 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let element">
-      <button mat-button routerLink="/set-lists/{{ element.id }}">
+      <button mat-button routerLink="/set-lists/{{ element.id }}" matTooltip="Edit">
         <mat-icon aria-label="Edit/View Details">edit</mat-icon>
       </button>
-      <button mat-button (click)="deleteEntity(element)">
+      <button mat-button (click)="copyEntity(element)" matTooltip="Duplicate">
+        <mat-icon aria-label="Copy">exit_to_app</mat-icon>
+      </button>
+      <button mat-button (click)="deleteEntity(element)" matTooltip="Delete">
         <mat-icon aria-label="Delete">delete</mat-icon>
       </button>
       <app-playback-button [setList]="element"></app-playback-button>

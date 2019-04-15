@@ -1,7 +1,7 @@
 <div class="full-width">
   <mat-form-field class="full-width">
     <mat-select [disableControl]="disabled" [formControl]="form" placeholder="Animation">
-      <mat-option *ngIf="allowEmpty"></mat-option>
+      <mat-option *ngIf="allowEmpty" [value]="null"></mat-option>
       <mat-option *ngFor="let animation of animations$ | async" [value]="animation.id">{{ animation.name }}</mat-option>
     </mat-select>
   </mat-form-field>

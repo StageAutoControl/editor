@@ -6,6 +6,7 @@ import {DMXSceneService} from "../../../lib/api/dmx/dmx-scene/dmx-scene.service"
 import {ConfirmationDialogComponent} from "../../../lib/common-components/confirmation-dialog/confirmation-dialog.component";
 import {filter, switchMap} from "rxjs/operators";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
+import {newName} from "../../names";
 
 @Component({
   selector: 'app-dmx-scene-list',
@@ -40,6 +41,10 @@ export class DMXSceneListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  copyEntity(entity: DMXScene) {
+    this.dmxSceneService.create(Object.assign({}, entity, {id: null, name: newName(entity.name)})).subscribe();
   }
 
   deleteEntity(entity: DMXScene) {

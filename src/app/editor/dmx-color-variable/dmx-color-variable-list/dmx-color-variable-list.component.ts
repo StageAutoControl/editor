@@ -6,6 +6,7 @@ import {filter, switchMap} from "rxjs/operators";
 import {DMXColorVariable} from "../../../lib/api/dmx/dmx-color-variable/dmx-color-variable";
 import {DMXColorVariableService} from "../../../lib/api/dmx/dmx-color-variable/dmx-color-variable.service";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
+import {newName} from "../../names";
 
 @Component({
   selector: 'app-dmx-color-variable-list',
@@ -40,6 +41,10 @@ export class DMXColorVariableListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  copyEntity(entity: DMXColorVariable) {
+    this.dmxColorVariableService.create(Object.assign({}, entity, {id: null, name: newName(entity.name)})).subscribe();
   }
 
   deleteEntity(entity: DMXColorVariable) {

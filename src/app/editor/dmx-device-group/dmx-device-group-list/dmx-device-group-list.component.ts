@@ -7,6 +7,7 @@ import {DMXDeviceGroup} from "../../../lib/api/dmx/dmx-device-group/dmx-device-g
 import {DMXDeviceGroupService} from "../../../lib/api/dmx/dmx-device-group/dmx-device-group.service";
 import {DMXDeviceService} from "../../../lib/api/dmx/dmx-device/dmx-device.service";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
+import {newName} from "../../names";
 
 @Component({
   selector: 'app-dmx-device-group-list',
@@ -40,6 +41,10 @@ export class DMXDeviceGroupListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  copyEntity(entity: DMXDeviceGroup) {
+    this.dmxDeviceGroupService.create(Object.assign({}, entity, {id: null, name: newName(entity.name)})).subscribe();
   }
 
   deleteEntity(entity: DMXDeviceGroup) {

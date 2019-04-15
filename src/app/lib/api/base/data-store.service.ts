@@ -28,12 +28,18 @@ export class DataStoreService<T extends Identifiable> {
     this.getAll();
   }
 
+  sort() {
+    if (this.sortableByName) {
+      this.dataStore.entities = this.dataStore.entities.sort(sortByName);
+    }
+  }
+
   getAll() {
     this.api
       .call(`${this.entityName}.GetAll`, null)
-      .pipe(map((data: T[]) => this.sortableByName ? data.sort(sortByName) : data))
       .subscribe((data: T[]) => {
         this.dataStore.entities = data;
+        this.sort();
         this.behavior.next(Object.assign({}, this.dataStore).entities);
       });
   }
@@ -52,6 +58,7 @@ export class DataStoreService<T extends Identifiable> {
 
         if (notFound) {
           this.dataStore.entities.push(data);
+          this.sort();
         }
 
         this.behavior.next(Object.assign({}, this.dataStore).entities);
@@ -69,6 +76,7 @@ export class DataStoreService<T extends Identifiable> {
       .call(`${this.entityName}.Create`, entity)
       .pipe(map((data: T) => {
         this.dataStore.entities.push(data);
+        this.sort();
         this.behavior.next(Object.assign({}, this.dataStore).entities);
 
         return data;
@@ -82,6 +90,7 @@ export class DataStoreService<T extends Identifiable> {
         this.dataStore.entities.forEach((t, i) => {
           if (t.id === data.id) {
             this.dataStore.entities[i] = data;
+            this.sort();
           }
         });
 

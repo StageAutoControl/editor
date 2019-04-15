@@ -7,6 +7,7 @@ import {ConfirmationDialogComponent} from "../../../lib/common-components/confir
 import {filter, switchMap} from "rxjs/operators";
 import {DMXSceneService} from "../../../lib/api/dmx/dmx-scene/dmx-scene.service";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
+import {newName} from "../../names";
 
 @Component({
   selector: 'app-set-list-list',
@@ -15,7 +16,7 @@ import {SortingDataAccessor} from "../../sorting-data-accessor";
 })
 export class SetListListComponent implements OnInit {
   entities$: Observable<SetList[]>;
-  displayedColumns: string[] = ['name', 'songs',  'actions'];
+  displayedColumns: string[] = ['name', 'songs', 'actions'];
   dataSource = new MatTableDataSource<SetList>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -42,6 +43,10 @@ export class SetListListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  copyEntity(entity: SetList) {
+    this.setListService.create(Object.assign({}, entity, {id: null, name: newName(entity.name)})).subscribe();
   }
 
   deleteEntity(entity: SetList) {

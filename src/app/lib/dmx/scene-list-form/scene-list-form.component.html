@@ -5,9 +5,10 @@
     fxLayout="row"
     fxLayoutAlign="center"
     fxLayoutGap.gt-xs="10px"
+    fxFlexOrder="{{ scene.value.at }}"
   >
     <div fxFlex="grow" fxLayout="row" fxLayoutGap.gt-sm="10px">
-      <app-frame-input fxFlex [song]="form.parent.value" [form]="scene.controls.at"></app-frame-input>
+      <app-frame-input fxFlex [song]="form.parent.value" [form]="scene.controls.at" (changed)="sort()"></app-frame-input>
 
       <dmx-scene-select fxFlex="grow" [form]="scene.controls.id"></dmx-scene-select>
 
@@ -27,7 +28,7 @@
       <mat-icon>delete</mat-icon>
     </button>
   </div>
-  <div fxFlex>
+  <div fxFlexOrder="{{ maxAt + 1000 }}">
     <button (click)="addScene()" mat-button>
       <mat-icon>add</mat-icon>
       add Scene

@@ -6,6 +6,7 @@ import {filter, switchMap} from "rxjs/operators";
 import {DMXTransition} from "../../../lib/api/dmx/dmx-transition/dmx-transition";
 import {DMXTransitionService} from "../../../lib/api/dmx/dmx-transition/dmx-transition.service";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
+import {newName} from "../../names";
 
 @Component({
   selector: 'app-dmx-transition-list',
@@ -21,7 +22,7 @@ export class DMXTransitionListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private dmxAnimationService: DMXTransitionService,
+    private dmxTransitionService: DMXTransitionService,
     private dialog: MatDialog,
   ) {
   }
@@ -31,7 +32,7 @@ export class DMXTransitionListComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
     this.dataSource.sortingDataAccessor = SortingDataAccessor;
-    this.entities$ = this.dmxAnimationService.entities$;
+    this.entities$ = this.dmxTransitionService.entities$;
 
     this.entities$.subscribe((entities: DMXTransition[]) => {
       this.dataSource.data = entities as DMXTransition[];
@@ -40,6 +41,10 @@ export class DMXTransitionListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  copyEntity(entity: DMXTransition) {
+    this.dmxTransitionService.create(Object.assign({}, entity, {id: null, name: newName(entity.name)})).subscribe();
   }
 
   deleteEntity(entity: DMXTransition) {
@@ -51,7 +56,7 @@ export class DMXTransitionListComponent implements OnInit {
       })
       .afterClosed()
       .pipe(filter((result: boolean) => result))
-      .pipe(switchMap(() => this.dmxAnimationService.remove(entity.id)))
+      .pipe(switchMap(() => this.dmxTransitionService.remove(entity.id)))
       .subscribe()
   }
 }

@@ -1,7 +1,7 @@
 <div class="full-width">
   <mat-form-field class="full-width">
     <mat-select [disableControl]="disabled" [formControl]="form" placeholder="Preset">
-      <mat-option *ngIf="allowEmpty"></mat-option>
+      <mat-option *ngIf="allowEmpty" [value]="null"></mat-option>
       <mat-option *ngFor="let preset of presets$ | async" [value]="preset.id">{{ preset.name }}</mat-option>
     </mat-select>
   </mat-form-field>

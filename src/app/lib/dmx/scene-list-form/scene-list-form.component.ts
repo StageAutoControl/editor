@@ -27,7 +27,7 @@ export class SceneListFormComponent {
     const scene = this.setupScene();
     scene.patchValue({at: this.nextFullAt});
     this.form.push(scene);
-    setTimeout(() => this.sort());
+    // setTimeout(() => this.sort());
   }
 
   removeScene(i: number) {
@@ -35,10 +35,10 @@ export class SceneListFormComponent {
   }
 
   private sortCompare = (a, b) => (0 + a.value.at) - (0 + b.value.at);
-
-  private sort() {
-    this.form.controls = this.form.controls.sort(this.sortCompare);
-  }
+  //
+  // private sort() {
+  //   this.form.controls = this.form.controls.sort(this.sortCompare);
+  // }
 
   private setupScene() {
     return this.formBuilder.group({

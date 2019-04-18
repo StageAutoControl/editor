@@ -8,7 +8,8 @@
     fxLayoutGap.gt-xs="10px"
   >
     <div fxFlex="grow" fxLayout="row" fxLayoutGap.gt-sm="10px">
-      <app-frame-input (changed)="sort()" [form]="scene.controls.at" [song]="form.parent.value" fxFlex></app-frame-input>
+      <!-- (changed)="sort()" -->
+      <app-frame-input  [form]="scene.controls.at" [song]="form.parent.value" fxFlex></app-frame-input>
 
       <dmx-scene-select [form]="scene.controls.id" fxFlex="grow"></dmx-scene-select>
 

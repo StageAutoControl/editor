@@ -12,6 +12,7 @@ export class SongFrameStateComponent implements OnChanges {
   @Input() frame: number;
 
   state: FrameState;
+
   ngOnChanges(changes: SimpleChanges): void {
     this.state = (new FrameBrain(this.song)).getStateAt(this.frame);
 

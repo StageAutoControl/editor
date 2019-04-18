@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FrameInputComponent } from './frame-input.component';
+import {FrameInputComponent} from './frame-input.component';
 
 describe('FrameInputComponent', () => {
   let component: FrameInputComponent;
@@ -8,9 +8,9 @@ describe('FrameInputComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrameInputComponent ]
+      declarations: [FrameInputComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

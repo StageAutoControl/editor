@@ -1,12 +1,12 @@
 <div fxLayout="column">
   <div fxFlex="grow" fxLayout="row" fxLayoutGap.gt-xs="10px">
-    <dmx-device-select fxFlex [disabled]="isSet(form.controls.group.value)" allowEmpty="true" [form]="form.controls.device"></dmx-device-select>
-    <dmx-device-group-select fxFlex [disabled]="isSet(form.controls.device.value)" allowEmpty="true" [form]="form.controls.group"></dmx-device-group-select>
+    <dmx-device-select [disabled]="isSet(form.controls.group.value)" [form]="form.controls.device" allowEmpty="true" fxFlex></dmx-device-select>
+    <dmx-device-group-select [disabled]="isSet(form.controls.device.value)" [form]="form.controls.group" allowEmpty="true" fxFlex></dmx-device-group-select>
   </div>
   <div fxFlex="grow" fxLayout="row" fxLayoutGap.gt-xs="10px">
-    <dmx-animation-select fxFlex [disabled]="isSet(form.controls.transition.value) || isSetArray(form.controls.params.value)" allowEmpty="true" [form]="form.controls.animation"></dmx-animation-select>
-    <dmx-transition-select fxFlex [disabled]="isSet(form.controls.animation.value) || isSetArray(form.controls.params.value)" allowEmpty="true" [form]="form.controls.transition"></dmx-transition-select>
+    <dmx-animation-select [disabled]="isSet(form.controls.transition.value) || isSetArray(form.controls.params.value)" [form]="form.controls.animation" allowEmpty="true" fxFlex></dmx-animation-select>
+    <dmx-transition-select [disabled]="isSet(form.controls.animation.value) || isSetArray(form.controls.params.value)" [form]="form.controls.transition" allowEmpty="true" fxFlex></dmx-transition-select>
   </div>
 
-  <dmx-params-list-form fxFlex="grow" [disabled]="isSet(form.controls.animation.value) || isSet(form.controls.transition.value)" [form]="form.controls.params"></dmx-params-list-form>
+  <dmx-params-list-form [disabled]="isSet(form.controls.animation.value) || isSet(form.controls.transition.value)" [form]="form.controls.params" fxFlex="grow"></dmx-params-list-form>
 </div>

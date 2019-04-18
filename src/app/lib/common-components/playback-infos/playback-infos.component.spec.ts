@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PlaybackInfosComponent } from './playback-infos.component';
+import {PlaybackInfosComponent} from './playback-infos.component';
 
 describe('PlaybackInfosComponent', () => {
   let component: PlaybackInfosComponent;
@@ -8,9 +8,9 @@ describe('PlaybackInfosComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlaybackInfosComponent ]
+      declarations: [PlaybackInfosComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

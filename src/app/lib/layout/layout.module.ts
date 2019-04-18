@@ -4,6 +4,7 @@ import {LayoutComponent} from './layout.component';
 import {CoreModule} from "../core/core.module";
 import {MatDesignModule} from "../mat-design/mat-design.module";
 import {CommonComponentsModule} from "../common-components/common-components.module";
+import {StorageModule} from "../storage/storage-module";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {CommonComponentsModule} from "../common-components/common-components.mod
     CoreModule,
     MatDesignModule,
     CommonComponentsModule,
+    StorageModule,
   ],
   exports: [
     LayoutComponent,

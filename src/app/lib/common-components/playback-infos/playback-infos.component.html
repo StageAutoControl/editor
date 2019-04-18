@@ -1,7 +1,7 @@
 <mat-card *ngIf="status$ | async as status">
   <mat-card-title> Playback
     <mat-icon *ngIf="status.process.running" matTooltip="Process is running">check</mat-icon>
-    <mat-icon *ngIf="!status.process.running" matTooltip="Process is NOT running" color="accent">close</mat-icon>
+    <mat-icon *ngIf="!status.process.running" color="accent" matTooltip="Process is NOT running">close</mat-icon>
   </mat-card-title>
   <mat-card-content fxLayout="column">
     <div>
@@ -11,12 +11,12 @@
       <br>
       Stopped At: {{ status.process.stoppedAt }}
     </div>
-    <div class="dotted-list-box" *ngIf="status.process.error">
+    <div *ngIf="status.process.error" class="dotted-list-box">
       <mat-icon>error</mat-icon>
       Error: {{ status.process.error }}
     </div>
 
-    <div class="dotted-list-box" *ngIf="status.process.logs" fxLayout="column" fxLayoutGap.gt-xs="2px">
+    <div *ngIf="status.process.logs" class="dotted-list-box" fxLayout="column" fxLayoutGap.gt-xs="2px">
       <div *ngFor="let log of status.process.logs">
         {{ log.time }} | <b>{{ log.level }}</b>: {{ log.message }}
       </div>

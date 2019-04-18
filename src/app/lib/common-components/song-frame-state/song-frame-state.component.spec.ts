@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SongFrameStateComponent } from './song-frame-state.component';
+import {SongFrameStateComponent} from './song-frame-state.component';
 
 describe('SongFrameStateComponent', () => {
   let component: SongFrameStateComponent;
@@ -8,9 +8,9 @@ describe('SongFrameStateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SongFrameStateComponent ]
+      declarations: [SongFrameStateComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

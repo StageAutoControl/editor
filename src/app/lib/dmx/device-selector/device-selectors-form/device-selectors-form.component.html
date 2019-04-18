@@ -3,16 +3,17 @@
     <div class="full-width" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap.gt-xs="10px">
       <div fxFlex>#{{ i + 1 }}</div>
 
-      <dmx-device-selector-form fxFlex="grow" [form]="form.controls[i]" [tags]="dmxDeviceService.tags$" [devices]="dmxDeviceService.entities$"></dmx-device-selector-form>
+      <dmx-device-selector-form [devices]="dmxDeviceService.entities$" [form]="form.controls[i]" [tags]="dmxDeviceService.tags$" fxFlex="grow"></dmx-device-selector-form>
 
-      <button fxFlex mat-button (click)="removeDeviceSelector(i)">
+      <button (click)="removeDeviceSelector(i)" fxFlex mat-button>
         <mat-icon>delete</mat-icon>
       </button>
     </div>
   </mat-list-item>
   <mat-list-item fxLayout="row">
-    <button mat-button (click)="addDeviceSelector()">
-      <mat-icon>add</mat-icon> add DeviceSelector
+    <button (click)="addDeviceSelector()" mat-button>
+      <mat-icon>add</mat-icon>
+      add DeviceSelector
     </button>
   </mat-list-item>
 </mat-list>

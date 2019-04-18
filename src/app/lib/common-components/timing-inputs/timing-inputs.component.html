@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign=" center" fxLayoutGap.gt-xs="10px" [formGroup]="form">
+<div [formGroup]="form" fxLayout="row" fxLayoutAlign=" center" fxLayoutGap.gt-xs="10px">
   <mat-form-field class="short-input" fxFlex="grow">
     <input formControlName="noteCount" id="noteCount" matInput max="128" min="0" placeholder="Note Count" type="number">
     <mat-error *ngIf="hasError('noteCount', 'required')">Note Count is required</mat-error>

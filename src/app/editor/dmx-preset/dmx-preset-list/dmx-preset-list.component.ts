@@ -7,6 +7,7 @@ import {ConfirmationDialogComponent} from "../../../lib/common-components/confir
 import {filter, switchMap} from "rxjs/operators";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
 import {newName} from "../../names";
+import {StorageService} from "../../../lib/storage/storage.service";
 
 @Component({
   selector: 'app-dmx-preset-list',
@@ -24,12 +25,14 @@ export class DMXPresetListComponent implements OnInit {
   constructor(
     private dmxPresetService: DMXPresetService,
     private dialog: MatDialog,
+    private storage: StorageService,
   ) {
   }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.filter = this.storage.getString('PRESET_LIST_FILTER');
     this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
     this.dataSource.sortingDataAccessor = SortingDataAccessor;
     this.entities$ = this.dmxPresetService.entities$;
@@ -41,6 +44,7 @@ export class DMXPresetListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.storage.setString('PRESET_LIST_FILTER', this.dataSource.filter);
   }
 
   copyEntity(entity: DMXPreset) {

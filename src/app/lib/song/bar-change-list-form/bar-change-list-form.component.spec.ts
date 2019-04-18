@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BarChangeListFormComponent } from './bar-change-list-form.component';
+import {BarChangeListFormComponent} from './bar-change-list-form.component';
 
 describe('BarChangeListFormComponent', () => {
   let component: BarChangeListFormComponent;
@@ -8,9 +8,9 @@ describe('BarChangeListFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BarChangeListFormComponent ]
+      declarations: [BarChangeListFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

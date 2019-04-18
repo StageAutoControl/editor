@@ -9,6 +9,7 @@ import {MatDesignModule} from "../../lib/mat-design/mat-design.module";
 import {DMXModule} from "../../lib/dmx/dmx.module";
 import {CommonComponentsModule} from "../../lib/common-components/common-components.module";
 import {ConfirmationDialogComponent} from "../../lib/common-components/confirmation-dialog/confirmation-dialog.component";
+import {StorageModule} from "../../lib/storage/storage-module";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {ConfirmationDialogComponent} from "../../lib/common-components/confirmat
     CommonComponentsModule,
     DMXDeviceTypeRoutingModule,
     DMXModule,
+    StorageModule,
   ],
   entryComponents: [
     ConfirmationDialogComponent,

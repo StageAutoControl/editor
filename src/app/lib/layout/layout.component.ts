@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {StorageService} from "../storage/storage.service";
 
 @Component({
   selector: 'core-layout',
@@ -6,16 +7,23 @@ import {Component} from '@angular/core';
   styleUrls: ['./layout.component.less']
 })
 export class LayoutComponent {
-  navOpen = localStorage.getItem('navbarOpen') === 'true' || true;
-  processInfosOpen = localStorage.getItem('processInfosOpen') === 'true' || false;
+  navOpen: boolean;
+  processInfosOpen: boolean;
+
+  constructor(private storage: StorageService) {
+
+    this.navOpen = storage.getBoolean('navbarOpen');
+    this.processInfosOpen = storage.getBoolean('processInfosOpen');
+
+  }
 
   toggleNav() {
     this.navOpen = !this.navOpen;
-    localStorage.setItem('navbarOpen', this.navOpen + '');
+    this.storage.setBoolean('navbarOpen', this.navOpen);
   }
 
   toggleProcessInfos() {
     this.processInfosOpen = !this.processInfosOpen;
-    localStorage.setItem('processInfosOpen', this.processInfosOpen + '');
+    this.storage.setBoolean('processInfosOpen', this.processInfosOpen);
   }
 }

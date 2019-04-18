@@ -8,6 +8,7 @@ import {DMXDeviceGroupService} from "../../../lib/api/dmx/dmx-device-group/dmx-d
 import {DMXDeviceService} from "../../../lib/api/dmx/dmx-device/dmx-device.service";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
 import {newName} from "../../names";
+import {StorageService} from "../../../lib/storage/storage.service";
 
 @Component({
   selector: 'app-dmx-device-group-list',
@@ -27,12 +28,14 @@ export class DMXDeviceGroupListComponent implements OnInit {
     private dmxDeviceGroupService: DMXDeviceGroupService,
     private dmxDeviceService: DMXDeviceService,
     private dialog: MatDialog,
+    private storage: StorageService,
   ) {
   }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.filter = this.storage.getString('DEVICE_GROUP_LIST_FILTER');
     this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
     this.dataSource.sortingDataAccessor = SortingDataAccessor;
     this.dmxDeviceGroups$ = this.dmxDeviceGroupService.entities$;
@@ -41,6 +44,7 @@ export class DMXDeviceGroupListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.storage.setString('DEVICE_GROUP_LIST_FILTER', this.dataSource.filter);
   }
 
   copyEntity(entity: DMXDeviceGroup) {

@@ -10,13 +10,11 @@ interface Identifiable {
 
 export class DataStoreService<T extends Identifiable> {
   public entities$: Observable<T[]>;
-
+  protected sortableByName = true;
   private behavior: BehaviorSubject<T[]>;
   private dataStore: {
     entities: T[],
   };
-
-  protected sortableByName = true;
 
   constructor(
     private entityName: string,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PlaybackService} from "../../api/playback/playback.service";
 import {Observable} from "rxjs";
 import {PlaybackStatus} from "../../api/playback/playback";

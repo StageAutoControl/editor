@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SceneSelectComponent } from './scene-select.component';
+import {SceneSelectComponent} from './scene-select.component';
 
 describe('SceneSelectComponent', () => {
   let component: SceneSelectComponent;
@@ -8,9 +8,9 @@ describe('SceneSelectComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SceneSelectComponent ]
+      declarations: [SceneSelectComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

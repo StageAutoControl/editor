@@ -9,11 +9,11 @@ import {ReactiveDMXInputComponent} from './reactive-dmx-input/reactive-dmx-input
 import {ColorComponent} from './color/color.component';
 import {HiddenDirective} from "./hidden.directive";
 import {NumericListInputComponent} from './numeric-list-input/numeric-list-input.component';
-import { SongFrameStateComponent } from './song-frame-state/song-frame-state.component';
-import { FrameInputComponent } from './frame-input/frame-input.component';
-import { TimingInputsComponent } from './timing-inputs/timing-inputs.component';
-import { PlaybackButtonComponent } from './playback-button/playback-button.component';
-import { PlaybackInfosComponent } from './playback-infos/playback-infos.component';
+import {SongFrameStateComponent} from './song-frame-state/song-frame-state.component';
+import {FrameInputComponent} from './frame-input/frame-input.component';
+import {TimingInputsComponent} from './timing-inputs/timing-inputs.component';
+import {PlaybackButtonComponent} from './playback-button/playback-button.component';
+import {PlaybackInfosComponent} from './playback-infos/playback-infos.component';
 import {PlaySingleButtonComponent} from "./play-single-button/play-single-button.component";
 
 @NgModule({

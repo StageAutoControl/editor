@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TimingInputsComponent } from './timing-inputs.component';
+import {TimingInputsComponent} from './timing-inputs.component';
 
 describe('TimingInputsComponent', () => {
   let component: TimingInputsComponent;
@@ -8,9 +8,9 @@ describe('TimingInputsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimingInputsComponent ]
+      declarations: [TimingInputsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -8,6 +8,7 @@ import {filter, switchMap} from "rxjs/operators";
 import {DMXSceneService} from "../../../lib/api/dmx/dmx-scene/dmx-scene.service";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
 import {newName} from "../../names";
+import {StorageService} from "../../../lib/storage/storage.service";
 
 @Component({
   selector: 'app-song-list',
@@ -26,12 +27,14 @@ export class SongListComponent implements OnInit {
     private songService: SongService,
     private dmxSceneService: DMXSceneService,
     private dialog: MatDialog,
+    private storage: StorageService,
   ) {
   }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.filter = this.storage.getString('SONG_LIST_FILTER');
     this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
     this.dataSource.sortingDataAccessor = SortingDataAccessor;
     this.entities$ = this.songService.entities$;
@@ -43,6 +46,7 @@ export class SongListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.storage.setString('SONG_LIST_FILTER', this.dataSource.filter);
   }
 
   copyEntity(entity: Song) {

@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { DMXColorVariableService } from './dmx-color-variable.service';
+import {DMXColorVariableService} from './dmx-color-variable.service';
 
 describe('DMXColorVariableService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

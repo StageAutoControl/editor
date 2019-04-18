@@ -20,19 +20,19 @@ export class DeviceSelectorsFormComponent implements OnInit {
     Array.from(this.form.value).forEach(() => this.addDeviceSelector());
   }
 
-  private setupDeviceSelector() {
-    return this.formBuilder.group({
-      id: [""],
-      tags: [[]],
-    });
-  }
-
   addDeviceSelector() {
     this.form.push(this.setupDeviceSelector());
   }
 
   removeDeviceSelector(i: number) {
     this.form.removeAt(i);
+  }
+
+  private setupDeviceSelector() {
+    return this.formBuilder.group({
+      id: [""],
+      tags: [[]],
+    });
   }
 
 

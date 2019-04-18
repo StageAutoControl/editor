@@ -9,12 +9,12 @@ import {FormGroup} from "@angular/forms";
 export class TimingInputsComponent implements OnInit {
   @Input() form: FormGroup;
 
+  constructor() {
+  }
 
   hasError = (controlName: string, errorName: string): boolean => {
     return this.form.controls[controlName].hasError(errorName);
   };
-
-  constructor() { }
 
   ngOnInit() {
   }

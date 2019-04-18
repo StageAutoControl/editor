@@ -10,10 +10,9 @@ import {DMXDevice} from "../../../api/dmx/dmx-device/dmx-device";
 })
 export class DeviceSelectorListComponent implements OnInit {
   @Input() selectors: DMXDeviceSelector[];
-
-  private dmxDevices: DMXDevice[];
   tagSelectors: DMXDeviceSelector[];
   idSelectors: DMXDeviceSelector[];
+  private dmxDevices: DMXDevice[];
 
   constructor(
     private dmxDeviceService: DMXDeviceService,

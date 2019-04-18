@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DeviceSelectorFormComponent } from './device-selector-form.component';
+import {DeviceSelectorFormComponent} from './device-selector-form.component';
 
 describe('DeviceSelectorFormComponent', () => {
   let component: DeviceSelectorFormComponent;
@@ -8,9 +8,9 @@ describe('DeviceSelectorFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeviceSelectorFormComponent ]
+      declarations: [DeviceSelectorFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

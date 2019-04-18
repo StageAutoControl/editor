@@ -1,4 +1,4 @@
-<button mat-button *ngIf="status$ | async as status">
-  <mat-icon *ngIf="!status.process.running" (click)="start()">play_circle_filled</mat-icon>
-  <mat-icon *ngIf="status.process.running && isOwn(status)" color="warn" (click)="stop()">stop</mat-icon>
+<button *ngIf="status$ | async as status" mat-button>
+  <mat-icon (click)="start()" *ngIf="!status.process.running">play_circle_filled</mat-icon>
+  <mat-icon (click)="stop()" *ngIf="status.process.running && isOwn(status)" color="warn">stop</mat-icon>
 </button>

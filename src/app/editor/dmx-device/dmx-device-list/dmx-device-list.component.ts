@@ -9,6 +9,7 @@ import {ConfirmationDialogComponent} from "../../../lib/common-components/confir
 import {filter, switchMap} from "rxjs/operators";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
 import {newName} from "../../names";
+import {StorageService} from "../../../lib/storage/storage.service";
 
 @Component({
   selector: 'app-dmx-device-list',
@@ -28,12 +29,14 @@ export class DMXDeviceListComponent implements OnInit {
     private dmxDeviceService: DMXDeviceService,
     private dmxDeviceTypeService: DMXDeviceTypeService,
     private dialog: MatDialog,
+    private storage: StorageService,
   ) {
   }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.filter = this.storage.getString('DEVICE_LIST_FILTER');
     this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
     this.dataSource.sortingDataAccessor = SortingDataAccessor;
     this.entities$ = this.dmxDeviceService.entities$;
@@ -58,6 +61,7 @@ export class DMXDeviceListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.storage.setString('DEVICE_LIST_FILTER', this.dataSource.filter);
   }
 
   copyEntity(entity: DMXDevice) {

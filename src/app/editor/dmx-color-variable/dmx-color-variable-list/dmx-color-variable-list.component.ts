@@ -7,6 +7,7 @@ import {DMXColorVariable} from "../../../lib/api/dmx/dmx-color-variable/dmx-colo
 import {DMXColorVariableService} from "../../../lib/api/dmx/dmx-color-variable/dmx-color-variable.service";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
 import {newName} from "../../names";
+import {StorageService} from "../../../lib/storage/storage.service";
 
 @Component({
   selector: 'app-dmx-color-variable-list',
@@ -24,12 +25,14 @@ export class DMXColorVariableListComponent implements OnInit {
   constructor(
     private dmxColorVariableService: DMXColorVariableService,
     private dialog: MatDialog,
+    private storage: StorageService,
   ) {
   }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.filter = this.storage.getString('COLOR_VARIABLE_LIST_FILTER');
     this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
     this.dataSource.sortingDataAccessor = SortingDataAccessor;
     this.entities$ = this.dmxColorVariableService.entities$;
@@ -41,6 +44,7 @@ export class DMXColorVariableListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.storage.setString('COLOR_VARIABLE_LIST_FILTER', this.dataSource.filter);
   }
 
   copyEntity(entity: DMXColorVariable) {

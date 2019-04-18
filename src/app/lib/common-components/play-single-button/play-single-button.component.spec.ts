@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PlaySingleButtonComponent } from './playback-button.component';
+import {PlaySingleButtonComponent} from './playback-button.component';
 
 describe('PlaybackButtonComponent', () => {
   let component: PlaySingleButtonComponent;
@@ -8,9 +8,9 @@ describe('PlaybackButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlaySingleButtonComponent ]
+      declarations: [PlaySingleButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

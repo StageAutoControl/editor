@@ -7,6 +7,7 @@ import {DMXDeviceType} from "../../../lib/api/dmx/dmx-device-type/dmx-device-typ
 import {DMXDeviceTypeService} from "../../../lib/api/dmx/dmx-device-type/dmx-device-type.service";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
 import {newName} from "../../names";
+import {StorageService} from "../../../lib/storage/storage.service";
 
 @Component({
   selector: 'app-dmx-device-type-list',
@@ -24,12 +25,14 @@ export class DMXDeviceTypeListComponent implements OnInit {
   constructor(
     private dmxDeviceTypeService: DMXDeviceTypeService,
     private dialog: MatDialog,
+    private storage: StorageService,
   ) {
   }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.filter = this.storage.getString('DEVICE_TYPE_LIST_FILTER');
     this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
     this.dataSource.sortingDataAccessor = SortingDataAccessor;
     this.dmxDevices$ = this.dmxDeviceTypeService.entities$;
@@ -41,6 +44,7 @@ export class DMXDeviceTypeListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.storage.setString('DEVICE_TYPE_LIST_FILTER', this.dataSource.filter);
   }
 
   copyEntity(entity: DMXDeviceType) {

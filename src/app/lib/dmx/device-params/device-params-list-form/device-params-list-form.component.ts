@@ -16,10 +16,6 @@ export class DeviceParamsListFormComponent {
   ) {
   }
 
-  private setupDeviceParams() {
-    return this.formBuilder.group(deviceParamsGroup(this.formBuilder));
-  }
-
   addDeviceParams(paramsLength: number = 0) {
     if (this.disabled) {
       return;
@@ -36,6 +32,10 @@ export class DeviceParamsListFormComponent {
 
   removeDeviceParams(i: number) {
     this.form.removeAt(i);
+  }
+
+  private setupDeviceParams() {
+    return this.formBuilder.group(deviceParamsGroup(this.formBuilder));
   }
 
 

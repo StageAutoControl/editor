@@ -1,20 +1,20 @@
-<div fxLayout="column" [formGroup]="form">
+<div [formGroup]="form" fxLayout="column">
   <div
-    class="dotted-list-box"
     *ngFor="let deviceParams of form.controls; let i = index"
-    fxLayoutAlign="center"
+    class="dotted-list-box"
     fxLayout="row"
+    fxLayoutAlign="center"
     fxLayoutGap.gt-xs="10px"
   >
 
-    <dmx-device-params-form fxFlex="grow" [form]="deviceParams"></dmx-device-params-form>
+    <dmx-device-params-form [form]="deviceParams" fxFlex="grow"></dmx-device-params-form>
 
-    <button fxFlex mat-button (click)="removeDeviceParams(i)">
+    <button (click)="removeDeviceParams(i)" fxFlex mat-button>
       <mat-icon>delete</mat-icon>
     </button>
   </div>
   <div fxFlex>
-    <button mat-button (click)="addDeviceParams()">
+    <button (click)="addDeviceParams()" mat-button>
       <mat-icon>add</mat-icon>
       add Device Params
     </button>

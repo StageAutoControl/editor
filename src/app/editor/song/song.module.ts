@@ -12,6 +12,7 @@ import {DMXModule} from "../../lib/dmx/dmx.module";
 import {ConfirmationDialogComponent} from "../../lib/common-components/confirmation-dialog/confirmation-dialog.component";
 import {MidiModule} from "../../lib/midi/midi.module";
 import {SongModule as SongComponentsModule} from "../../lib/song/song.module";
+import {StorageModule} from "../../lib/storage/storage-module";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {SongModule as SongComponentsModule} from "../../lib/song/song.module";
     DMXModule,
     MidiModule,
     SongComponentsModule,
+    StorageModule,
   ],
   entryComponents: [
     ConfirmationDialogComponent,

@@ -2,17 +2,17 @@
   <div
     *ngFor="let scene of form.controls; let i = index"
     class="dotted-list-box"
+    fxFlexOrder="{{ scene.value.at }}"
     fxLayout="row"
     fxLayoutAlign="center"
     fxLayoutGap.gt-xs="10px"
-    fxFlexOrder="{{ scene.value.at }}"
   >
     <div fxFlex="grow" fxLayout="row" fxLayoutGap.gt-sm="10px">
-      <app-frame-input fxFlex [song]="form.parent.value" [form]="scene.controls.at" (changed)="sort()"></app-frame-input>
+      <app-frame-input (changed)="sort()" [form]="scene.controls.at" [song]="form.parent.value" fxFlex></app-frame-input>
 
-      <dmx-scene-select fxFlex="grow" [form]="scene.controls.id"></dmx-scene-select>
+      <dmx-scene-select [form]="scene.controls.id" fxFlex="grow"></dmx-scene-select>
 
-      <mat-form-field fxFlex class="short-input">
+      <mat-form-field class="short-input" fxFlex>
         <input
           [formControl]="scene.controls.repeat"
           id="repeat"

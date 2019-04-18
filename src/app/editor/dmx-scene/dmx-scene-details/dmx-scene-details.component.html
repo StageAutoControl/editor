@@ -10,7 +10,7 @@
           <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
         </mat-form-field>
 
-        <app-timing-inputs fxFlex="50" [form]="form"></app-timing-inputs>
+        <app-timing-inputs [form]="form" fxFlex="50"></app-timing-inputs>
 
         <div fxFlex="grow">
           <dmx-sub-scene-list-form #subScenesListForm [form]="form.controls.subScenes"></dmx-sub-scene-list-form>

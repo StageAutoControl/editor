@@ -7,6 +7,7 @@ import {DMXTransition} from "../../../lib/api/dmx/dmx-transition/dmx-transition"
 import {DMXTransitionService} from "../../../lib/api/dmx/dmx-transition/dmx-transition.service";
 import {SortingDataAccessor} from "../../sorting-data-accessor";
 import {newName} from "../../names";
+import {StorageService} from "../../../lib/storage/storage.service";
 
 @Component({
   selector: 'app-dmx-transition-list',
@@ -24,12 +25,14 @@ export class DMXTransitionListComponent implements OnInit {
   constructor(
     private dmxTransitionService: DMXTransitionService,
     private dialog: MatDialog,
+    private storage: StorageService,
   ) {
   }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.filter = this.storage.getString('TRANSITION_LIST_FILTER');
     this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: false});
     this.dataSource.sortingDataAccessor = SortingDataAccessor;
     this.entities$ = this.dmxTransitionService.entities$;
@@ -41,6 +44,7 @@ export class DMXTransitionListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.storage.setString('TRANSITION_LIST_FILTER', this.dataSource.filter);
   }
 
   copyEntity(entity: DMXTransition) {

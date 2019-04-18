@@ -20,6 +20,20 @@ export class FrameBrain {
   constructor(private song: Song) {
   }
 
+  private get highestFrame(): number {
+    return this.song.dmxScenes.reduce((prev, curr) => curr.at > prev ? curr.at : prev, 0) as number;
+  }
+
+  private get streamLineBarChanges(): StreamlinedBarChanges {
+    const streamline: StreamlinedBarChanges = {};
+
+    for (const bc of this.song.barChanges) {
+      streamline[bc.at] = bc;
+    }
+
+    return streamline;
+  }
+
   getStateAt(frame: number): FrameState {
     // console.log('song ', this.song);
     const bc = this.streamLineBarChanges;
@@ -55,20 +69,6 @@ export class FrameBrain {
         return fs;
       }
     }
-  }
-
-  private get highestFrame(): number {
-    return this.song.dmxScenes.reduce((prev, curr) => curr.at > prev ? curr.at : prev, 0) as number;
-  }
-
-  private get streamLineBarChanges(): StreamlinedBarChanges {
-    const streamline: StreamlinedBarChanges = {};
-
-    for (const bc of this.song.barChanges) {
-      streamline[bc.at] = bc;
-    }
-
-    return streamline;
   }
 
   barLength(bc: BarChange): number {

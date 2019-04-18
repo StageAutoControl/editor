@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DeviceSelectorListComponent } from './device-selector-list.component';
+import {DeviceSelectorListComponent} from './device-selector-list.component';
 
 describe('DeviceSelectorListComponent', () => {
   let component: DeviceSelectorListComponent;
@@ -8,9 +8,9 @@ describe('DeviceSelectorListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeviceSelectorListComponent ]
+      declarations: [DeviceSelectorListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

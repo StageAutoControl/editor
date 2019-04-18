@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Params, PlaybackStatus} from "./playback";
 import {ApiService} from "../base/api.service";
-import {BehaviorSubject, EMPTY, Observable, Subscription, timer} from "rxjs";
-import {catchError, switchMap} from "rxjs/operators";
+import {BehaviorSubject, Observable, Subscription, timer} from "rxjs";
+import {switchMap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +32,13 @@ export class PlaybackService {
       .subscribe(data => this.behavior.next(data))
   }
 
+  stopLoop() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+      this.sub = null;
+    }
+  }
+
   private status(): Observable<PlaybackStatus> {
     return this.api.call("Playback.Status");
   }
@@ -42,12 +49,5 @@ export class PlaybackService {
         switchMap(() => this.status())
       )
       .subscribe(data => this.behavior.next(data));
-  }
-
-  stopLoop() {
-    if (this.sub) {
-      this.sub.unsubscribe();
-      this.sub = null;
-    }
   }
 }

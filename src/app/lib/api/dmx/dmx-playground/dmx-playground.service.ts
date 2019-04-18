@@ -16,10 +16,10 @@ export class DMXPlaygroundService {
   }
 
   playPreset(id: string): Observable<null> {
-    return this.api.call("DMXPlayground.PlayPreset", { id });
+    return this.api.call("DMXPlayground.PlayPreset", {id});
   }
 
-  playScene(id: string) : Observable<null> {
-    return this.api.call("DMXPlayground.PlayScene", { id });
+  playScene(id: string): Observable<null> {
+    return this.api.call("DMXPlayground.PlayScene", {id});
   }
 }

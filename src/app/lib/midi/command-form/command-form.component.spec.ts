@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CommandFormComponent } from './command-form.component';
+import {CommandFormComponent} from './command-form.component';
 
 describe('CommandFormComponent', () => {
   let component: CommandFormComponent;
@@ -8,9 +8,9 @@ describe('CommandFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommandFormComponent ]
+      declarations: [CommandFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

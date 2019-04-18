@@ -9,17 +9,9 @@ import {AbstractControl, FormArray, FormBuilder} from "@angular/forms";
 export class SceneListFormComponent {
   @Input() public form: FormArray;
 
-  private sortCompare = (a, b) => (0 + a.value.at) - (0 + b.value.at);
-
   constructor(
     private formBuilder: FormBuilder,
-  ) {}
-
-  addScene() {
-    const scene = this.setupScene();
-    scene.patchValue({at: this.nextFullAt});
-    this.form.push(scene);
-    setTimeout(() => this.sort());
+  ) {
   }
 
   get maxAt() {
@@ -31,12 +23,21 @@ export class SceneListFormComponent {
     return max - max % 64;
   }
 
-  private sort() {
-    this.form.controls = this.form.controls.sort(this.sortCompare);
+  addScene() {
+    const scene = this.setupScene();
+    scene.patchValue({at: this.nextFullAt});
+    this.form.push(scene);
+    setTimeout(() => this.sort());
   }
 
   removeScene(i: number) {
     this.form.removeAt(i);
+  }
+
+  private sortCompare = (a, b) => (0 + a.value.at) - (0 + b.value.at);
+
+  private sort() {
+    this.form.controls = this.form.controls.sort(this.sortCompare);
   }
 
   private setupScene() {

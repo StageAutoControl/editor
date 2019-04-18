@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TransitionSelectComponent } from './transition-select.component';
+import {TransitionSelectComponent} from './transition-select.component';
 
 describe('TransitionSelectComponent', () => {
   let component: TransitionSelectComponent;
@@ -8,9 +8,9 @@ describe('TransitionSelectComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TransitionSelectComponent ]
+      declarations: [TransitionSelectComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

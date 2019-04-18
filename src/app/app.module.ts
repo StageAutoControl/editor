@@ -5,6 +5,7 @@ import {CoreModule} from "./lib/core/core.module";
 import {ApiModule} from "./lib/api/api.module";
 import {LayoutModule} from "./lib/layout/layout.module";
 import {EditorModule} from "./editor/editor.module";
+import {StorageModule} from "./lib/storage/storage-module";
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {EditorModule} from "./editor/editor.module";
   imports: [
     CoreModule,
     ApiModule.forRoot(),
+    StorageModule.forRoot(),
     LayoutModule,
     EditorModule,
     AppRoutingModule,

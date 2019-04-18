@@ -7,7 +7,7 @@
     fxLayoutGap.gt-xs="10px"
   >
     <div fxFlex="grow" fxLayout="row" fxLayoutGap.gt-sm="10px">
-      <dmx-song-select fxFlex="grow" [form]="song.controls.id"></dmx-song-select>
+      <dmx-song-select [form]="song.controls.id" fxFlex="grow"></dmx-song-select>
     </div>
 
     <button (click)="removeSong(i)" fxFlex mat-button>

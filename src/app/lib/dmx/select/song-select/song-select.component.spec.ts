@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SongSelectComponent } from './song-select.component';
+import {SongSelectComponent} from './song-select.component';
 
 describe('SongSelectComponent', () => {
   let component: SongSelectComponent;
@@ -8,9 +8,9 @@ describe('SongSelectComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SongSelectComponent ]
+      declarations: [SongSelectComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

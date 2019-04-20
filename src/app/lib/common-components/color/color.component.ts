@@ -27,7 +27,7 @@ export class ColorComponent {
   @Input() blue: number = 0;
   @Input() white: number = 0;
 
-  private hex(): string {
+  hex(): string {
     return colorToHex(rgbwtoRgb(this.red, this.green, this.blue, this.white));
   }
 

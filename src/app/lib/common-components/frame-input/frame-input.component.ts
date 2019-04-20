@@ -18,7 +18,7 @@ export class FrameInputComponent {
     this.form.setValue(this.form.value + value);
   }
 
-  protected emitChanged() {
+  emitChanged() {
     this.changed.emit();
   }
 }

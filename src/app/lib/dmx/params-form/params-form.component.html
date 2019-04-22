@@ -13,7 +13,7 @@
       </mat-form-field>
     </div>
 
-    <mat-form-field fxFlex fxGrow="2">
+    <mat-form-field class="short-input-fixed-xlarge" fxFlex>
       <mat-select formControlName="$color" placeholder="Color Variable">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let color of colorVars$ | async" [value]="color.name">{{ color.name }}</mat-option>

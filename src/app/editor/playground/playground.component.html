@@ -13,6 +13,6 @@
     <app-device-channel-inputs (updateChannelValue)="update($event)" *ngIf="device" [device]="device"></app-device-channel-inputs>
   </div>
   <div *ngIf="controllerError" fxFlex>
-    <mat-card class="error">{{ controllerError }}</mat-card>
+    <mat-card class="full-width" class="error">{{ controllerError }}</mat-card>
   </div>
 </div>

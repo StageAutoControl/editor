@@ -36,7 +36,7 @@ export class PlaybackButtonComponent implements OnInit, OnChanges {
     if (this.song) {
       this.playbackService.start({song: {id: this.song.id}});
     } else if (this.setList) {
-      this.playbackService.start({setList: {id: this.song.id}});
+      this.playbackService.start({setList: {id: this.setList.id}});
     }
   }
 

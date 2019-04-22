@@ -2,7 +2,7 @@
   <mat-form-field class="full-width">
     <mat-select [disableControl]="disabled" [formControl]="form" placeholder="Scene">
       <mat-option *ngIf="allowEmpty" [value]="null"></mat-option>
-      <mat-option *ngFor="let scene of scenes$ | async" [value]="scene.id">{{ scene.name }}</mat-option>
+      <mat-option *ngFor="let scene of scenes$ | async" [value]="scene.id">{{ scene.name }} ({{ scene.noteCount }}/{{ scene.noteValue }})</mat-option>
     </mat-select>
   </mat-form-field>
 </div>

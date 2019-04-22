@@ -23,10 +23,6 @@ export class SongListFormComponent {
   }
 
   private setupSong() {
-    return this.formBuilder.group({
-      id: this.formBuilder.control(''),
-    });
+    return this.formBuilder.control('');
   }
-
-
 }

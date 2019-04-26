@@ -1,9 +1,14 @@
-<mat-form-field>
-  <input (keyup)="applyFilter($event.target.value)" [value]="dataSource.filter" matInput placeholder="Filter">
-  <button (click)="applyFilter('')" *ngIf="dataSource.filter" aria-label="Clear" mat-button mat-icon-button matSuffix>
-    <mat-icon>close</mat-icon>
+<div fxLayout="row" fxLayoutGap="10px">
+  <mat-form-field fxFlex="grow">
+    <input (keyup)="applyFilter($event.target.value)" [value]="dataSource.filter" matInput placeholder="Filter">
+    <button (click)="applyFilter('')" *ngIf="dataSource.filter" aria-label="Clear" mat-button mat-icon-button matSuffix>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <button fxFlex="initial" color="primary" mat-button routerLink="/dmx-color-variables/new">
+    Add <mat-icon>add</mat-icon>
   </button>
-</mat-form-field>
+</div>
 
 <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table matSort>
 
@@ -41,7 +46,4 @@
   <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
   <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
 </table>
-<mat-paginator [pageSizeOptions]="[10,50,100,200]" [pageSize]="100"></mat-paginator>
-<button class="floating" mat-fab routerLink="/dmx-color-variables/new">
-  <mat-icon aria-label="Add a new DMXColorVariable">add</mat-icon>
-</button>
+<mat-paginator [pageSizeOptions]="[10,50,100,250,500]" [pageSize]="250"></mat-paginator>

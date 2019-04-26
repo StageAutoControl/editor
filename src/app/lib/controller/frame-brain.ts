@@ -35,7 +35,6 @@ export class FrameBrain {
   }
 
   getStateAt(frame: number): FrameState {
-    // console.log('song ', this.song);
     const bc = this.streamLineBarChanges;
     const h = this.highestFrame;
     const fs: FrameState = {
@@ -49,19 +48,21 @@ export class FrameBrain {
 
     for (let i = 0; i <= h; i++) {
       fs.frame = i;
-      fs.subFrame = fs.frame % 64;
 
       if (i in bc) {
         fs.lastBC = bc[i];
         fs.framesEachNote = this.barLength(bc[i]);
         fs.bar++;
         fs.note = 1;
+        fs.subFrame = 0;
       } else {
         fs.note++;
+        fs.subFrame++;
 
         if (fs.note > fs.framesEachNote) {
           fs.bar++;
           fs.note = 1;
+          fs.subFrame = 0;
         }
       }
 

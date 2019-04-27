@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder} from "@angular/forms";
+import {FrameBrain} from "../../controller/frame-brain";
 
 @Component({
   selector: 'dmx-scene-list-form',
@@ -19,8 +20,8 @@ export class SceneListFormComponent {
   }
 
   get nextFullAt() {
-    const max = this.maxAt + 64;
-    return max - max % 64;
+    const state = (new FrameBrain(this.form.parent.value)).getStateAt(this.maxAt);
+    return state.frame + (state.framesEachBar - state.subFrame);
   }
 
   addScene() {

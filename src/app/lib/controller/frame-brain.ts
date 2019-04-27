@@ -5,9 +5,8 @@ export interface FrameState {
   subFrame: number;
   frame: number;
   bar: number;
-  note: number;
   lastBC: BarChange;
-  framesEachNote: number;
+  framesEachBar: number;
 }
 
 interface StreamlinedBarChanges {
@@ -41,9 +40,8 @@ export class FrameBrain {
       subFrame: 0,
       frame: 0,
       bar: 0,
-      note: 0,
       lastBC: bc[0],
-      framesEachNote: 0,
+      framesEachBar: 0,
     };
 
     for (let i = 0; i <= h; i++) {
@@ -51,17 +49,14 @@ export class FrameBrain {
 
       if (i in bc) {
         fs.lastBC = bc[i];
-        fs.framesEachNote = this.barLength(bc[i]);
+        fs.framesEachBar = this.barLength(bc[i]);
         fs.bar++;
-        fs.note = 1;
         fs.subFrame = 0;
       } else {
-        fs.note++;
         fs.subFrame++;
 
-        if (fs.note > fs.framesEachNote) {
+        if (fs.subFrame >= fs.framesEachBar) {
           fs.bar++;
-          fs.note = 1;
           fs.subFrame = 0;
         }
       }
@@ -70,6 +65,8 @@ export class FrameBrain {
         return fs;
       }
     }
+
+    return fs;
   }
 
   barLength(bc: BarChange): number {

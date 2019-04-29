@@ -48,7 +48,7 @@ export class DMXColorVariableDetailsComponent implements OnInit {
   private setupForm() {
     this.form = this.formBuilder.group({
       id: this.formBuilder.control(""),
-      name: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]),
+      name: this.formBuilder.control('', [Validators.required, Validators.minLength(3)]),
       dimmerChannel: this.formBuilder.control(0, [Validators.required]),
       red: this.formBuilder.control(0),
       green: this.formBuilder.control(0),

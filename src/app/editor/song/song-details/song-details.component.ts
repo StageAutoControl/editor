@@ -55,7 +55,7 @@ export class SongDetailsComponent implements OnInit {
   private setupForm() {
     this.form = this.formBuilder.group({
       id: this.formBuilder.control(""),
-      name: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]),
+      name: this.formBuilder.control('', [Validators.required, Validators.minLength(3)]),
       barChanges: this.formBuilder.array([]),
       dmxScenes: this.formBuilder.array([]),
       dmxDeviceParams: this.formBuilder.array([]),

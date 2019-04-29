@@ -56,7 +56,7 @@ export class DMXDeviceDetailsComponent implements OnInit {
   private setupForm() {
     this.form = this.formBuilder.group({
       id: this.formBuilder.control(""),
-      name: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]),
+      name: this.formBuilder.control('', [Validators.required, Validators.minLength(3)]),
       typeId: this.formBuilder.control('', [Validators.required]),
       universe: this.formBuilder.control(0, [Validators.required]),
       startChannel: this.formBuilder.control(0, [Validators.required]),

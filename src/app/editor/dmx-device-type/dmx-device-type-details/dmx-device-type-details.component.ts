@@ -53,7 +53,7 @@ export class DMXDeviceTypeDetailsComponent implements OnInit {
   private setupForm() {
     this.form = this.formBuilder.group({
       id: this.formBuilder.control(""),
-      name: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]),
+      name: this.formBuilder.control('', [Validators.required, Validators.minLength(3)]),
       channelCount: this.formBuilder.control(0, [Validators.required, Validators.min(1)]),
       channelsPerLED: this.formBuilder.control(0, [Validators.required]),
       strobeEnabled: this.formBuilder.control(false),

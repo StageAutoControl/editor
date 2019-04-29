@@ -51,4 +51,12 @@ export class PlaybackButtonComponent implements OnInit, OnChanges {
       return s.params.setList.id === this.setList.id;
     }
   }
+
+  trigger(state: boolean) {
+    if (state) {
+      this.start();
+    } else {
+      this.stop();
+    }
+  }
 }

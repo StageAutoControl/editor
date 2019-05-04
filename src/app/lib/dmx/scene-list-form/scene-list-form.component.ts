@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder} from "@angular/forms";
 import {FrameBrain} from "../../controller/frame-brain";
+import {DMXScene} from "../../api/dmx/dmx-scene/dmx-scene";
 
 @Component({
   selector: 'dmx-scene-list-form',
@@ -16,7 +17,7 @@ export class SceneListFormComponent {
   }
 
   get maxAt() {
-    return this.form.controls.reduce((prev: number, curr: AbstractControl) => prev > (0 + curr.value.at) ? prev : curr.value.at, 0)
+    return this.form.controls.reduce((prev: number, curr: AbstractControl) => prev > (0 + curr.value.at) ? prev : curr.value.at, 0);
   }
 
   get nextFullAt() {
@@ -24,9 +25,13 @@ export class SceneListFormComponent {
     return state.frame + (state.framesEachBar - state.subFrame);
   }
 
-  addScene() {
+  copyScene(i: number) {
+    this.addScene(this.form.at(i).value);
+  }
+
+  addScene(value?: DMXScene) {
     const scene = this.setupScene();
-    scene.patchValue({at: this.nextFullAt});
+    scene.patchValue(Object.assign({}, (value || {}), {at: this.nextFullAt}));
     this.form.push(scene);
     // setTimeout(() => this.sort());
   }
@@ -35,7 +40,7 @@ export class SceneListFormComponent {
     this.form.removeAt(i);
   }
 
-  private sortCompare = (a, b) => (0 + a.value.at) - (0 + b.value.at);
+  // private sortCompare = (a, b) => (0 + a.value.at) - (0 + b.value.at);
   //
   // private sort() {
   //   this.form.controls = this.form.controls.sort(this.sortCompare);

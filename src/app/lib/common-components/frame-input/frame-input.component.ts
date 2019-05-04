@@ -14,8 +14,13 @@ export class FrameInputComponent {
 
   @Output() changed: EventEmitter<void> = new EventEmitter<void>();
 
-  add(value: number) {
-    this.form.setValue(this.form.value + value);
+  add(diff: number) {
+    let value = this.form.value + diff;
+    if (value < 0) {
+      value = 0;
+    }
+
+    this.form.setValue(value);
   }
 
   emitChanged() {

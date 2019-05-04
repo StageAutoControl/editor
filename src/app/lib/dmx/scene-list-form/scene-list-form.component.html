@@ -9,7 +9,7 @@
   >
     <div fxFlex="grow" fxLayout="row" fxLayoutGap.gt-sm="10px">
       <!-- (changed)="sort()" -->
-      <app-frame-input  [form]="scene.controls.at" [song]="form.parent.value" fxFlex></app-frame-input>
+      <app-frame-input [form]="scene.controls.at" [song]="form.parent.value" fxFlex></app-frame-input>
 
       <dmx-scene-select [form]="scene.controls.id" fxFlex="grow"></dmx-scene-select>
 
@@ -25,7 +25,10 @@
       </mat-form-field>
     </div>
 
-    <button (click)="removeScene(i)" fxFlex mat-button>
+    <button (click)="copyScene(i)" fxFlex mat-button matTooltip="Duplicate scene">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+    <button (click)="removeScene(i)" fxFlex mat-button matTooltip="Delete scene">
       <mat-icon>delete</mat-icon>
     </button>
   </div>

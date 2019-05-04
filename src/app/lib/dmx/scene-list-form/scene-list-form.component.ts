@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder} from "@angular/forms";
 import {FrameBrain} from "../../controller/frame-brain";
-import {DMXScene} from "../../api/dmx/dmx-scene/dmx-scene";
+import {DMXScenePosition} from "../../api/song/song";
 
 @Component({
   selector: 'dmx-scene-list-form',
@@ -29,9 +29,16 @@ export class SceneListFormComponent {
     this.addScene(this.form.at(i).value);
   }
 
-  addScene(value?: DMXScene) {
+  addScene(value: DMXScenePosition = null) {
     const scene = this.setupScene();
-    scene.patchValue(Object.assign({}, (value || {}), {at: this.nextFullAt}));
+    if (value) {
+      const state = (new FrameBrain(this.form.parent.value)).getStateAt(value.at);
+      value.at += state.framesEachBar;
+      scene.patchValue(value);
+    } else {
+      scene.patchValue({at: this.nextFullAt})
+    }
+
     this.form.push(scene);
     // setTimeout(() => this.sort());
   }

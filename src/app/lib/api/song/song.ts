@@ -20,6 +20,7 @@ export interface DMXScenePosition {
   id: string;
   at: number;
   repeat: number;
+  marker: string;
 }
 
 export interface MIDICommand {

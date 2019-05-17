@@ -58,6 +58,7 @@ export class SceneListFormComponent {
       id: this.formBuilder.control(''),
       at: this.formBuilder.control(0),
       repeat: this.formBuilder.control(0),
+      marker: this.formBuilder.control(''),
     });
   }
 }

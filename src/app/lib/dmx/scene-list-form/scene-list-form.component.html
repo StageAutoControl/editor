@@ -8,10 +8,7 @@
     fxLayoutGap.gt-xs="10px"
   >
     <div fxFlex="grow" fxLayout="row" fxLayoutGap.gt-sm="10px">
-      <!-- (changed)="sort()" -->
       <app-frame-input [form]="scene.controls.at" [song]="form.parent.value" fxFlex></app-frame-input>
-
-      <dmx-scene-select [form]="scene.controls.id" fxFlex="grow"></dmx-scene-select>
 
       <mat-form-field class="short-input" fxFlex>
         <input
@@ -22,6 +19,17 @@
           min="0"
           placeholder="repeat"
           type="number">
+      </mat-form-field>
+
+      <dmx-scene-select [form]="scene.controls.id" fxFlex="grow"></dmx-scene-select>
+
+      <mat-form-field fxFlex="grow">
+        <input
+          [formControl]="scene.controls.marker"
+          id="marker"
+          matInput
+          placeholder="marker"
+          type="text">
       </mat-form-field>
     </div>
 
